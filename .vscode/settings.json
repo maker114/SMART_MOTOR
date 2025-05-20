@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "board.h": "c",
+        "ws2812.h": "c"
+    }
+}
