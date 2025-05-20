@@ -409,19 +409,9 @@
               <FilePath>.\HARDWARE\board.c</FilePath>
             </File>
             <File>
-              <FileName>PWM.c</FileName>
+              <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\HARDWARE\PWM.c</FilePath>
-            </File>
-            <File>
-              <FileName>esp_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\esp_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>soil.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\soil.c</FilePath>
+              <FilePath>.\HARDWARE\motor.c</FilePath>
             </File>
           </Files>
         </Group>
