@@ -13,7 +13,19 @@ int main(void)
 
 	while (1)
 	{
-		//printf("%d,%d\r\n", MOTOR_GetSpeed(MOTOR_A), MOTOR_GetSpeed(MOTOR_B));
-		//delay_ms(100);
+		// printf("%d,%d\r\n", MOTOR_GetSpeed(MOTOR_A), MOTOR_GetSpeed(MOTOR_B));
+		//  delay_ms(100);
+		MOTOR_SetPWM(MOTOR_A, 1000);
+		MOTOR_SetPWM(MOTOR_B, 1000);
+		delay_ms(1000);
+		MOTOR_SetPWM(MOTOR_A, -1000);
+		MOTOR_SetPWM(MOTOR_B, 1000);
+		delay_ms(1000);
+		MOTOR_SetPWM(MOTOR_A, 1000);
+		MOTOR_SetPWM(MOTOR_B, -1000);
+		delay_ms(1000);
+		MOTOR_SetPWM(MOTOR_A, -1000);
+		MOTOR_SetPWM(MOTOR_B, -1000);
+		delay_ms(1000);
 	}
 }

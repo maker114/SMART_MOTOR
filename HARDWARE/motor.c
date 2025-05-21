@@ -24,12 +24,120 @@ void MOTOR_Init(void)
 	MOTOR_PWM_Init();	   // 初始化PWM
 	MOTOR_ENCODER_Init();  // 初始化编码器
 	MOTOR_CountTIM_Init(); // 初始化计数定时器
+	MOTOR_GPIO_Init();
 }
 
+/**
+ * @brief 电机GPIO初始化
+ * @note 有关引脚配置修改位于motor.h文件中
+ *
+ */
 void MOTOR_GPIO_Init(void)
 {
+	GPIO_InitTypeDef GPIO_InitStructure;
+	// A通道配置
+	RCC_APB2PeriphClockCmd(Direction_TIM_A, ENABLE);
+	GPIO_InitStructure.GPIO_Pin = Direction_AIN1 | Direction_AIN2;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // 推挽输出
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // 高速模式
+	GPIO_Init(Direction_Group_A, &GPIO_InitStructure);
+	// B通道配置
+	RCC_APB2PeriphClockCmd(Direction_TIM_B, ENABLE);
+	GPIO_InitStructure.GPIO_Pin = Direction_BIN1 | Direction_BIN2;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  // 推挽输出
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; // 高速模式
+	GPIO_Init(Direction_Group_B, &GPIO_InitStructure);
 }
 
+/**
+ * @brief 选择电机前进方向
+ *
+ * @param Motor_Channel 电机通道
+ * @param Motor_State 电机状态
+ * @note -MOTOR_Clockwise顺时针，MOTOR_Anticlockwise逆时针
+ *       -MOTOR_STOP停止，MOTOR_FORWARD前进，MOTOR_BACKWARD后退
+ *       -轮子旋转方向与PWM值之间的关系由MOTOR_Orientation决定，即由小车安装与前进方向决定
+ */
+void MOTOR_StateSet(int Motor_Channel, int Motor_State)
+{
+	if (Motor_Channel == MOTOR_A && MOTOR_Orientation == MOTOR_Clockwise) // 通道A顺时针
+	{
+		switch (Motor_State)
+		{
+		case MOTOR_STOP:
+			GPIO_SetBits(Direction_Group_A, Direction_AIN1);
+			GPIO_SetBits(Direction_Group_A, Direction_AIN2);
+			break;
+		case MOTOR_FORWARD:
+			GPIO_SetBits(Direction_Group_A, Direction_AIN1);
+			GPIO_ResetBits(Direction_Group_A, Direction_AIN2);
+			break;
+		case MOTOR_BACKWARD:
+			GPIO_ResetBits(Direction_Group_A, Direction_AIN1);
+			GPIO_SetBits(Direction_Group_A, Direction_AIN2);
+			break;
+		}
+	}
+	else if (Motor_Channel == MOTOR_A && MOTOR_Orientation == MOTOR_Anticlockwise) // 通道A逆时针
+	{
+		switch (Motor_State)
+		{
+		case MOTOR_STOP:
+			GPIO_SetBits(Direction_Group_A, Direction_AIN1);
+			GPIO_SetBits(Direction_Group_A, Direction_AIN2);
+			break;
+		case MOTOR_FORWARD:
+			GPIO_ResetBits(Direction_Group_A, Direction_AIN1);
+			GPIO_SetBits(Direction_Group_A, Direction_AIN2);
+			break;
+		case MOTOR_BACKWARD:
+			GPIO_SetBits(Direction_Group_A, Direction_AIN1);
+			GPIO_ResetBits(Direction_Group_A, Direction_AIN2);
+			break;
+		}
+	}
+	else if (Motor_Channel == MOTOR_B && MOTOR_Orientation == MOTOR_Clockwise) // 通道B顺时针
+	{
+		switch (Motor_State)
+		{
+		case MOTOR_STOP:
+			GPIO_SetBits(Direction_Group_B, Direction_BIN1);
+			GPIO_SetBits(Direction_Group_B, Direction_BIN2);
+			break;
+		case MOTOR_FORWARD:
+			GPIO_SetBits(Direction_Group_B, Direction_BIN1);
+			GPIO_ResetBits(Direction_Group_B, Direction_BIN2);
+			break;
+		case MOTOR_BACKWARD:
+			GPIO_ResetBits(Direction_Group_B, Direction_BIN1);
+			GPIO_SetBits(Direction_Group_B, Direction_BIN2);
+			break;
+		}
+	}
+	else if (Motor_Channel == MOTOR_B && MOTOR_Orientation == MOTOR_Anticlockwise) // 通道B逆时针
+	{
+		switch (Motor_State)
+		{
+		case MOTOR_STOP:
+			GPIO_SetBits(Direction_Group_B, Direction_BIN1);
+			GPIO_SetBits(Direction_Group_B, Direction_BIN2);
+			break;
+		case MOTOR_FORWARD:
+			GPIO_ResetBits(Direction_Group_B, Direction_BIN1);
+			GPIO_SetBits(Direction_Group_B, Direction_BIN2);
+			break;
+		case MOTOR_BACKWARD:
+			GPIO_SetBits(Direction_Group_B, Direction_BIN1);
+			GPIO_ResetBits(Direction_Group_B, Direction_BIN2);
+			break;
+		}
+	}
+}
+
+/**
+ * @brief 转速定时器初始化
+ *
+ */
 void MOTOR_CountTIM_Init(void)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
@@ -56,14 +164,19 @@ void MOTOR_CountTIM_Init(void)
 	TIM_Cmd(TIM1, ENABLE);
 }
 
+/**
+ * @brief 定时器1中断服务函数
+ *
+ */
 void TIM1_UP_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
 	{
 		MotorStructure_A.Speed = TIM_GetCounter(TIM2);
 		MotorStructure_B.Speed = TIM_GetCounter(TIM4);
-		TIM_SetCounter(TIM2, 0);					// 清零计数器
-		TIM_SetCounter(TIM4, 0);					// 清零计数器
+		TIM_SetCounter(TIM2, 0); // 清零计数器
+		TIM_SetCounter(TIM4, 0); // 清零计数器
+		printf("%d,%d\r\n", MOTOR_GetSpeed(MOTOR_A), MOTOR_GetSpeed(MOTOR_B));
 		TIM_ClearITPendingBit(TIM1, TIM_IT_Update); // 清除中断标志
 	}
 }
@@ -216,12 +329,13 @@ void MOTOR_PWM_Init(void)
 }
 
 /**
- * @brief 设置电机PWM
+ * @brief 装载电机PWM
  *
  * @param Motor_Channel 电机通道（motor_a/motor_b）
  * @param PWM PWM值（0~7200）
+ * @note -仅对对应通道的定时器进行占空比装载，不接受负数，不处理方向
  */
-void MOTOR_SetPWM(uint8_t Motor_Channel, uint16_t PWM)
+void MOTOR_LoadPWM(uint8_t Motor_Channel, uint16_t PWM)
 {
 	// 限幅
 	PWM = PWM > 7200 ? 7200 : PWM;
@@ -229,12 +343,38 @@ void MOTOR_SetPWM(uint8_t Motor_Channel, uint16_t PWM)
 	switch (Motor_Channel)
 	{
 	case MOTOR_A:
-		TIM_SetCompare3(TIM3, PWM);
+		TIM_SetCompare3(TIM3, 7200 - PWM);
 		break;
 	case MOTOR_B:
-		TIM_SetCompare4(TIM3, PWM);
+		TIM_SetCompare4(TIM3, 7200 - PWM);
 		break;
 	default:
 		break;
 	}
+}
+
+/**
+ * @brief 设置电机PWM
+ *
+ * @param Motor_Channel 电机通道
+ * @param PWM 对应占空比值（MOTOR_PWM_MIN ~ MOTOR_PWM_MAX）
+ * @note -设置对应通道的PWM值，根据输入数据的正负与安装方向（MOTOR_Orientation）决定旋转方向
+ *       -为避免PWM过零引脚频繁切换，PWM=0时不会执行MOTOR_StateSet(Motor_channel, MOTOR_STOP);
+ */
+void MOTOR_SetPWM(uint8_t Motor_channel, int PWM)
+{
+	if (PWM >= 0) // 正转
+	{
+		MOTOR_StateSet(Motor_channel, MOTOR_FORWARD); // 设置方向
+		PWM = (Motor_channel == MOTOR_A) ? PWM + MOTOR_PWM_Compensate_A : PWM + MOTOR_PWM_Compensate_B;
+		PWM = PWM > MOTOR_PWM_MAX ? MOTOR_PWM_MAX : PWM; // 最大值限幅
+	}
+	else // 反转
+	{
+		MOTOR_StateSet(Motor_channel, MOTOR_BACKWARD); // 设置方向
+		PWM = (Motor_channel == MOTOR_A) ? PWM - MOTOR_PWM_Compensate_A : PWM - MOTOR_PWM_Compensate_B;
+		PWM = PWM < MOTOR_PWM_MIN ? MOTOR_PWM_MIN : PWM; // 最小值限幅
+		PWM = -PWM;										 // 反转取正数
+	}
+	MOTOR_LoadPWM(Motor_channel, PWM); // 装载PWM
 }
