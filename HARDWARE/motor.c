@@ -12,19 +12,18 @@
 #include "board.h"
 #include "usart.h"
 
-typedef struct
-{
-	int8_t PWMvalue; // PWM装载值
-	int8_t Speed;	 // 电机转速
-} MOTOR_TypeDef;
+// 定义结构体
 MOTOR_TypeDef MotorStructure_A, MotorStructure_B;
+FastResponseFilter filter_A, filter_B;
 
 void MOTOR_Init(void)
 {
+	Filter_Init(&filter_A, 0.6f, 0.0f);
+	Filter_Init(&filter_B, 0.6f, 0.0f);
 	MOTOR_PWM_Init();	   // 初始化PWM
 	MOTOR_ENCODER_Init();  // 初始化编码器
 	MOTOR_CountTIM_Init(); // 初始化计数定时器
-	MOTOR_GPIO_Init();
+	MOTOR_GPIO_Init();	   // 方向控制引脚初始化
 }
 
 /**
@@ -96,7 +95,7 @@ void MOTOR_StateSet(int Motor_Channel, int Motor_State)
 			break;
 		}
 	}
-	else if (Motor_Channel == MOTOR_B && MOTOR_Orientation == MOTOR_Clockwise) // 通道B顺时针
+	else if (Motor_Channel == MOTOR_B && MOTOR_Orientation == MOTOR_Anticlockwise) // 通道B逆时针
 	{
 		switch (Motor_State)
 		{
@@ -114,7 +113,7 @@ void MOTOR_StateSet(int Motor_Channel, int Motor_State)
 			break;
 		}
 	}
-	else if (Motor_Channel == MOTOR_B && MOTOR_Orientation == MOTOR_Anticlockwise) // 通道B逆时针
+	else if (Motor_Channel == MOTOR_B && MOTOR_Orientation == MOTOR_Clockwise) // 通道B顺时针
 	{
 		switch (Motor_State)
 		{
@@ -172,11 +171,22 @@ void TIM1_UP_IRQHandler(void)
 {
 	if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
 	{
-		MotorStructure_A.Speed = TIM_GetCounter(TIM2);
-		MotorStructure_B.Speed = TIM_GetCounter(TIM4);
-		TIM_SetCounter(TIM2, 0); // 清零计数器
-		TIM_SetCounter(TIM4, 0); // 清零计数器
-		printf("%d,%d\r\n", MOTOR_GetSpeed(MOTOR_A), MOTOR_GetSpeed(MOTOR_B));
+		static int16_t SPEED_A, SPEED_B;
+		SPEED_A = Filter_Process(&filter_A, TIM_GetCounter(TIM2)); // 通道A编码器滤波
+		SPEED_B = Filter_Process(&filter_B, TIM_GetCounter(TIM4)); // 通道B编码器滤波
+
+		if (MOTOR_Orientation == MOTOR_Clockwise) // 顺时针安装
+		{
+			MotorStructure_A.Speed = -SPEED_A;
+			MotorStructure_B.Speed = SPEED_B; // 安装方向手性相反，取负
+		}
+		else if (MOTOR_Orientation == MOTOR_Anticlockwise) // 逆时针安装
+		{
+			MotorStructure_A.Speed = SPEED_A;
+			MotorStructure_B.Speed = -SPEED_B; // 安装方向手性相反，取负
+		}
+		TIM_SetCounter(TIM2, 0);					// 清零计数器
+		TIM_SetCounter(TIM4, 0);					// 清零计数器
 		TIM_ClearITPendingBit(TIM1, TIM_IT_Update); // 清除中断标志
 	}
 }
@@ -343,9 +353,11 @@ void MOTOR_LoadPWM(uint8_t Motor_Channel, uint16_t PWM)
 	switch (Motor_Channel)
 	{
 	case MOTOR_A:
+		// printf("A%d  ", PWM);
 		TIM_SetCompare3(TIM3, 7200 - PWM);
 		break;
 	case MOTOR_B:
+		// printf("B%d\r\n", PWM);
 		TIM_SetCompare4(TIM3, 7200 - PWM);
 		break;
 	default:
@@ -377,4 +389,42 @@ void MOTOR_SetPWM(uint8_t Motor_channel, int PWM)
 		PWM = -PWM;										 // 反转取正数
 	}
 	MOTOR_LoadPWM(Motor_channel, PWM); // 装载PWM
+}
+
+/**
+ * @brief 初始化滤波器(内部调用)
+ *
+ * @param filter 滤波器实例指针
+ * @param alpha 滤波系数(建议0.3-0.7)
+ * @param init_value 初始值
+ */
+void Filter_Init(FastResponseFilter *filter, float alpha, float init_value)
+{
+	filter->alpha = alpha;
+	filter->prev_value = init_value;
+	for (int i = 0; i < 3; i++)
+	{
+		filter->buffer[i] = init_value;
+	}
+	filter->index = 0;
+}
+
+/**
+ * @brief 快速响应滤波器处理函数(内部调用)
+ *
+ * @param filter 滤波器实例指针
+ * @param raw_value 原始输入值
+ * @return 滤波后的值
+ */
+int Filter_Process(FastResponseFilter *filter, float raw_value)
+{
+	// 更新移动平均缓冲区
+	filter->buffer[filter->index] = raw_value;
+	filter->index = (filter->index + 1) % 3;
+	// 计算移动平均
+	float moving_avg = (filter->buffer[0] + filter->buffer[1] + filter->buffer[2]) / 3.0f;
+	// 一阶低通滤波
+	float filtered = filter->alpha * moving_avg + (1.0f - filter->alpha) * filter->prev_value;
+	filter->prev_value = filtered;
+	return filtered;
 }
