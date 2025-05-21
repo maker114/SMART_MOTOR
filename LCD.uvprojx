@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\STM32F10x_FWLib\inc;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;.\HARDWARE</IncludePath>
+              <IncludePath>..\CORE;..\STM32F10x_FWLib\inc;..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;.\HARDWARE;.\HARDWARE\OLED</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -412,6 +412,26 @@
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>INA226.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\INA226.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\OLED\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled_menu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\OLED\oled_menu.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled_start.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\OLED\oled_start.c</FilePath>
             </File>
           </Files>
         </Group>
