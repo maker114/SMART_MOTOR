@@ -24,6 +24,63 @@ void MOTOR_Init(void)
 	MOTOR_ENCODER_Init();  // 初始化编码器
 	MOTOR_CountTIM_Init(); // 初始化计数定时器
 	MOTOR_GPIO_Init();	   // 方向控制引脚初始化
+	MOTOR_ADC_Init();	   // 电池电压检测初始化
+}
+
+/**
+ * @brief 初始化电池电压检测ADC
+ *
+ * @note -通道：ADC1-Channel2
+ * 		 -引脚：PA2
+ *
+ */
+void MOTOR_ADC_Init(void)
+{
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+
+	RCC_ADCCLKConfig(RCC_PCLK2_Div6);
+
+	GPIO_InitTypeDef GPIO_InitStructure;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+	ADC_RegularChannelConfig(ADC1, ADC_Channel_2, 1, ADC_SampleTime_55Cycles5);
+
+	ADC_InitTypeDef ADC_InitStructure;
+	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
+	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
+	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
+	ADC_InitStructure.ADC_ScanConvMode = DISABLE;
+	ADC_InitStructure.ADC_NbrOfChannel = 1;
+	ADC_Init(ADC1, &ADC_InitStructure);
+
+	ADC_Cmd(ADC1, ENABLE);
+
+	ADC_ResetCalibration(ADC1);
+	while (ADC_GetResetCalibrationStatus(ADC1) == SET)
+		;
+	ADC_StartCalibration(ADC1);
+	while (ADC_GetCalibrationStatus(ADC1) == SET)
+		;
+}
+
+/**
+ * @brief 获取电池电压
+ *
+ * @return float 电池电压返回值
+ */
+float MOTOR_GetBatteryVoltage(void)
+{
+	static float voltage = 0;
+	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+	while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET)
+		;
+	voltage = (float)ADC_GetConversionValue(ADC1) * 3.3f / 4096.0f * 4.08f;
+	return voltage;
 }
 
 /**
