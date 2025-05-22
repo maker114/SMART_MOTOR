@@ -438,6 +438,11 @@
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\WS2812.c</FilePath>
             </File>
+            <File>
+              <FileName>usart_link.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\usart_link.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

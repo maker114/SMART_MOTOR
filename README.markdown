@@ -47,9 +47,30 @@
 - DC: PB14
 - CS: PB15
 
+## WS2812 LED 灯带
+#### WS2812引脚：
+- DAT：PA8
+
+## 串口传输
+#### 串口引脚：
+- USART1
+    - TX: PA9
+    - RX: PA10
+- USART3
+    - TX: PB10
+    - RX: PB11
+#### 串口数据包（USART3）：
+- 数据包格式：
+    - LINK_FrameHeader1
+    - LINK_FrameHeader2
+    - LINK_CMD
+    - LINK_DATA_H
+    - LINK_DATA_L
+    - LINK_CheckSum
+
 ## 总连接表
 
-| 模块              | 名称       | 对应引脚                 | 简单备注                |
+| 模块              | 名称       | 对应引脚                 | 备注                |
 | --------------- | -------- | -------------------- | ------------------- |
 | PWM 定时器 - TIM3  | MOTOR\_A | PB0（CH3）             | 控制电机 A 的 PWM 信号输出   |
 | PWM 定时器 - TIM3  | MOTOR\_B | PB1（CH4）             | 控制电机 B 的 PWM 信号输出   |
@@ -70,3 +91,7 @@
 | OLED 显示         | DC       | PB14                 | OLED 显示屏数据 / 命令控制引脚 |
 | OLED 显示         | CS       | PB15                 | OLED 显示屏片选引脚        |
 | WS2812 LED 灯带     | DAT      | PA8                  | 控制 WS2812 LED 灯带的引脚   |
+| 串口传输 - USART1  | TX       | PA9                  | USART1 的发送引脚         |
+| 串口传输 - USART1  | RX       | PA10                 | USART1 的接收引脚         |
+| 串口传输 - USART3  | TX       | PB10                 | USART3 的发送引脚         |
+| 串口传输 - USART3  | RX       | PB11                 | USART3 的接收引脚         |
