@@ -61,7 +61,7 @@
 | 方向控制            | AIN2     | PA4                  | 控制电机 A 方向的引脚 2      |
 | 方向控制            | BIN1     | PA5                  | 控制电机 B 方向的引脚 1      |
 | 方向控制            | BIN2     | PA6                  | 控制电机 B 方向的引脚 2      |
-| 电池检测            | 电池检测通道   | PA2（ADC1 - Channel2） | 用于检测电池电压            |
+| 电池检测            | ADC  | PA2（ADC1 - CH2） | 用于检测电池电压            |
 | 电压电流检测 - INA226 | SDA      | PB13                 | 与 INA226 通信的数据线     |
 | 电压电流检测 - INA226 | SCL      | PB12                 | 与 INA226 通信的时钟线     |
 | OLED 显示         | SCL      | PB5                  | OLED 显示屏时钟线         |
@@ -69,3 +69,4 @@
 | OLED 显示         | RES      | PB9                  | OLED 显示屏复位引脚        |
 | OLED 显示         | DC       | PB14                 | OLED 显示屏数据 / 命令控制引脚 |
 | OLED 显示         | CS       | PB15                 | OLED 显示屏片选引脚        |
+| WS2812 LED 灯带     | DAT      | PA8                  | 控制 WS2812 LED 灯带的引脚   |

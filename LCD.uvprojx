@@ -433,6 +433,11 @@
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\OLED\oled_start.c</FilePath>
             </File>
+            <File>
+              <FileName>WS2812.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\WS2812.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
