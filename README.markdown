@@ -72,8 +72,8 @@
 
 | 模块              | 名称       | 对应引脚                 | 备注                |
 | --------------- | -------- | -------------------- | ------------------- |
-| PWM 定时器 - TIM3  | MOTOR\_A | PB0（CH3）             | 控制电机 A 的 PWM 信号输出   |
-| PWM 定时器 - TIM3  | MOTOR\_B | PB1（CH4）             | 控制电机 B 的 PWM 信号输出   |
+| PWM 定时器 - TIM3  | PWM\_A | PB0（CH3）             | 控制电机 A 的 PWM 信号输出   |
+| PWM 定时器 - TIM3  | PWM\_B | PB1（CH4）             | 控制电机 B 的 PWM 信号输出   |
 | 编码器定时器 - TIM2   | EA-A     | PA0                  | 电机 A 编码器 A 相输入      |
 | 编码器定时器 - TIM2   | EA-B     | PA1                  | 电机 A 编码器 B 相输入      |
 | 编码器定时器 - TIM4   | EB-A     | PB6                  | 电机 B 编码器 A 相输入      |
@@ -90,8 +90,10 @@
 | OLED 显示         | RES      | PB9                  | OLED 显示屏复位引脚        |
 | OLED 显示         | DC       | PB14                 | OLED 显示屏数据 / 命令控制引脚 |
 | OLED 显示         | CS       | PB15                 | OLED 显示屏片选引脚        |
-| WS2812 LED 灯带     | DAT      | PA8                  | 控制 WS2812 LED 灯带的引脚   |
+| WS2812 LED 灯带   | DAT      | PA8                   | 控制 WS2812 LED 灯带的引脚   |
 | 串口传输 - USART1  | TX       | PA9                  | USART1 的发送引脚         |
 | 串口传输 - USART1  | RX       | PA10                 | USART1 的接收引脚         |
-| 串口传输 - USART3  | TX       | PB10                 | USART3 的发送引脚         |
-| 串口传输 - USART3  | RX       | PB11                 | USART3 的接收引脚         |
+| 按键输入           | KEY1     | PA7                  | 按键1的接收引脚        |
+| 按键输入           | KEY2     | PA11                 | 按键2的接收引脚         |
+| 按键输入           | KEY3     | PA12                 | 按键3的接收引脚         |
+| 蜂鸣器             | BEEP     | PB3                  | 蜂鸣器的发送引脚         |

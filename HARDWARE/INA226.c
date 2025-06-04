@@ -259,13 +259,22 @@ float INA226_ReadCurrent_A(uint8_t addr)
     return raw * Current_LSB; // 根据实际LSB调整
 }
 // 读取电流（单位：mA）
+float Last_Curren=0;
 float INA226_ReadCurrent_mA(uint8_t addr)
 {
     float Curren;
     uint16_t raw = INA226_GetShuntCurrent(addr);
     Curren = raw * Current_LSB;
     Curren *= 1000;
-    return Curren; // 根据实际LSB调整
+	
+		if(Curren>9000)
+			return Last_Curren;
+		else
+		{
+			Last_Curren = Curren;
+			return Curren; // 根据实际LSB调整
+		}
+			
 }
 
 // 读取功率（单位：W）

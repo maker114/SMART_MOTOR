@@ -268,6 +268,22 @@ int MOTOR_GetSpeed(int Motor_Channel)
 	return 0;
 }
 
+
+int MOTOR_GetPWM(int Motor_Channel)
+{
+		switch (Motor_Channel)
+	{
+	case MOTOR_A:
+		return MotorStructure_A.PWMvalue; // 返回电机A PWM
+	case MOTOR_B:
+		return MotorStructure_B.PWMvalue; // 返回电机B PWM
+	default:
+		break;
+	}
+	return 0;
+}
+
+
 /**
  * @brief 初始化电机编码器
  * @note -定时器：TIM2/TIM4
@@ -372,7 +388,7 @@ void MOTOR_PWM_Init(void)
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 	// 定时器基本配置
-	TIM_TimeBaseStructure.TIM_Period = 7200 - 1;				// PWM周期
+	TIM_TimeBaseStructure.TIM_Period = 7200- 1;				// PWM周期
 	TIM_TimeBaseStructure.TIM_Prescaler = 0;					// 不分频
 	TIM_TimeBaseStructure.TIM_ClockDivision = 0;				// 无时钟分割
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; // 向上计数
@@ -411,10 +427,12 @@ void MOTOR_LoadPWM(uint8_t Motor_Channel, uint16_t PWM)
 	{
 	case MOTOR_A:
 		// printf("A%d  ", PWM);
+		MotorStructure_A.PWMvalue=PWM;
 		TIM_SetCompare3(TIM3, 7200 - PWM);
 		break;
 	case MOTOR_B:
 		// printf("B%d\r\n", PWM);
+		MotorStructure_B.PWMvalue=PWM;
 		TIM_SetCompare4(TIM3, 7200 - PWM);
 		break;
 	default:

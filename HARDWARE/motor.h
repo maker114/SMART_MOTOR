@@ -55,6 +55,7 @@ float MOTOR_GetBatteryVoltage(void);
 void MOTOR_GPIO_Init(void);
 void MOTOR_CountTIM_Init(void);
 int MOTOR_GetSpeed(int Motor_Channel);
+int MOTOR_GetPWM(int Motor_Channel);
 void MOTOR_ENCODER_Init(void);
 void MOTOR_PWM_Init(void);
 void MOTOR_LoadPWM(uint8_t Motor_Channel, uint16_t PWM);

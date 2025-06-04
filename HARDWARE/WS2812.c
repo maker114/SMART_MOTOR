@@ -17,9 +17,12 @@ void WS2812_init(uint8_t NUM)
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;      // 推挽输出
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;     // IO口速度为50MHz
   GPIO_Init(GPIOA, &GPIO_InitStructure);                // 根据设定参数初始化GPIOA.0
-  GPIO_ResetBits(GPIOA, GPIO_Pin_0);                    // PA.0 输出低电平
-
+  GPIO_ResetBits(GPIOA, GPIO_Pin_8);                    // PA.0 输出低电平
   LED_NUM = NUM; // 初始化LED数量
+	WS2812_SendColor(0,0x00,0x00,0x00);
+	WS2812_SendColor(1,0x00,0x00,0x00);
+	WS2812_SendColor(2,0x00,0x00,0x00);
+	WS2812_SendColor(3,0x00,0x00,0x00);
 }
 
 /**
