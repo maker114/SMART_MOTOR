@@ -16,6 +16,47 @@
 MOTOR_TypeDef MotorStructure_A, MotorStructure_B;
 FastResponseFilter filter_A, filter_B;
 
+/**
+ * @brief 定时器1中断服务函数
+ *
+ */
+void TIM1_UP_IRQHandler(void)
+{
+	if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
+	{
+		static int16_t SPEED_A, SPEED_B;
+		//  滤波对PID计算影响严重，暂时关闭
+		//  SPEED_A = Filter_Process(&filter_A, TIM_GetCounter(TIM2)); // 通道A编码器滤波
+		//  SPEED_B = Filter_Process(&filter_B, TIM_GetCounter(TIM4)); // 通道B编码器滤波
+		SPEED_A = TIM_GetCounter(TIM2);
+		SPEED_B = TIM_GetCounter(TIM4);
+
+		// 速度计算
+		if (MOTOR_Orientation == MOTOR_Clockwise) // 顺时针安装
+		{
+			MotorStructure_A.Speed = -SPEED_A;
+			MotorStructure_B.Speed = SPEED_B; // 安装方向手性相反，取负
+		}
+		else if (MOTOR_Orientation == MOTOR_Anticlockwise) // 逆时针安装
+		{
+			MotorStructure_A.Speed = SPEED_A;
+			MotorStructure_B.Speed = -SPEED_B; // 安装方向手性相反，取负
+		}
+		// PID计算
+		if (MOTOR_OperatingMode == MOTOR_AUTO)
+		{
+			MOTOR_PID_TimLoop();
+		}
+		TIM_SetCounter(TIM2, 0);					// 清零计数器
+		TIM_SetCounter(TIM4, 0);					// 清零计数器
+		TIM_ClearITPendingBit(TIM1, TIM_IT_Update); // 清除中断标志
+	}
+}
+
+/**
+ * @brief 总初始化，仅调用一次此函数即可完成全部初始化
+ *
+ */
 void MOTOR_Init(void)
 {
 	Filter_Init(&filter_A, 0.6f, 0.0f);
@@ -25,6 +66,7 @@ void MOTOR_Init(void)
 	MOTOR_CountTIM_Init(); // 初始化计数定时器
 	MOTOR_GPIO_Init();	   // 方向控制引脚初始化
 	MOTOR_ADC_Init();	   // 电池电压检测初始化
+	MOTOR_PID_Init();	   // PID初始化
 }
 
 /**
@@ -69,21 +111,6 @@ void MOTOR_ADC_Init(void)
 }
 
 /**
- * @brief 获取电池电压
- *
- * @return float 电池电压返回值
- */
-float MOTOR_GetBatteryVoltage(void)
-{
-	static float voltage = 0;
-	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-	while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET)
-		;
-	voltage = (float)ADC_GetConversionValue(ADC1) * 3.3f / 4096.0f * 4.08f;
-	return voltage;
-}
-
-/**
  * @brief 电机GPIO初始化
  * @note 有关引脚配置修改位于motor.h文件中
  *
@@ -106,15 +133,46 @@ void MOTOR_GPIO_Init(void)
 }
 
 /**
- * @brief 选择电机前进方向
+ * @brief 转速定时器初始化
+ *
+ */
+void MOTOR_CountTIM_Init(void)
+{
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+
+	// 使能TIM1时钟（TIM1是APB2设备）
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+	// 定时器基础配置
+	TIM_TimeBaseInitStructure.TIM_Period = 1000 - 1;  // 自动重装载值（ARR）
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 72 - 1; // 预分频值（PSC）
+	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
+	// 使能TIM1更新中断
+	TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);
+	// 配置NVIC（注意TIM1中断通道不同）
+	NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn; // TIM1更新中断通道
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+	// 启动TIM1（高级定时器需要额外使能主输出）
+	TIM_CtrlPWMOutputs(TIM1, ENABLE); // 高级定时器特有
+	TIM_Cmd(TIM1, ENABLE);
+}
+
+/**
+ * @brief 选择电机前进方向，一般由内部调用
  *
  * @param Motor_Channel 电机通道
  * @param Motor_State 电机状态
  * @note -MOTOR_Clockwise顺时针，MOTOR_Anticlockwise逆时针
- *       -MOTOR_STOP停止，MOTOR_FORWARD前进，MOTOR_BACKWARD后退
+ *       -MOTOR_STOP停止(刹车)，MOTOR_FORWARD前进，MOTOR_BACKWARD后退
  *       -轮子旋转方向与PWM值之间的关系由MOTOR_Orientation决定，即由小车安装与前进方向决定
+ * 		 -一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数
  */
-void MOTOR_StateSet(int Motor_Channel, int Motor_State)
+void MOTOR_Set_State(int Motor_Channel, int Motor_State)
 {
 	if (Motor_Channel == MOTOR_A && MOTOR_Orientation == MOTOR_Clockwise) // 通道A顺时针
 	{
@@ -191,60 +249,70 @@ void MOTOR_StateSet(int Motor_Channel, int Motor_State)
 }
 
 /**
- * @brief 转速定时器初始化
+ * @brief 设置小车安装方向
  *
+ * @param Orientation
+ * 		|- #define MOTOR_Clockwise 0     // 顺时针旋转为正向
+ * 		|- #define MOTOR_Anticlockwise 1 // 逆时针旋转为正向
  */
-void MOTOR_CountTIM_Init(void)
+void MOTOR_Set_Orientation(uint8_t Orientation)
 {
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-
-	// 使能TIM1时钟（TIM1是APB2设备）
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
-	// 定时器基础配置
-	TIM_TimeBaseInitStructure.TIM_Period = 1000 - 1;  // 自动重装载值（ARR）
-	TIM_TimeBaseInitStructure.TIM_Prescaler = 72 - 1; // 预分频值（PSC）
-	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
-	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
-	// 使能TIM1更新中断
-	TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);
-	// 配置NVIC（注意TIM1中断通道不同）
-	NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn; // TIM1更新中断通道
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-	// 启动TIM1（高级定时器需要额外使能主输出）
-	TIM_CtrlPWMOutputs(TIM1, ENABLE); // 高级定时器特有
-	TIM_Cmd(TIM1, ENABLE);
+	MOTOR_Orientation = Orientation;
 }
 
 /**
- * @brief 定时器1中断服务函数
+ * @brief 设置操作模式
  *
+ * @param Mode
+ * 		|- #define MOTOR_MANUAL 0 // 手动模式
+ * 		|- #define MOTOR_AUTO 1 // 自动模式
  */
-void TIM1_UP_IRQHandler(void)
+void MOTOR_Set_OperatingMode(uint8_t Mode)
 {
-	if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
-	{
-		static int16_t SPEED_A, SPEED_B;
-		SPEED_A = Filter_Process(&filter_A, TIM_GetCounter(TIM2)); // 通道A编码器滤波
-		SPEED_B = Filter_Process(&filter_B, TIM_GetCounter(TIM4)); // 通道B编码器滤波
+	MOTOR_OperatingMode = Mode;
+}
 
-		if (MOTOR_Orientation == MOTOR_Clockwise) // 顺时针安装
-		{
-			MotorStructure_A.Speed = -SPEED_A;
-			MotorStructure_B.Speed = SPEED_B; // 安装方向手性相反，取负
-		}
-		else if (MOTOR_Orientation == MOTOR_Anticlockwise) // 逆时针安装
-		{
-			MotorStructure_A.Speed = SPEED_A;
-			MotorStructure_B.Speed = -SPEED_B; // 安装方向手性相反，取负
-		}
-		TIM_SetCounter(TIM2, 0);					// 清零计数器
-		TIM_SetCounter(TIM4, 0);					// 清零计数器
-		TIM_ClearITPendingBit(TIM1, TIM_IT_Update); // 清除中断标志
+/**
+ * @brief 用来设置电机转动速度，自动设置旋转方向
+ *
+ * @param Motor_Channel 电机通道
+ * @param PWM 对应占空比值（MOTOR_PWM_MIN ~ MOTOR_PWM_MAX）
+ * @note -设置对应通道的PWM值，根据输入数据的正负与安装方向（MOTOR_Orientation）决定旋转方向
+ *       -为避免PWM过零引脚频繁切换，PWM=0时不会执行MOTOR_Set_State(Motor_channel, MOTOR_STOP);
+ */
+void MOTOR_Set_PWM(uint8_t Motor_channel, int PWM)
+{
+	if (PWM >= 0) // 正转
+	{
+		MOTOR_Set_State(Motor_channel, MOTOR_FORWARD); // 设置方向
+		PWM = (Motor_channel == MOTOR_A) ? PWM + MOTOR_PWM_Compensate_A : PWM + MOTOR_PWM_Compensate_B;
+		PWM = PWM > MOTOR_PWM_MAX ? MOTOR_PWM_MAX : PWM; // 最大值限幅
+	}
+	else // 反转
+	{
+		MOTOR_Set_State(Motor_channel, MOTOR_BACKWARD); // 设置方向
+		PWM = (Motor_channel == MOTOR_A) ? PWM - MOTOR_PWM_Compensate_A : PWM - MOTOR_PWM_Compensate_B;
+		PWM = PWM < MOTOR_PWM_MIN ? MOTOR_PWM_MIN : PWM; // 最小值限幅
+		PWM = -PWM;										 // 反转取正数
+	}
+	MOTOR_PWM_Load(Motor_channel, PWM); // 装载PWM
+}
+
+/**
+ * @brief  设置PID目标速度
+ *
+ * @param Motor_channel 电机通道
+ * @param Goal_Speed    目标速度
+ */
+void MOTOR_Set_PIDGoalSpeed(uint8_t Motor_channel, float Goal_Speed)
+{
+	if (Motor_channel == MOTOR_A)
+	{
+		MotorStructure_A.PID_GoalSpeed = Goal_Speed;
+	}
+	else if (Motor_channel == MOTOR_B)
+	{
+		MotorStructure_B.PID_GoalSpeed = Goal_Speed;
 	}
 }
 
@@ -254,7 +322,7 @@ void TIM1_UP_IRQHandler(void)
  * @param Motor_Channel 电机通道
  * @return int 返回电机原始转速（正/负）
  */
-int MOTOR_GetSpeed(int Motor_Channel)
+int MOTOR_Get_Speed(int Motor_Channel)
 {
 	switch (Motor_Channel)
 	{
@@ -268,10 +336,18 @@ int MOTOR_GetSpeed(int Motor_Channel)
 	return 0;
 }
 
-
-int MOTOR_GetPWM(int Motor_Channel)
+/**
+ * @brief 获取电机PWM值
+ *
+ * @param Motor_Channel 电机通道
+ * @return int
+ * 		|- 自动模式下返回PID结果
+ * 		|- 手动模式下返回传入PWM值
+ */
+int MOTOR_Get_PWM(int Motor_Channel)
 {
-		switch (Motor_Channel)
+
+	switch (Motor_Channel)
 	{
 	case MOTOR_A:
 		return MotorStructure_A.PWMvalue; // 返回电机A PWM
@@ -283,6 +359,20 @@ int MOTOR_GetPWM(int Motor_Channel)
 	return 0;
 }
 
+/**
+ * @brief 获取电池电压
+ *
+ * @return float 电池电压返回值
+ */
+float MOTOR_Get_BatteryVoltage(void)
+{
+	static float voltage = 0;
+	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+	while (ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC) == RESET)
+		;
+	voltage = (float)ADC_GetConversionValue(ADC1) * 3.3f / 4096.0f * 4.08f;
+	return voltage;
+}
 
 /**
  * @brief 初始化电机编码器
@@ -345,7 +435,7 @@ void MOTOR_ENCODER_Init(void)
 	// 定时器基础配置(与TIM2相同)
 	TIM_TimeBaseInit(TIM4, &TIM_TimeBaseInitStructure);
 
-	// 编码器接口配置
+	// 编码器接口配置z
 	TIM_ICStructInit(&TIM_ICInitStructure);
 	TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
 	TIM_ICInitStructure.TIM_ICFilter = 0xF;
@@ -388,7 +478,7 @@ void MOTOR_PWM_Init(void)
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 	// 定时器基本配置
-	TIM_TimeBaseStructure.TIM_Period = 7200- 1;				// PWM周期
+	TIM_TimeBaseStructure.TIM_Period = 7200 - 1;				// PWM周期
 	TIM_TimeBaseStructure.TIM_Prescaler = 0;					// 不分频
 	TIM_TimeBaseStructure.TIM_ClockDivision = 0;				// 无时钟分割
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; // 向上计数
@@ -417,8 +507,9 @@ void MOTOR_PWM_Init(void)
  * @param Motor_Channel 电机通道（motor_a/motor_b）
  * @param PWM PWM值（0~7200）
  * @note -仅对对应通道的定时器进行占空比装载，不接受负数，不处理方向
+ *       -一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数
  */
-void MOTOR_LoadPWM(uint8_t Motor_Channel, uint16_t PWM)
+void MOTOR_PWM_Load(uint8_t Motor_Channel, uint16_t PWM)
 {
 	// 限幅
 	PWM = PWM > 7200 ? 7200 : PWM;
@@ -427,12 +518,12 @@ void MOTOR_LoadPWM(uint8_t Motor_Channel, uint16_t PWM)
 	{
 	case MOTOR_A:
 		// printf("A%d  ", PWM);
-		MotorStructure_A.PWMvalue=PWM;
+		MotorStructure_A.PWMvalue = PWM;
 		TIM_SetCompare3(TIM3, 7200 - PWM);
 		break;
 	case MOTOR_B:
 		// printf("B%d\r\n", PWM);
-		MotorStructure_B.PWMvalue=PWM;
+		MotorStructure_B.PWMvalue = PWM;
 		TIM_SetCompare4(TIM3, 7200 - PWM);
 		break;
 	default:
@@ -441,29 +532,56 @@ void MOTOR_LoadPWM(uint8_t Motor_Channel, uint16_t PWM)
 }
 
 /**
- * @brief 设置电机PWM
+ * @brief 初始化PID参数
  *
- * @param Motor_Channel 电机通道
- * @param PWM 对应占空比值（MOTOR_PWM_MIN ~ MOTOR_PWM_MAX）
- * @note -设置对应通道的PWM值，根据输入数据的正负与安装方向（MOTOR_Orientation）决定旋转方向
- *       -为避免PWM过零引脚频繁切换，PWM=0时不会执行MOTOR_StateSet(Motor_channel, MOTOR_STOP);
  */
-void MOTOR_SetPWM(uint8_t Motor_channel, int PWM)
+void MOTOR_PID_Init(void)
 {
-	if (PWM >= 0) // 正转
-	{
-		MOTOR_StateSet(Motor_channel, MOTOR_FORWARD); // 设置方向
-		PWM = (Motor_channel == MOTOR_A) ? PWM + MOTOR_PWM_Compensate_A : PWM + MOTOR_PWM_Compensate_B;
-		PWM = PWM > MOTOR_PWM_MAX ? MOTOR_PWM_MAX : PWM; // 最大值限幅
-	}
-	else // 反转
-	{
-		MOTOR_StateSet(Motor_channel, MOTOR_BACKWARD); // 设置方向
-		PWM = (Motor_channel == MOTOR_A) ? PWM - MOTOR_PWM_Compensate_A : PWM - MOTOR_PWM_Compensate_B;
-		PWM = PWM < MOTOR_PWM_MIN ? MOTOR_PWM_MIN : PWM; // 最小值限幅
-		PWM = -PWM;										 // 反转取正数
-	}
-	MOTOR_LoadPWM(Motor_channel, PWM); // 装载PWM
+	MotorStructure_A.PID_KP = MOTORA_KP;
+	MotorStructure_A.PID_KI = MOTORA_KI;
+	MotorStructure_A.PID_KD = MOTORA_KD;
+	MotorStructure_B.PID_KP = MOTORB_KP;
+	MotorStructure_B.PID_KI = MOTORB_KI;
+	MotorStructure_B.PID_KD = MOTORB_KD;
+	MotorStructure_A.PID_I_MAX = MOTORA_I_MAX;
+	MotorStructure_B.PID_I_MAX = MOTORB_I_MAX;
+}
+
+/**
+ * @brief PID计算函数
+ *
+ * @param MotorStructure  电机结构体指针
+ * @param Goal_Speed      目标速度
+ */
+void MOTOR_PID_Calculate(MOTOR_TypeDef *MotorStructure)
+{
+	// 计算误差
+	float Error = MotorStructure->Speed - MotorStructure->PID_GoalSpeed;
+	// 比例项
+	float P_out = MotorStructure->PID_KP * Error;
+	// 积分项
+	MotorStructure->PID_Integral += Error;
+	// 积分限幅
+	MotorStructure->PID_Integral = (MotorStructure->PID_Integral > MotorStructure->PID_I_MAX) ? MotorStructure->PID_I_MAX : MotorStructure->PID_Integral;
+	MotorStructure->PID_Integral = (MotorStructure->PID_Integral < -MotorStructure->PID_I_MAX) ? -MotorStructure->PID_I_MAX : MotorStructure->PID_Integral;
+	float I_out = MotorStructure->PID_KI * MotorStructure->PID_Integral;
+	// 微分项
+	float D_out = MotorStructure->PID_KD * (Error - MotorStructure->PID_LastError);
+	// PID输出
+	MotorStructure->PWMvalue = P_out + I_out - D_out;
+}
+
+/**
+ * @brief PID定时器循环
+ *
+ */
+void MOTOR_PID_TimLoop(void)
+{
+	MOTOR_PID_Calculate(&MotorStructure_A);
+	MOTOR_PID_Calculate(&MotorStructure_B);
+	MOTOR_Set_PWM(MOTOR_A, MotorStructure_A.PWMvalue);
+	MOTOR_Set_PWM(MOTOR_B, MotorStructure_B.PWMvalue);
+	// printf("%f,%d,%d\r\n",MotorStructure_A.PID_GoalSpeed,MotorStructure_A.PWMvalue,MotorStructure_A.Speed);
 }
 
 /**

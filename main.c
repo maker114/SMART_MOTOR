@@ -37,8 +37,8 @@ int main(void)
 		default:
 			break;
 		}
-		MOTOR_SetPWM(MOTOR_A, 3000);
-		MOTOR_SetPWM(MOTOR_B, 3000);
+		MOTOR_Set_PIDGoalSpeed(MOTOR_A, 30);
+		MOTOR_Set_PIDGoalSpeed(MOTOR_B, 30);
 		delay_ms(20);
 	}
 }
@@ -57,20 +57,20 @@ void main_UI(void)
 	OLED_ShowString(Font_W * (11 + 7), Font_H, "V", Font_H, 1);
 
 	OLED_ShowString(0, Font_H * 2, "Battery.V =", Font_H, 1);
-	OLED_ShowFNum(Font_W * 13, Font_H * 2, MOTOR_GetBatteryVoltage(), 2, Font_H, 1);
+	OLED_ShowFNum(Font_W * 13, Font_H * 2, MOTOR_Get_BatteryVoltage(), 2, Font_H, 1);
 	OLED_ShowString(Font_W * (11 + 7), Font_H * 2, "V", Font_H, 1);
 
 	OLED_ShowString(0, Font_H * 4, "EN-A:", Font_H, 1);
-	OLED_ShowSNum(Font_W * 6, Font_H * 4, MOTOR_GetSpeed(MOTOR_A), 3, Font_H, 1);
+	OLED_ShowSNum(Font_W * 6, Font_H * 4, MOTOR_Get_Speed(MOTOR_A), 3, Font_H, 1);
 	OLED_ShowString(0, Font_H * 5, "PW-A:", Font_H, 1);
-	OLED_ShowNum(Font_W * 6, Font_H * 5, MOTOR_GetPWM(MOTOR_A), 4, Font_H, 1);
+	OLED_ShowSNum(Font_W * 5, Font_H * 5, MOTOR_Get_PWM(MOTOR_A), 4, Font_H, 1);
 
 	OLED_DrawFastVLine(64 - 2, Font_H * 4, Font_H * 2, 1);
 
 	OLED_ShowString(64, Font_H * 4, "EN-B:", Font_H, 1);
-	OLED_ShowSNum(64 + Font_W * 6, Font_H * 4, MOTOR_GetSpeed(MOTOR_B), 3, Font_H, 1);
+	OLED_ShowSNum(64 + Font_W * 6, Font_H * 4, MOTOR_Get_Speed(MOTOR_B), 3, Font_H, 1);
 	OLED_ShowString(64, Font_H * 5, "PW-B:", Font_H, 1);
-	OLED_ShowNum(64 + Font_W * 6, Font_H * 5, MOTOR_GetPWM(MOTOR_B), 4, Font_H, 1);
+	OLED_ShowSNum(64 + Font_W * 5, Font_H * 5, MOTOR_Get_PWM(MOTOR_B), 4, Font_H, 1);
 
 	delay_ms(50);
 	OLED_Refresh();

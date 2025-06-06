@@ -1,72 +1,86 @@
 # SMART_MOTOR
-## 定时器配置
 ### PWM定时器--TIM3
-- PWM频率：10KHz
-- 最大比较值：7200
-- 通道：TIM3_CH3 ，TIM3_CH4
-- 引脚：PB0（CH3），PB1（CH4）
-- 电机映射： PB0->MOTOR_A PB1->MOTOR_B
+| 参数          | 值/配置                      |
+|---------------|-----------------------------|
+| PWM频率       | 10KHz                      |
+| 最大比较值    | 7200                       |
+| 通道          | TIM3_CH3, TIM3_CH4         |
+| 引脚          | PB0 (CH3), PB1 (CH4)       |
+| 电机映射      | PB0 → MOTOR_A, PB1 → MOTOR_B |
+
 ### 编码器定时器--TIM2/TIM4
-- 定时器：TIM2/TIM4
-- 引脚：PA0/PA1/PB6/PB7
-- 通道映射：
-    - MOTOR_A：TIM2
-        - PA0->EA-A
-        - PA1->EA-B
-    - MOTOR_B：TIM4
-        - PB6->EB-A
-        - PB7->EB-B
+| 参数          | 值/配置                      |
+|---------------|-----------------------------|
+| 定时器        | TIM2 (MOTOR_A), TIM4 (MOTOR_B) |
+| 引脚          | PA0, PA1, PB6, PB7         |
+| 通道映射      | **MOTOR_A (TIM2):**<br>PA0 → EA-A<br>PA1 → EA-B<br>**MOTOR_B (TIM4):**<br>PB6 → EB-A<br>PB7 → EB-B |
 
 ### 速度定时器
-- 定时器：TIM1
-- 周期：20ms
-- 用于将编码器获得的值转化为转速
+| 参数          | 值/配置      |
+|---------------|-------------|
+| 定时器        | TIM1        |
+| 周期          | 20ms        |
+| 功能          | 编码器值→转速转换 |
+
+---
 
 ## 方向控制
-#### 方向控制引脚：
-- AIN1 PA3
-- AIN2 PA4
-- BIN1 PA5
-- BIN2 PA6
+| 引脚   | 功能  | 映射       |
+|--------|-------|-----------|
+| PA3    | AIN1  | MOTOR_A方向1 |
+| PA4    | AIN2  | MOTOR_A方向2 |
+| PA5    | BIN1  | MOTOR_B方向1 |
+| PA6    | BIN2  | MOTOR_B方向2 |
+
+---
 
 ## 电池检测
-#### 电池检测引脚：
-- 通道：ADC1-Channel2
-- 引脚：PA2
+| 参数             | 值/配置       |
+|------------------|--------------|
+| ADC通道          | ADC1-Channel2 |
+| 引脚             | PA2          |
 
-## 电压电流检测
-#### INA226引脚：
-- SDA：PB13
-- SCL：PB12
+---
+
+## 电压电流检测（INA226）
+| 引脚   | 功能  |
+|--------|-------|
+| PB13   | SDA   |
+| PB12   | SCL   |
+
+---
 
 ## OLED显示
-#### OLED引脚：
-- SCL：PB5
-- SDA：PB8
-- RES: PB9
-- DC: PB14
-- CS: PB15
+| 引脚   | 功能  |
+|--------|-------|
+| PB5    | SCL   |
+| PB8    | SDA   |
+| PB9    | RES   |
+| PB14   | DC    |
+| PB15   | CS    |
+
+---
 
 ## WS2812 LED 灯带
-#### WS2812引脚：
-- DAT：PA8
+### 通讯颜色ID：
+| 值 (case) | 颜色常量                | 颜色名称 | 颜色说明                     |
+|----------|-------------------------|----------|-----------------------------|
+| 0        | `WS2812_BLACK`         | 黑色     | RGB(0, 0, 0)                |
+| 1        | `WS2812_RED`           | 红色     | RGB(255, 0, 0)              |
+| 2        | `WS2812_GREEN`         | 绿色     | RGB(0, 255, 0)              |
+| 3        | `WS2812_BLUE`          | 蓝色     | RGB(0, 0, 255)              |
+| 4        | `WS2812_YELLOW`        | 黄色     | RGB(255, 255, 0)            |
+| 5        | `WS2812_PURPLE`        | 紫色     | RGB(128, 0, 128)            |
+| 6        | `WS2812_CYAN`          | 青色     | RGB(0, 255, 255)            |
 
 ## 串口传输
-#### 串口引脚：
-- USART1
-    - TX: PA9
-    - RX: PA10
-- USART3
-    - TX: PB10
-    - RX: PB11
-#### 串口数据包（USART3）：
-- 数据包格式：
-    - LINK_FrameHeader1
-    - LINK_FrameHeader2
-    - LINK_CMD
-    - LINK_DATA_H
-    - LINK_DATA_L
-    - LINK_CheckSum
+| 串口    | 引脚功能 | 引脚  |
+|---------|----------|-------|
+| USART1  | TX       | PA9   |
+|         | RX       | PA10  |
+| USART3  | TX       | PB10  |
+|         | RX       | PB11  |
+
 
 ## 总连接表
 
@@ -97,3 +111,31 @@
 | 按键输入           | KEY2     | PA11                 | 按键2的接收引脚         |
 | 按键输入           | KEY3     | PA12                 | 按键3的接收引脚         |
 | 蜂鸣器             | BEEP     | PB3                  | 蜂鸣器的发送引脚         |
+
+## 串口数据包格式
+### 数据包格式：
+| 字段名称            | 描述               |
+|---------------------|--------------------|
+| `LINK_FrameHeader1` | 帧头1              |
+| `LINK_FrameHeader2` | 帧头2              |
+| `LINK_CMD`          | 命令字段           |
+| `LINK_DATA_H`       | 数据高字节         |
+| `LINK_DATA_L`       | 数据低字节         |
+| `LINK_CheckSum`     | 校验和字段         |
+| `SUM`               | 字段总数（枚举值） |
+### 发送命令：
+| 常量名称                          | 值   | 描述                                      |
+|-----------------------------------|------|------------------------------------------|
+| `LINK_CMD_IN_NULL`                | 0x00 | Null command (no operation)              |
+| `LINK_CMD_IN_SET_LED`             | 0x01 | 设置LED，低字节LED编号，高字节LED状态     |
+| `LINK_CMD_IN_SET_MotorAPWM`       | 0x12 | 设置电机A PWM（仅手动模式有效）           |
+| `LINK_CMD_IN_SET_MotorBPWM`       | 0x22 | 设置电机B PWM（仅手动模式有效）           |
+| `LINK_CMD_IN_SET_MotorAGoalSpeed` | 0x13 | 设置电机A 目标速度（仅自动模式有效）      |
+| `LINK_CMD_IN_SET_MotorBGoalSpeed` | 0x23 | 设置电机B 目标速度（仅自动模式有效）      |
+| `LINK_CMD_IN_SET_MotorMode`       | 0x04 | 设置电机模式，1为手动模式，0为自动模式    |
+| `LINK_CMD_IN_SET_Orientation`     | 0x05 | 设置模块安装方向，1为逆时针，0为顺时针    |
+| `LINK_CMD_IN_SET_SwitchOLED`      | 0x06 | 设置OLED开关，1为开，0为关                |
+| `LINK_CMD_IN_SET_MotorStatue`     | 0x07 | 设置电机状态，1为启动，0为停止            |
+| `LINK_CMD_IN_ASK_ADC`             | 0x08 | 查询电池电量                              |
+| `LINK_CMD_IN_ASK_MotorASpeed`     | 0x09 | 查询电机A速度                             |
+| `LINK_CMD_IN_ASK_MotorBSpeed`     | 0x0A | 查询电机B速度                             |

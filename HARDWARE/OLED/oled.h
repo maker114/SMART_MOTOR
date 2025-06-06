@@ -1,22 +1,22 @@
 /**
  * @file oled.h
  * @author maker114
- * @brief OLEDåº“
+ * @brief OLED¿â
  * @version 2.1
  * @date 2024-02-12
  */
 
 /*
-å›¾å½¢åº“ç»„æˆï¼š
-|-OLED åŸºç¡€å›¾å½¢åº“
+Í¼ĞÎ¿â×é³É£º
+|-OLED »ù´¡Í¼ĞÎ¿â
     |-oled.h
-    |-oledfont.h <-å­˜å‚¨å­—ä½“
-    |-bmp.h <-å­˜å‚¨å›¾ç‰‡æ•°ç»„
+    |-oledfont.h <-´æ´¢×ÖÌå
+    |-bmp.h <-´æ´¢Í¼Æ¬Êı×é
     |-oled.c
-|-MENU å„å¼èœå•
+|-MENU ¸÷Ê½²Ëµ¥
     |-oled_menu.h
     |-oled_menu.c
-|-START å¯åŠ¨é…ç½®ä¸åº•å±‚å®ç°
+|-START Æô¶¯ÅäÖÃÓëµ×²ãÊµÏÖ
     |-oled_start.h
     |-oled_start.c
 */
@@ -31,7 +31,7 @@
 #include "stdlib.h"
 #include <math.h>
 
-//-----------------OLEDé…ç½®----------------
+//-----------------OLEDÅäÖÃ----------------
 // #define LED_ON GPIO_SetBits(GPIOB, GPIO_Pin_8)
 // #define LED_OFF GPIO_ResetBits(GPIOB, GPIO_Pin_8) // PD10 vcc
 
@@ -53,10 +53,10 @@
 #define OLED_CMD 0
 #define OLED_DATA 1
 
-// å±å¹•ä¸­å¿ƒåæ ‡
+// ÆÁÄ»ÖĞĞÄ×ø±ê
 #define Middle_X 64
 #define Middle_Y 32
-// éƒ¨åˆ†æ•°å­¦å®ç°
+// ²¿·ÖÊıÑ§ÊµÏÖ
 #define RADIAN(angle) ((angle == 0) ? 0 : (3.14159f * angle / 180))
 #define MAX(x, y) ((x) > (y) ? (x) : (y))
 #define MIN(x, y) ((x) < (y) ? (x) : (y))
@@ -68,76 +68,76 @@
 /*========================OLED========================*/
 
 // |--SHOW
-void OLED_ShowChar(u8 x, u8 y, u8 chr, u8 size1, u8 mode);                // æ˜¾ç¤ºå•ä¸ªå­—ç¬¦
-void OLED_ShowString(u8 x, u8 y, u8 *chr, u8 size1, u8 mode);             // æ˜¾ç¤ºå­—ç¬¦ä¸²
-void OLED_ShowNum(u8 x, u8 y, int num, u8 len, u8 size1, u8 mode);        // æ˜¾ç¤ºæ•°å­—
-void OLED_ShowSNum(u8 x, u8 y, int num, u8 len, u8 size1, u8 mode);       // æ˜¾ç¤ºæœ‰ç¬¦å·æ•°å­—
-void OLED_ShowChinese(u8 x, u8 y, u8 num, u8 size1, u8 mode);             // æ˜¾ç¤ºä¸­æ–‡å­—ç¬¦
-void OLED_ShowPicture(u8 x, u8 y, u8 sizex, u8 sizey, u8 BMP[], u8 mode); // æ˜¾ç¤ºå›¾ç‰‡
-void OLED_ShowNum16(u8 x, u8 y, u8 num, u8 size, u8 mode);                // æ˜¾ç¤º16è¿›åˆ¶æ•°å­—
-void OLED_ShowFNum(u8 x, u8 y, float data, u8 len, u8 size, u8 mode);     // æ˜¾ç¤ºæµ®ç‚¹æ•°
-void OLED_ShowSFNum(u8 x, u8 y, float data, u8 len, u8 size, u8 mode);    // æ˜¾ç¤ºå¸¦æœ‰ç¬¦å·çš„æµ®ç‚¹æ•°
+void OLED_ShowChar(u8 x, u8 y, u8 chr, u8 size1, u8 mode);                // ÏÔÊ¾µ¥¸ö×Ö·û
+void OLED_ShowString(u8 x, u8 y, u8 *chr, u8 size1, u8 mode);             // ÏÔÊ¾×Ö·û´®
+void OLED_ShowNum(u8 x, u8 y, int num, u8 len, u8 size1, u8 mode);        // ÏÔÊ¾Êı×Ö
+void OLED_ShowSNum(u8 x, u8 y, int num, u8 len, u8 size1, u8 mode);       // ÏÔÊ¾ÓĞ·ûºÅÊı×Ö
+void OLED_ShowChinese(u8 x, u8 y, u8 num, u8 size1, u8 mode);             // ÏÔÊ¾ÖĞÎÄ×Ö·û
+void OLED_ShowPicture(u8 x, u8 y, u8 sizex, u8 sizey, u8 BMP[], u8 mode); // ÏÔÊ¾Í¼Æ¬
+void OLED_ShowNum16(u8 x, u8 y, u8 num, u8 size, u8 mode);                // ÏÔÊ¾16½øÖÆÊı×Ö
+void OLED_ShowFNum(u8 x, u8 y, float data, u8 len, u8 size, u8 mode);     // ÏÔÊ¾¸¡µãÊı
+void OLED_ShowSFNum(u8 x, u8 y, float data, u8 len, u8 size, u8 mode);    // ÏÔÊ¾´øÓĞ·ûºÅµÄ¸¡µãÊı
 
 // |--DRAW
-void OLED_ClearPoint(u8 x, u8 y);                                          // æ¸…é™¤OLEDä¸Šçš„æŸä¸ªç‚¹
-void OLED_DrawPoint(u8 x, u8 y, u8 t);                                     // åœ¨OLEDä¸Šç”»ä¸€ä¸ªç‚¹
-void OLED_DrawLine(u8 x1, u8 y1, u8 x2, u8 y2, u8 mode);                   // åœ¨OLEDä¸Šç”»ä¸€æ¡çº¿
-void OLED_DrawCircle_math(u8 x, u8 y, u8 r);                               // åœ¨OLEDä¸Šç»˜åˆ¶åœ†å½¢ï¼ˆä½¿ç”¨æ•°å­¦æ–¹æ³•ï¼‰
-void OLED_DrawFastHLine(int x, int y, int w, int mode);                    // å¿«é€Ÿç”»æ°´å¹³çº¿
-void OLED_DrawFastVLine(int x, int y, int h, int mode);                    // å¿«é€Ÿç”»å‚ç›´çº¿
-void OLED_DrawCircleQuadrant(u8 x, u8 y, u8 r, u8 quadrant, u8 mode);      // ç»˜åˆ¶åœ†å½¢çš„ä¸€ä¸ªè±¡é™
-void OLED_DrawFill(int x, int y, int w, int h, int mode);                  // å¡«å……çŸ©å½¢åŒºåŸŸ
-void OLED_DrawFill_T(int x, int y, int w, int h, u8 Thickness, int mode);  // ä»¥ç‰¹å®šåšåº¦å¡«å……çŸ©å½¢åŒºåŸŸ
-void OLED_DrawBox(int x, int y, int w, int h, int mode);                   // ç»˜åˆ¶çŸ©å½¢æ¡†
-void OLED_DrawRoundedBox(int x, int y, int w, int h, int r, int mode);     // ç»˜åˆ¶åœ†è§’çŸ©å½¢æ¡†
-void OLED_DrawDashedLine(u8 x1, u8 y1, u8 x2, u8 y2, u8 mode);             // åœ¨OLEDä¸Šç»˜åˆ¶è™šçº¿
-void OLED_DrawCircle(int usX_Center, int usY_Center, int usRadius);        // åœ¨OLEDä¸Šç»˜åˆ¶åœ†å½¢
-void OLED_DrawParallelHLine(u8 x, u8 y, u8 w, u8 h, u8 section, u8 mode);  // ç­‰é—´è·ç”»æ°´å¹³çº¿
-void OLED_DrawParallelVLine(u8 x, u8 y, u8 w, u8 h, u8 section, u8 mode);  // ç­‰é—´è·ç”»å‚ç›´çº¿
-void OLED_DrawVacuumization(u8 x, u8 y, u8 w, u8 h);                       // ç»˜åˆ¶"è™šåŒ–"æ•ˆæœ
-void OLED_DrawBezierCurve(int x0, int y0, int x1, int y1, int x2, int y2); // ç»˜åˆ¶è´å¡å°”æ›²çº¿
-void OLED_DrawBezierBox(int x, int y, int w, int h, int r);                // ç»˜åˆ¶è´å¡å°”çŸ©å½¢æ¡†
+void OLED_ClearPoint(u8 x, u8 y);                                          // Çå³ıOLEDÉÏµÄÄ³¸öµã
+void OLED_DrawPoint(u8 x, u8 y, u8 t);                                     // ÔÚOLEDÉÏ»­Ò»¸öµã
+void OLED_DrawLine(u8 x1, u8 y1, u8 x2, u8 y2, u8 mode);                   // ÔÚOLEDÉÏ»­Ò»ÌõÏß
+void OLED_DrawCircle_math(u8 x, u8 y, u8 r);                               // ÔÚOLEDÉÏ»æÖÆÔ²ĞÎ£¨Ê¹ÓÃÊıÑ§·½·¨£©
+void OLED_DrawFastHLine(int x, int y, int w, int mode);                    // ¿ìËÙ»­Ë®Æ½Ïß
+void OLED_DrawFastVLine(int x, int y, int h, int mode);                    // ¿ìËÙ»­´¹Ö±Ïß
+void OLED_DrawCircleQuadrant(u8 x, u8 y, u8 r, u8 quadrant, u8 mode);      // »æÖÆÔ²ĞÎµÄÒ»¸öÏóÏŞ
+void OLED_DrawFill(int x, int y, int w, int h, int mode);                  // Ìî³ä¾ØĞÎÇøÓò
+void OLED_DrawFill_T(int x, int y, int w, int h, u8 Thickness, int mode);  // ÒÔÌØ¶¨ºñ¶ÈÌî³ä¾ØĞÎÇøÓò
+void OLED_DrawBox(int x, int y, int w, int h, int mode);                   // »æÖÆ¾ØĞÎ¿ò
+void OLED_DrawRoundedBox(int x, int y, int w, int h, int r, int mode);     // »æÖÆÔ²½Ç¾ØĞÎ¿ò
+void OLED_DrawDashedLine(u8 x1, u8 y1, u8 x2, u8 y2, u8 mode);             // ÔÚOLEDÉÏ»æÖÆĞéÏß
+void OLED_DrawCircle(int usX_Center, int usY_Center, int usRadius);        // ÔÚOLEDÉÏ»æÖÆÔ²ĞÎ
+void OLED_DrawParallelHLine(u8 x, u8 y, u8 w, u8 h, u8 section, u8 mode);  // µÈ¼ä¾à»­Ë®Æ½Ïß
+void OLED_DrawParallelVLine(u8 x, u8 y, u8 w, u8 h, u8 section, u8 mode);  // µÈ¼ä¾à»­´¹Ö±Ïß
+void OLED_DrawVacuumization(u8 x, u8 y, u8 w, u8 h);                       // »æÖÆ"Ğé»¯"Ğ§¹û
+void OLED_DrawBezierCurve(int x0, int y0, int x1, int y1, int x2, int y2); // »æÖÆ±´Èû¶ûÇúÏß
+void OLED_DrawBezierBox(int x, int y, int w, int h, int r);                // »æÖÆ±´Èû¶û¾ØĞÎ¿ò
 
 /*========================OLED_MENU========================*/
 // |--CHANGE
-void OLED_MoveCursor(float goal_cursor, float *now_cursor, u8 delay);              // ç§»åŠ¨å…‰æ ‡
-void OLED_Rotate(u8 *x, u8 *y, u8 Core_x, u8 Core_y, float angle, float distance); // è¾“å‡ºæ—‹è½¬åæ ‡
-void MENU_SetMode(int set, int Mode);                                              // è®¾ç½®æ˜¾ç¤ºæ¨¡å¼
-void MENU_RollingClear(void);                                                      // æ¸…é™¤æ»šåŠ¨æ˜¾ç¤ºç¼“å†²åŒº
-void MENU_SignKeyFun(int put_in_fun(void));                                        // èœå•æ³¨å†ŒæŒ‰é”®åŠŸèƒ½
+void OLED_MoveCursor(float goal_cursor, float *now_cursor, u8 delay);              // ÒÆ¶¯¹â±ê
+void OLED_Rotate(u8 *x, u8 *y, u8 Core_x, u8 Core_y, float angle, float distance); // Êä³öĞı×ª×ø±ê
+void MENU_SetMode(int set, int Mode);                                              // ÉèÖÃÏÔÊ¾Ä£Ê½
+void MENU_RollingClear(void);                                                      // Çå³ı¹ö¶¯ÏÔÊ¾»º³åÇø
+void MENU_SignKeyFun(int put_in_fun(void));                                        // ²Ëµ¥×¢²á°´¼ü¹¦ÄÜ
 
 // |--DISPLAY
-void OLED_DrawCurve(float zoom, float skew, float data);              // ç»˜åˆ¶æ›²çº¿
-int MENU_NormalDisplay(u8 *menu[], u8 arr_len);                       // æ­£å¸¸æ˜¾ç¤ºèœå•
-int MENU_SideDisplay(u8 *menu[], u8 arr_len, u8 w);                   // ä¾§è¾¹æ˜¾ç¤ºèœå•
-void MENU_MiddleDisplay(u8 *chr, float MIN, float MAX, float *value); // ç™¾åˆ†æ¯”èœå•
-void MENU_USARTDisplay(void);                                         // USARTæ˜¾ç¤º
-void MENU_RollingDisplaced(u8 *chr);                                  // æ»šåŠ¨æ˜¾ç¤ºæ–‡å­—
-float MENU_ChangeDisplay(u8 *chr, float step, float num);             // æ•°å€¼è°ƒèŠ‚èœå•
+void OLED_DrawCurve(float zoom, float skew, float data);              // »æÖÆÇúÏß
+int MENU_NormalDisplay(u8 *menu[], u8 arr_len);                       // Õı³£ÏÔÊ¾²Ëµ¥
+int MENU_SideDisplay(u8 *menu[], u8 arr_len, u8 w);                   // ²à±ßÏÔÊ¾²Ëµ¥
+void MENU_MiddleDisplay(u8 *chr, float MIN, float MAX, float *value); // °Ù·Ö±È²Ëµ¥
+void MENU_USARTDisplay(void);                                         // USARTÏÔÊ¾
+void MENU_RollingDisplaced(u8 *chr);                                  // ¹ö¶¯ÏÔÊ¾ÎÄ×Ö
+float MENU_ChangeDisplay(u8 *chr, float step, float num);             // ÊıÖµµ÷½Ú²Ëµ¥
 
 // |--ANIMATIONS
-void Normal_First_IN(u8 *menu[], u8 arr_len, u8 size);      // æ­£å¸¸æ˜¾ç¤ºèœå•çš„åˆæ¬¡è¿›å…¥
-void Side_First_IN(u8 *menu[], u8 arr_len, u8 size, u8 w);  // ä¾§è¾¹æ˜¾ç¤ºèœå•çš„åˆæ¬¡è¿›å…¥
-void Side_First_OUT(u8 *menu[], u8 arr_len, u8 size, u8 w); // ä¾§è¾¹æ˜¾ç¤ºèœå•çš„é€€å‡º
-void Middle_First_IN(float data, float percent, u8 *chr);   // ä¸­é—´æ˜¾ç¤ºåŠŸèƒ½çš„åˆæ¬¡è¿›å…¥
-void Middle_First_OUT(float data, float percent, u8 *chr);  // ä¸­é—´æ˜¾ç¤ºåŠŸèƒ½çš„é€€å‡º
-void Change_First_IN(float num, u8 *chr);                   // æ•°å€¼æ”¹å˜çš„åˆæ¬¡è¿›å…¥
-void Change_First_OUT(float num, u8 *chr);                  // æ•°å€¼æ”¹å˜çš„é€€å‡º
-void Curve_First_IN(void);                                  // æ›²çº¿æ˜¾ç¤ºçš„åˆæ¬¡è¿›å…¥
+void Normal_First_IN(u8 *menu[], u8 arr_len, u8 size);      // Õı³£ÏÔÊ¾²Ëµ¥µÄ³õ´Î½øÈë
+void Side_First_IN(u8 *menu[], u8 arr_len, u8 size, u8 w);  // ²à±ßÏÔÊ¾²Ëµ¥µÄ³õ´Î½øÈë
+void Side_First_OUT(u8 *menu[], u8 arr_len, u8 size, u8 w); // ²à±ßÏÔÊ¾²Ëµ¥µÄÍË³ö
+void Middle_First_IN(float data, float percent, u8 *chr);   // ÖĞ¼äÏÔÊ¾¹¦ÄÜµÄ³õ´Î½øÈë
+void Middle_First_OUT(float data, float percent, u8 *chr);  // ÖĞ¼äÏÔÊ¾¹¦ÄÜµÄÍË³ö
+void Change_First_IN(float num, u8 *chr);                   // ÊıÖµ¸Ä±äµÄ³õ´Î½øÈë
+void Change_First_OUT(float num, u8 *chr);                  // ÊıÖµ¸Ä±äµÄÍË³ö
+void Curve_First_IN(void);                                  // ÇúÏßÏÔÊ¾µÄ³õ´Î½øÈë
 
 /*========================OLED_START========================*/
 
-void OLED_ColorTurn(u8 i);                          // é¢œè‰²ç¿»è½¬
-void OLED_DisplayTurn(u8 i);                        // æ˜¾ç¤ºç¿»è½¬
-void OLED_WR_Byte(u8 dat, u8 mode);                 // å†™ä¸€ä¸ªå­—èŠ‚æ•°æ®æˆ–å‘½ä»¤åˆ°OLED
-void OLED_DisPlay_On(void);                         // æ‰“å¼€OLEDæ˜¾ç¤º
-void OLED_DisPlay_Off(void);                        // å…³é—­OLEDæ˜¾ç¤º
-void OLED_Refresh(void);                            // åˆ·æ–°OLEDæ˜¾ç¤ºå†…å®¹
-void OLED_Clear(void);                              // æ¸…å±
-void OLED_Init(void);                               // OLEDåˆå§‹åŒ–
-void OELD_ChangeLuminance(u8 level);                // è°ƒæ•´äº®åº¦
-void OLED_BufferSave(void);                         // ä¿å­˜å½“å‰æ˜¾ç¤ºç¼“å†²åŒº
-void OLED_BufferRegain(void);                       // æ¢å¤ä¿å­˜çš„æ˜¾ç¤ºç¼“å†²åŒº
-void OLED_ScrollDisplay(u8 num, u8 space, u8 mode); // OLEDæ»šåŠ¨æ˜¾ç¤º
+void OLED_ColorTurn(u8 i);                          // ÑÕÉ«·­×ª
+void OLED_DisplayTurn(u8 i);                        // ÏÔÊ¾·­×ª
+void OLED_WR_Byte(u8 dat, u8 mode);                 // Ğ´Ò»¸ö×Ö½ÚÊı¾İ»òÃüÁîµ½OLED
+void OLED_DisPlay_On(void);                         // ´ò¿ªOLEDÏÔÊ¾
+void OLED_DisPlay_Off(void);                        // ¹Ø±ÕOLEDÏÔÊ¾
+void OLED_Refresh(void);                            // Ë¢ĞÂOLEDÏÔÊ¾ÄÚÈİ
+void OLED_Clear(void);                              // ÇåÆÁ
+void OLED_Init(void);                               // OLED³õÊ¼»¯
+void OELD_ChangeLuminance(u8 level);                // µ÷ÕûÁÁ¶È
+void OLED_BufferSave(void);                         // ±£´æµ±Ç°ÏÔÊ¾»º³åÇø
+void OLED_BufferRegain(void);                       // »Ö¸´±£´æµÄÏÔÊ¾»º³åÇø
+void OLED_ScrollDisplay(u8 num, u8 space, u8 mode); // OLED¹ö¶¯ÏÔÊ¾
 
 #endif
