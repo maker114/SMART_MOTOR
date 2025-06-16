@@ -375,6 +375,25 @@ float MOTOR_Get_BatteryVoltage(void)
 }
 
 /**
+ * @brief 获取电机目标速度（自动模式下有效）
+ *
+ * @param Motor_Channel 电机通道
+ * @return float PID目标速度
+ */
+float MOTOR_Get_GoalSpeed(uint8_t Motor_Channel)
+{
+	if (Motor_Channel == MOTOR_A)
+	{
+		return MotorStructure_A.PID_GoalSpeed;
+	}
+	else if (Motor_Channel == MOTOR_B)
+	{
+		return MotorStructure_B.PID_GoalSpeed;
+	}
+	return 0;
+}
+
+/**
  * @brief 初始化电机编码器
  * @note -定时器：TIM2/TIM4
  * 		 -引脚：PA0/PA1/PB6/PB7

@@ -84,6 +84,7 @@ void MOTOR_Set_OperatingMode(uint8_t Mode);
 int MOTOR_Get_Speed(int Motor_Channel);
 int MOTOR_Get_PWM(int Motor_Channel);
 float MOTOR_Get_BatteryVoltage(void);
+float MOTOR_Get_GoalSpeed(uint8_t Motor_Channel);
 void MOTOR_ENCODER_Init(void);
 void MOTOR_PWM_Init(void);
 void MOTOR_PWM_Load(uint8_t Motor_Channel, uint16_t PWM);
