@@ -1,9 +1,16 @@
+/**
+ * @file board.c
+ * @author maker114
+ * @brief °åÔØ°´¼ü¡¢LED¡¢·äÃùÆ÷µÈÍâÉèµÄ³õÊ¼»¯
+ * @version 0.1
+ * @date 2025-06-16
+ * @note
+ * - ÅäÖÃÁË¿ª·¢°åÉÏµÄÍâÉèÒÔ·½±ãÊ¹ÓÃ
+ * - Òı½Å¿ÉÒÔÔÚÍ·ÎÄ¼şÖĞ¸ü¸Ä
+ */
 #include "board.h"
-/*==========æ–‡ä»¶è¯´æ˜==========*/
-// é…ç½®äº†å¼€å‘æ¿ä¸Šçš„å¤–è®¾ä»¥æ–¹ä¾¿ä½¿ç”¨
-// å¼•è„šå¯ä»¥åœ¨å¤´æ–‡ä»¶ä¸­æ›´æ”¹
 
-/*==========åˆå§‹åŒ–å¤–è®¾==========*/
+/*==========³õÊ¼»¯ÍâÉè==========*/
 void Board_Init(void)
 {
     // LED -> PC13
@@ -32,10 +39,10 @@ void Board_Init(void)
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
-// å¯¹æ¿è½½æŒ‰é”®è¿›è¡Œæ‰«æ
+// ¶Ô°åÔØ°´¼ü½øĞĞÉ¨Ãè
 int Board_KeyScan(void)
 {
-    static uint8_t Key_State = 0; // 0ï¼šæ— æŒ‰é”®æŒ‰ä¸‹ï¼Œ1ï¼šæœ‰æŒ‰é”®æŒ‰ä¸‹
+    static uint8_t Key_State = 0; // 0£ºÎŞ°´¼ü°´ÏÂ£¬1£ºÓĞ°´¼ü°´ÏÂ
     uint8_t Key_num = 0;
     if ((KEY1 == 0 || KEY2 == 0 || KEY3 == 0) && Key_State == 0)
     {
@@ -47,7 +54,7 @@ int Board_KeyScan(void)
     return Key_num;
 }
 
-// åè½¬LED
+// ·´×ªLED
 void Board_LED_Toggle(void)
 {
     LED = !LED;

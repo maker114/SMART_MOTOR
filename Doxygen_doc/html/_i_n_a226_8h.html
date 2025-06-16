@@ -1,0 +1,824 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SMART MOTOR: INA226.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="邻二溴苯(doxygen).png"/></td>
+  <td id="projectalign">
+   <div id="projectname">SMART MOTOR
+   </div>
+   <div id="projectbrief">Design by maker114</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_i_n_a226_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">INA226.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;stm32f10x.h&quot;</code><br />
+<code>#include &quot;delay.h&quot;</code><br />
+<code>#include &quot;usart.h&quot;</code><br />
+<code>#include &quot;sys.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="board_8h_source.html">board.h</a>&quot;</code><br />
+</div>
+<p><a href="_i_n_a226_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:afc0b378f10595a0cbf38a4da1a2d31a6" id="r_afc0b378f10595a0cbf38a4da1a2d31a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#afc0b378f10595a0cbf38a4da1a2d31a6">SHUNT_RESISTOR</a>&#160;&#160;&#160;0.010f</td></tr>
+<tr class="separator:afc0b378f10595a0cbf38a4da1a2d31a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2989837a37d6d63b59c6dd541b785435" id="r_a2989837a37d6d63b59c6dd541b785435"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a2989837a37d6d63b59c6dd541b785435">MAX_CURRENT</a>&#160;&#160;&#160;10.0f</td></tr>
+<tr class="separator:a2989837a37d6d63b59c6dd541b785435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1501a35f006a4673b9b835374a0ca354" id="r_a1501a35f006a4673b9b835374a0ca354"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a1501a35f006a4673b9b835374a0ca354">INA_SCL</a>&#160;&#160;&#160;PBout(12)</td></tr>
+<tr class="separator:a1501a35f006a4673b9b835374a0ca354"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d781d720cec3bcae08b17f419aa901" id="r_a83d781d720cec3bcae08b17f419aa901"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a83d781d720cec3bcae08b17f419aa901">INA_SDA</a>&#160;&#160;&#160;PBout(13)</td></tr>
+<tr class="separator:a83d781d720cec3bcae08b17f419aa901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1194c1ff4b375902f87dbf78084fe433" id="r_a1194c1ff4b375902f87dbf78084fe433"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a1194c1ff4b375902f87dbf78084fe433">INA_SCL_GPIO_PORT</a>&#160;&#160;&#160;GPIOB          /* GPIO端口 */</td></tr>
+<tr class="separator:a1194c1ff4b375902f87dbf78084fe433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad203983f2e7a5e6a8fa903b33bd3f773" id="r_ad203983f2e7a5e6a8fa903b33bd3f773"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#ad203983f2e7a5e6a8fa903b33bd3f773">INA_SCL_RCC</a>&#160;&#160;&#160;RCC_APB2Periph_GPIOB /* GPIO端口时钟 */</td></tr>
+<tr class="separator:ad203983f2e7a5e6a8fa903b33bd3f773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5096be8468fc9731b2441e15c856d6ad" id="r_a5096be8468fc9731b2441e15c856d6ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a5096be8468fc9731b2441e15c856d6ad">INA_SCL_PIN</a>&#160;&#160;&#160;GPIO_Pin_12          /* 连接到SCL时钟线的GPIO */</td></tr>
+<tr class="separator:a5096be8468fc9731b2441e15c856d6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41593207b3df94bf3e11ef8137640e66" id="r_a41593207b3df94bf3e11ef8137640e66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a41593207b3df94bf3e11ef8137640e66">INA_SDA_GPIO_PORT</a>&#160;&#160;&#160;GPIOB          /* GPIO端口 */</td></tr>
+<tr class="separator:a41593207b3df94bf3e11ef8137640e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6646189ca4520cda897ee5829332c13a" id="r_a6646189ca4520cda897ee5829332c13a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a6646189ca4520cda897ee5829332c13a">INA_SDA_RCC</a>&#160;&#160;&#160;RCC_APB2Periph_GPIOB /* GPIO端口时钟 */</td></tr>
+<tr class="separator:a6646189ca4520cda897ee5829332c13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00408ae8bde84fca8fc1e59fb0a0f0ed" id="r_a00408ae8bde84fca8fc1e59fb0a0f0ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a00408ae8bde84fca8fc1e59fb0a0f0ed">INA_SDA_PIN</a>&#160;&#160;&#160;GPIO_Pin_13          /* 连接到SDA数据线的GPIO */</td></tr>
+<tr class="separator:a00408ae8bde84fca8fc1e59fb0a0f0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d21ad01bbe6c7fb325e88a6b8283384" id="r_a1d21ad01bbe6c7fb325e88a6b8283384"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a1d21ad01bbe6c7fb325e88a6b8283384">READ_SDA</a>&#160;&#160;&#160;GPIO_ReadInputDataBit(<a class="el" href="_i_n_a226_8h.html#a41593207b3df94bf3e11ef8137640e66">INA_SDA_GPIO_PORT</a>, <a class="el" href="_i_n_a226_8h.html#a00408ae8bde84fca8fc1e59fb0a0f0ed">INA_SDA_PIN</a>)</td></tr>
+<tr class="separator:a1d21ad01bbe6c7fb325e88a6b8283384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add1ec5ab7223c8a27038380097002268" id="r_add1ec5ab7223c8a27038380097002268"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#add1ec5ab7223c8a27038380097002268">READ_ADDR</a>&#160;&#160;&#160;0x81</td></tr>
+<tr class="separator:add1ec5ab7223c8a27038380097002268"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab93f4edf02708adbf08d38c581250436" id="r_ab93f4edf02708adbf08d38c581250436"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#ab93f4edf02708adbf08d38c581250436">WRITE_ADDR</a>&#160;&#160;&#160;0x80</td></tr>
+<tr class="separator:ab93f4edf02708adbf08d38c581250436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c07c05aacac248944e78129304c01df" id="r_a2c07c05aacac248944e78129304c01df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a2c07c05aacac248944e78129304c01df">READ_ADDR1</a>&#160;&#160;&#160;0x8B</td></tr>
+<tr class="separator:a2c07c05aacac248944e78129304c01df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98409f17c301c9698e6fdc67f6c9dc3d" id="r_a98409f17c301c9698e6fdc67f6c9dc3d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a98409f17c301c9698e6fdc67f6c9dc3d">WRITE_ADDR1</a>&#160;&#160;&#160;0x8A</td></tr>
+<tr class="separator:a98409f17c301c9698e6fdc67f6c9dc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a085b3879d385bcf4cf3f2411add38f17" id="r_a085b3879d385bcf4cf3f2411add38f17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a085b3879d385bcf4cf3f2411add38f17">Config_Reg</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:a085b3879d385bcf4cf3f2411add38f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb5e4bf16609bb2cb30d44cbe936204" id="r_a4fb5e4bf16609bb2cb30d44cbe936204"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a4fb5e4bf16609bb2cb30d44cbe936204">Shunt_V_Reg</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:a4fb5e4bf16609bb2cb30d44cbe936204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc28c40d3ffa93f2078151a653f36b3c" id="r_abc28c40d3ffa93f2078151a653f36b3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#abc28c40d3ffa93f2078151a653f36b3c">Bus_V_Reg</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:abc28c40d3ffa93f2078151a653f36b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fac6cca7c32cfd970fff62c573b94c0" id="r_a9fac6cca7c32cfd970fff62c573b94c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a9fac6cca7c32cfd970fff62c573b94c0">Power_Reg</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="separator:a9fac6cca7c32cfd970fff62c573b94c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dc8342c955dc94c938dcad297b36df1" id="r_a6dc8342c955dc94c938dcad297b36df1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a6dc8342c955dc94c938dcad297b36df1">Current_Reg</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:a6dc8342c955dc94c938dcad297b36df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b7e963b3742111663155e2e6bd95eac" id="r_a2b7e963b3742111663155e2e6bd95eac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a2b7e963b3742111663155e2e6bd95eac">Calib_Reg</a>&#160;&#160;&#160;0x05</td></tr>
+<tr class="separator:a2b7e963b3742111663155e2e6bd95eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af925bb747b1f1d56b5e548cc5b4ae9d8" id="r_af925bb747b1f1d56b5e548cc5b4ae9d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#af925bb747b1f1d56b5e548cc5b4ae9d8">Mask_En_Reg</a>&#160;&#160;&#160;0x06</td></tr>
+<tr class="separator:af925bb747b1f1d56b5e548cc5b4ae9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f9982224e6cc49a906b81197c2c3887" id="r_a4f9982224e6cc49a906b81197c2c3887"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a4f9982224e6cc49a906b81197c2c3887">Alert_Reg</a>&#160;&#160;&#160;0x07</td></tr>
+<tr class="separator:a4f9982224e6cc49a906b81197c2c3887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1223592a6ce752b9cc678b8d478cee1" id="r_ae1223592a6ce752b9cc678b8d478cee1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#ae1223592a6ce752b9cc678b8d478cee1">Man_ID_Reg</a>&#160;&#160;&#160;0xFE</td></tr>
+<tr class="separator:ae1223592a6ce752b9cc678b8d478cee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87382872b4eddaa0fdb6e989b5c4f2f4" id="r_a87382872b4eddaa0fdb6e989b5c4f2f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a87382872b4eddaa0fdb6e989b5c4f2f4">ID_Reg</a>&#160;&#160;&#160;0xFF</td></tr>
+<tr class="separator:a87382872b4eddaa0fdb6e989b5c4f2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a308b08320146563b3d46c318af5046ed" id="r_a308b08320146563b3d46c318af5046ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a308b08320146563b3d46c318af5046ed">INA226_Init</a> (void)</td></tr>
+<tr class="separator:a308b08320146563b3d46c318af5046ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa47f2249491d046e919e043ec75324c9" id="r_aa47f2249491d046e919e043ec75324c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#aa47f2249491d046e919e043ec75324c9">INA226_Init1</a> (void)</td></tr>
+<tr class="separator:aa47f2249491d046e919e043ec75324c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03143bc3f1e879f46206d45ac323530f" id="r_a03143bc3f1e879f46206d45ac323530f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a03143bc3f1e879f46206d45ac323530f">INA226_SendData</a> (uint8_t addr, uint8_t reg, uint16_t data)</td></tr>
+<tr class="separator:a03143bc3f1e879f46206d45ac323530f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29b481f17d5ca3f07ba0b2d0099983ec" id="r_a29b481f17d5ca3f07ba0b2d0099983ec"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a29b481f17d5ca3f07ba0b2d0099983ec">INA226_Get_ID</a> (uint8_t addr)</td></tr>
+<tr class="separator:a29b481f17d5ca3f07ba0b2d0099983ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9436110cde7c5f8ee393dce6dbfa70e9" id="r_a9436110cde7c5f8ee393dce6dbfa70e9"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a9436110cde7c5f8ee393dce6dbfa70e9">INA226_GetShuntVoltage</a> (uint8_t addr)</td></tr>
+<tr class="separator:a9436110cde7c5f8ee393dce6dbfa70e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fd16b3306dd9c10a2969e134c81e421" id="r_a5fd16b3306dd9c10a2969e134c81e421"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a5fd16b3306dd9c10a2969e134c81e421">INA226_GetShuntCurrent</a> (uint8_t addr)</td></tr>
+<tr class="separator:a5fd16b3306dd9c10a2969e134c81e421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9282c70a85672021fec39d12a3ecf8" id="r_ada9282c70a85672021fec39d12a3ecf8"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#ada9282c70a85672021fec39d12a3ecf8">INA226_GetVoltage</a> (uint8_t addr)</td></tr>
+<tr class="separator:ada9282c70a85672021fec39d12a3ecf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87739741c258d8ba63ce391338fac00e" id="r_a87739741c258d8ba63ce391338fac00e"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a87739741c258d8ba63ce391338fac00e">INA226_Get_Power</a> (uint8_t addr)</td></tr>
+<tr class="separator:a87739741c258d8ba63ce391338fac00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e2001d07247dcb7417b2f081eeadf66" id="r_a1e2001d07247dcb7417b2f081eeadf66"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a1e2001d07247dcb7417b2f081eeadf66">INA226_ReadCurrent_A</a> (uint8_t addr)</td></tr>
+<tr class="separator:a1e2001d07247dcb7417b2f081eeadf66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d6f6f7524a8993e1b502b77c131ae3a" id="r_a3d6f6f7524a8993e1b502b77c131ae3a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a3d6f6f7524a8993e1b502b77c131ae3a">INA226_ReadCurrent_mA</a> (uint8_t addr)</td></tr>
+<tr class="separator:a3d6f6f7524a8993e1b502b77c131ae3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a741652a04677609b084e9eebe1bfac" id="r_a5a741652a04677609b084e9eebe1bfac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a5a741652a04677609b084e9eebe1bfac">INA226_ReadPower</a> (uint8_t addr)</td></tr>
+<tr class="separator:a5a741652a04677609b084e9eebe1bfac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a1cc54dc0849fecb3ddba87e8e37b0a7c" id="r_a1cc54dc0849fecb3ddba87e8e37b0a7c"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a1cc54dc0849fecb3ddba87e8e37b0a7c">Current_LSB</a></td></tr>
+<tr class="memdesc:a1cc54dc0849fecb3ddba87e8e37b0a7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">&zwj;********** 软件参数 **********&zwj;/  <br /></td></tr>
+<tr class="separator:a1cc54dc0849fecb3ddba87e8e37b0a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dfd7593d29229179619c209d032bd02" id="r_a9dfd7593d29229179619c209d032bd02"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_i_n_a226_8h.html#a9dfd7593d29229179619c209d032bd02">Power_LSB</a></td></tr>
+<tr class="separator:a9dfd7593d29229179619c209d032bd02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="a4f9982224e6cc49a906b81197c2c3887" name="a4f9982224e6cc49a906b81197c2c3887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f9982224e6cc49a906b81197c2c3887">&#9670;&#160;</a></span>Alert_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Alert_Reg&#160;&#160;&#160;0x07</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc28c40d3ffa93f2078151a653f36b3c" name="abc28c40d3ffa93f2078151a653f36b3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc28c40d3ffa93f2078151a653f36b3c">&#9670;&#160;</a></span>Bus_V_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Bus_V_Reg&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b7e963b3742111663155e2e6bd95eac" name="a2b7e963b3742111663155e2e6bd95eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b7e963b3742111663155e2e6bd95eac">&#9670;&#160;</a></span>Calib_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Calib_Reg&#160;&#160;&#160;0x05</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a085b3879d385bcf4cf3f2411add38f17" name="a085b3879d385bcf4cf3f2411add38f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a085b3879d385bcf4cf3f2411add38f17">&#9670;&#160;</a></span>Config_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Config_Reg&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6dc8342c955dc94c938dcad297b36df1" name="a6dc8342c955dc94c938dcad297b36df1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dc8342c955dc94c938dcad297b36df1">&#9670;&#160;</a></span>Current_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Current_Reg&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87382872b4eddaa0fdb6e989b5c4f2f4" name="a87382872b4eddaa0fdb6e989b5c4f2f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87382872b4eddaa0fdb6e989b5c4f2f4">&#9670;&#160;</a></span>ID_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ID_Reg&#160;&#160;&#160;0xFF</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1501a35f006a4673b9b835374a0ca354" name="a1501a35f006a4673b9b835374a0ca354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1501a35f006a4673b9b835374a0ca354">&#9670;&#160;</a></span>INA_SCL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SCL&#160;&#160;&#160;PBout(12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1194c1ff4b375902f87dbf78084fe433" name="a1194c1ff4b375902f87dbf78084fe433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1194c1ff4b375902f87dbf78084fe433">&#9670;&#160;</a></span>INA_SCL_GPIO_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SCL_GPIO_PORT&#160;&#160;&#160;GPIOB          /* GPIO端口 */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5096be8468fc9731b2441e15c856d6ad" name="a5096be8468fc9731b2441e15c856d6ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5096be8468fc9731b2441e15c856d6ad">&#9670;&#160;</a></span>INA_SCL_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SCL_PIN&#160;&#160;&#160;GPIO_Pin_12          /* 连接到SCL时钟线的GPIO */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad203983f2e7a5e6a8fa903b33bd3f773" name="ad203983f2e7a5e6a8fa903b33bd3f773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad203983f2e7a5e6a8fa903b33bd3f773">&#9670;&#160;</a></span>INA_SCL_RCC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SCL_RCC&#160;&#160;&#160;RCC_APB2Periph_GPIOB /* GPIO端口时钟 */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83d781d720cec3bcae08b17f419aa901" name="a83d781d720cec3bcae08b17f419aa901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83d781d720cec3bcae08b17f419aa901">&#9670;&#160;</a></span>INA_SDA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SDA&#160;&#160;&#160;PBout(13)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41593207b3df94bf3e11ef8137640e66" name="a41593207b3df94bf3e11ef8137640e66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41593207b3df94bf3e11ef8137640e66">&#9670;&#160;</a></span>INA_SDA_GPIO_PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SDA_GPIO_PORT&#160;&#160;&#160;GPIOB          /* GPIO端口 */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a00408ae8bde84fca8fc1e59fb0a0f0ed" name="a00408ae8bde84fca8fc1e59fb0a0f0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00408ae8bde84fca8fc1e59fb0a0f0ed">&#9670;&#160;</a></span>INA_SDA_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SDA_PIN&#160;&#160;&#160;GPIO_Pin_13          /* 连接到SDA数据线的GPIO */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6646189ca4520cda897ee5829332c13a" name="a6646189ca4520cda897ee5829332c13a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6646189ca4520cda897ee5829332c13a">&#9670;&#160;</a></span>INA_SDA_RCC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INA_SDA_RCC&#160;&#160;&#160;RCC_APB2Periph_GPIOB /* GPIO端口时钟 */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1223592a6ce752b9cc678b8d478cee1" name="ae1223592a6ce752b9cc678b8d478cee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1223592a6ce752b9cc678b8d478cee1">&#9670;&#160;</a></span>Man_ID_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Man_ID_Reg&#160;&#160;&#160;0xFE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af925bb747b1f1d56b5e548cc5b4ae9d8" name="af925bb747b1f1d56b5e548cc5b4ae9d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af925bb747b1f1d56b5e548cc5b4ae9d8">&#9670;&#160;</a></span>Mask_En_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Mask_En_Reg&#160;&#160;&#160;0x06</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2989837a37d6d63b59c6dd541b785435" name="a2989837a37d6d63b59c6dd541b785435"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2989837a37d6d63b59c6dd541b785435">&#9670;&#160;</a></span>MAX_CURRENT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_CURRENT&#160;&#160;&#160;10.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9fac6cca7c32cfd970fff62c573b94c0" name="a9fac6cca7c32cfd970fff62c573b94c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fac6cca7c32cfd970fff62c573b94c0">&#9670;&#160;</a></span>Power_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Power_Reg&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add1ec5ab7223c8a27038380097002268" name="add1ec5ab7223c8a27038380097002268"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add1ec5ab7223c8a27038380097002268">&#9670;&#160;</a></span>READ_ADDR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define READ_ADDR&#160;&#160;&#160;0x81</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c07c05aacac248944e78129304c01df" name="a2c07c05aacac248944e78129304c01df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c07c05aacac248944e78129304c01df">&#9670;&#160;</a></span>READ_ADDR1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define READ_ADDR1&#160;&#160;&#160;0x8B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d21ad01bbe6c7fb325e88a6b8283384" name="a1d21ad01bbe6c7fb325e88a6b8283384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d21ad01bbe6c7fb325e88a6b8283384">&#9670;&#160;</a></span>READ_SDA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define READ_SDA&#160;&#160;&#160;GPIO_ReadInputDataBit(<a class="el" href="_i_n_a226_8h.html#a41593207b3df94bf3e11ef8137640e66">INA_SDA_GPIO_PORT</a>, <a class="el" href="_i_n_a226_8h.html#a00408ae8bde84fca8fc1e59fb0a0f0ed">INA_SDA_PIN</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afc0b378f10595a0cbf38a4da1a2d31a6" name="afc0b378f10595a0cbf38a4da1a2d31a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc0b378f10595a0cbf38a4da1a2d31a6">&#9670;&#160;</a></span>SHUNT_RESISTOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SHUNT_RESISTOR&#160;&#160;&#160;0.010f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4fb5e4bf16609bb2cb30d44cbe936204" name="a4fb5e4bf16609bb2cb30d44cbe936204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb5e4bf16609bb2cb30d44cbe936204">&#9670;&#160;</a></span>Shunt_V_Reg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Shunt_V_Reg&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab93f4edf02708adbf08d38c581250436" name="ab93f4edf02708adbf08d38c581250436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab93f4edf02708adbf08d38c581250436">&#9670;&#160;</a></span>WRITE_ADDR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WRITE_ADDR&#160;&#160;&#160;0x80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98409f17c301c9698e6fdc67f6c9dc3d" name="a98409f17c301c9698e6fdc67f6c9dc3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98409f17c301c9698e6fdc67f6c9dc3d">&#9670;&#160;</a></span>WRITE_ADDR1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WRITE_ADDR1&#160;&#160;&#160;0x8A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a29b481f17d5ca3f07ba0b2d0099983ec" name="a29b481f17d5ca3f07ba0b2d0099983ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29b481f17d5ca3f07ba0b2d0099983ec">&#9670;&#160;</a></span>INA226_Get_ID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t INA226_Get_ID </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a87739741c258d8ba63ce391338fac00e" name="a87739741c258d8ba63ce391338fac00e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87739741c258d8ba63ce391338fac00e">&#9670;&#160;</a></span>INA226_Get_Power()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t INA226_Get_Power </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5fd16b3306dd9c10a2969e134c81e421" name="a5fd16b3306dd9c10a2969e134c81e421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fd16b3306dd9c10a2969e134c81e421">&#9670;&#160;</a></span>INA226_GetShuntCurrent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t INA226_GetShuntCurrent </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9436110cde7c5f8ee393dce6dbfa70e9" name="a9436110cde7c5f8ee393dce6dbfa70e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9436110cde7c5f8ee393dce6dbfa70e9">&#9670;&#160;</a></span>INA226_GetShuntVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t INA226_GetShuntVoltage </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada9282c70a85672021fec39d12a3ecf8" name="ada9282c70a85672021fec39d12a3ecf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9282c70a85672021fec39d12a3ecf8">&#9670;&#160;</a></span>INA226_GetVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t INA226_GetVoltage </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a308b08320146563b3d46c318af5046ed" name="a308b08320146563b3d46c318af5046ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a308b08320146563b3d46c318af5046ed">&#9670;&#160;</a></span>INA226_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void INA226_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa47f2249491d046e919e043ec75324c9" name="aa47f2249491d046e919e043ec75324c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa47f2249491d046e919e043ec75324c9">&#9670;&#160;</a></span>INA226_Init1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void INA226_Init1 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e2001d07247dcb7417b2f081eeadf66" name="a1e2001d07247dcb7417b2f081eeadf66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e2001d07247dcb7417b2f081eeadf66">&#9670;&#160;</a></span>INA226_ReadCurrent_A()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float INA226_ReadCurrent_A </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3d6f6f7524a8993e1b502b77c131ae3a" name="a3d6f6f7524a8993e1b502b77c131ae3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d6f6f7524a8993e1b502b77c131ae3a">&#9670;&#160;</a></span>INA226_ReadCurrent_mA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float INA226_ReadCurrent_mA </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a741652a04677609b084e9eebe1bfac" name="a5a741652a04677609b084e9eebe1bfac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a741652a04677609b084e9eebe1bfac">&#9670;&#160;</a></span>INA226_ReadPower()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float INA226_ReadPower </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a03143bc3f1e879f46206d45ac323530f" name="a03143bc3f1e879f46206d45ac323530f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03143bc3f1e879f46206d45ac323530f">&#9670;&#160;</a></span>INA226_SendData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void INA226_SendData </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a1cc54dc0849fecb3ddba87e8e37b0a7c" name="a1cc54dc0849fecb3ddba87e8e37b0a7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cc54dc0849fecb3ddba87e8e37b0a7c">&#9670;&#160;</a></span>Current_LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Current_LSB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>&zwj;********** 软件参数 **********&zwj;/ </p>
+
+</div>
+</div>
+<a id="a9dfd7593d29229179619c209d032bd02" name="a9dfd7593d29229179619c209d032bd02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dfd7593d29229179619c209d032bd02">&#9670;&#160;</a></span>Power_LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Power_LSB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="_i_n_a226_8h.html">INA226.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

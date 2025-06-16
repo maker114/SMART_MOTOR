@@ -4,7 +4,7 @@
  * @brief 电机驱动函数
  * @version 0.1
  * @date 2025-05-20
- *
+ * @note github仓库详见:[SMART MOTOR](https://github.com/maker114/SMART_MOTOR)
  *
  */
 #include "stm32f10x.h" // Device header
@@ -13,8 +13,13 @@
 #include "usart.h"
 
 // 定义结构体
-MOTOR_TypeDef MotorStructure_A, MotorStructure_B;
-FastResponseFilter filter_A, filter_B;
+
+MOTOR_TypeDef
+	MotorStructure_A, ///< A通道电机结构体
+	MotorStructure_B; ///< B通道电机结构体
+FastResponseFilter
+	filter_A, ///< A通道滤波器
+	filter_B; ///< B通道滤波器
 
 /**
  * @brief 定时器1中断服务函数
@@ -72,8 +77,8 @@ void MOTOR_Init(void)
 /**
  * @brief 初始化电池电压检测ADC
  *
- * @note -通道：ADC1-Channel2
- * 		 -引脚：PA2
+ * @note 通道：ADC1-Channel2
+ * @note 引脚：PA2
  *
  */
 void MOTOR_ADC_Init(void)
@@ -167,10 +172,13 @@ void MOTOR_CountTIM_Init(void)
  *
  * @param Motor_Channel 电机通道
  * @param Motor_State 电机状态
- * @note -MOTOR_Clockwise顺时针，MOTOR_Anticlockwise逆时针
- *       -MOTOR_STOP停止(刹车)，MOTOR_FORWARD前进，MOTOR_BACKWARD后退
- *       -轮子旋转方向与PWM值之间的关系由MOTOR_Orientation决定，即由小车安装与前进方向决定
- * 		 -一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数
+ * - MOTOR_STOP停止(刹车)
+ * - MOTOR_FORWARD前进
+ * - MOTOR_BACKWARD后退
+ * @note
+ * - 运行方向：OTOR_Clockwise顺时针，MOTOR_Anticlockwise逆时针
+ * - 轮子旋转方向与PWM值之间的关系由MOTOR_Orientation决定，即由小车安装与前进方向决定
+ * - 此函数一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数
  */
 void MOTOR_Set_State(int Motor_Channel, int Motor_State)
 {
@@ -251,9 +259,9 @@ void MOTOR_Set_State(int Motor_Channel, int Motor_State)
 /**
  * @brief 设置小车安装方向
  *
- * @param Orientation
- * 		|- #define MOTOR_Clockwise 0     // 顺时针旋转为正向
- * 		|- #define MOTOR_Anticlockwise 1 // 逆时针旋转为正向
+ * @param Orientation 旋转方向
+ * - #define MOTOR_Clockwise 0     // 顺时针旋转为正向
+ * - #define MOTOR_Anticlockwise 1 // 逆时针旋转为正向
  */
 void MOTOR_Set_Orientation(uint8_t Orientation)
 {
@@ -263,9 +271,9 @@ void MOTOR_Set_Orientation(uint8_t Orientation)
 /**
  * @brief 设置操作模式
  *
- * @param Mode
- * 		|- #define MOTOR_MANUAL 0 // 手动模式
- * 		|- #define MOTOR_AUTO 1 // 自动模式
+ * @param Mode 操作模式
+ * - #define MOTOR_MANUAL 0 // 手动模式
+ * - #define MOTOR_AUTO 1 // 自动模式
  */
 void MOTOR_Set_OperatingMode(uint8_t Mode)
 {
@@ -277,8 +285,9 @@ void MOTOR_Set_OperatingMode(uint8_t Mode)
  *
  * @param Motor_Channel 电机通道
  * @param PWM 对应占空比值（MOTOR_PWM_MIN ~ MOTOR_PWM_MAX）
- * @note -设置对应通道的PWM值，根据输入数据的正负与安装方向（MOTOR_Orientation）决定旋转方向
- *       -为避免PWM过零引脚频繁切换，PWM=0时不会执行MOTOR_Set_State(Motor_channel, MOTOR_STOP);
+ * @note
+ * - 设置对应通道的PWM值，根据输入数据的正负与安装方向（MOTOR_Orientation）决定旋转方向
+ * - 为避免PWM过零引脚频繁切换，PWM=0时不会执行MOTOR_Set_State(Motor_channel, MOTOR_STOP);
  */
 void MOTOR_Set_PWM(uint8_t Motor_channel, int PWM)
 {
@@ -340,9 +349,9 @@ int MOTOR_Get_Speed(int Motor_Channel)
  * @brief 获取电机PWM值
  *
  * @param Motor_Channel 电机通道
- * @return int
- * 		|- 自动模式下返回PID结果
- * 		|- 手动模式下返回传入PWM值
+ * @return int 返回电机PWM值
+ * 	- 自动模式下返回PID结果
+ * 	- 手动模式下返回传入PWM值
  */
 int MOTOR_Get_PWM(int Motor_Channel)
 {
@@ -395,15 +404,16 @@ float MOTOR_Get_GoalSpeed(uint8_t Motor_Channel)
 
 /**
  * @brief 初始化电机编码器
- * @note -定时器：TIM2/TIM4
- * 		 -引脚：PA0/PA1/PB6/PB7
- *       -通道映射：
- * 			MOTOR_A：TIM2
- * 				|- PA0->EA-A
- * 				|- PA1->EA-B
- * 			MOTOR_B：TIM4
- * 				|- PB6->EB-A
- * 				|- PB7->EB-B
+ * @note
+ *  - 定时器：TIM2/TIM4
+ *  - 引脚：PA0/PA1/PB6/PB7
+ *  - 通道映射：
+ *  	- MOTOR_A：TIM2
+ *  		- PA0->EA-A
+ *  		- PA1->EA-B
+ *  	- MOTOR_B：TIM4
+ * 			- PB6->EB-A
+ * 			- PB7->EB-B
  *
  */
 void MOTOR_ENCODER_Init(void)
@@ -470,11 +480,12 @@ void MOTOR_ENCODER_Init(void)
 /**
  *
  * @brief 初始化电机驱动PWM
- * @note -频率：10KHz
- * 		 -最大比较值：7200
- *       -通道：TIM3_CH3和TIM3_CH4
- * 		 -引脚：PB0（CH3）和 PB1（CH4）
- *       -电机映射： PB0->MOTOR_A PB1->MOTOR_B
+ * @note 详细参数
+ * 	- 频率：10KHz
+ * 	- 最大比较值：7200
+ *  - 通道：TIM3_CH3和TIM3_CH4
+ * 	- 引脚：PB0（CH3）和 PB1（CH4）
+ *  - 电机映射： PB0->MOTOR_A PB1->MOTOR_B
  */
 void MOTOR_PWM_Init(void)
 {
@@ -525,8 +536,9 @@ void MOTOR_PWM_Init(void)
  *
  * @param Motor_Channel 电机通道（motor_a/motor_b）
  * @param PWM PWM值（0~7200）
- * @note -仅对对应通道的定时器进行占空比装载，不接受负数，不处理方向
- *       -一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数
+ * @note
+ *  - 仅对对应通道的定时器进行占空比装载，不接受负数，不处理方向
+ *  - 一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数
  */
 void MOTOR_PWM_Load(uint8_t Motor_Channel, uint16_t PWM)
 {

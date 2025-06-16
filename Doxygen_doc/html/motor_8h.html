@@ -1,0 +1,899 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SMART MOTOR: D:/STM32 Project/STM32F103/smart_motor/USER/HARDWARE/motor.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="邻二溴苯(doxygen).png"/></td>
+  <td id="projectalign">
+   <div id="projectname">SMART MOTOR
+   </div>
+   <div id="projectbrief">Design by maker114</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('motor_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">motor.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>电机控制头文件  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;stm32f10x_tim.h&quot;</code><br />
+<code>#include &quot;stm32f10x_rcc.h&quot;</code><br />
+<code>#include &quot;stm32f10x_adc.h&quot;</code><br />
+</div>
+<p><a href="motor_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_o_t_o_r___type_def.html">MOTOR_TypeDef</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_fast_response_filter.html">FastResponseFilter</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a1120e6b1ba7ef7a10adee32fc050c331" id="r_a1120e6b1ba7ef7a10adee32fc050c331"><td class="memItemLeft" align="right" valign="top"><a id="a1120e6b1ba7ef7a10adee32fc050c331" name="a1120e6b1ba7ef7a10adee32fc050c331"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORA_I_MAX</b>&#160;&#160;&#160;4000</td></tr>
+<tr class="memdesc:a1120e6b1ba7ef7a10adee32fc050c331"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机A积分限幅 <br /></td></tr>
+<tr class="separator:a1120e6b1ba7ef7a10adee32fc050c331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1b4b393c480b5845e00fdaddce2d9d7" id="r_ae1b4b393c480b5845e00fdaddce2d9d7"><td class="memItemLeft" align="right" valign="top"><a id="ae1b4b393c480b5845e00fdaddce2d9d7" name="ae1b4b393c480b5845e00fdaddce2d9d7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORB_I_MAX</b>&#160;&#160;&#160;4000</td></tr>
+<tr class="memdesc:ae1b4b393c480b5845e00fdaddce2d9d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机B积分限幅 <br /></td></tr>
+<tr class="separator:ae1b4b393c480b5845e00fdaddce2d9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8be5710878c79ff92c63ec275818b5d" id="r_ad8be5710878c79ff92c63ec275818b5d"><td class="memItemLeft" align="right" valign="top"><a id="ad8be5710878c79ff92c63ec275818b5d" name="ad8be5710878c79ff92c63ec275818b5d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORA_KP</b>&#160;&#160;&#160;-150.0f</td></tr>
+<tr class="memdesc:ad8be5710878c79ff92c63ec275818b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机A PID-KP值 <br /></td></tr>
+<tr class="separator:ad8be5710878c79ff92c63ec275818b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1276f5cd4b81e38241be0ca1f04d0e" id="r_a7a1276f5cd4b81e38241be0ca1f04d0e"><td class="memItemLeft" align="right" valign="top"><a id="a7a1276f5cd4b81e38241be0ca1f04d0e" name="a7a1276f5cd4b81e38241be0ca1f04d0e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORA_KI</b>&#160;&#160;&#160;-3.5f</td></tr>
+<tr class="memdesc:a7a1276f5cd4b81e38241be0ca1f04d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机A PID-KI值 <br /></td></tr>
+<tr class="separator:a7a1276f5cd4b81e38241be0ca1f04d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c76733ae38e4fce619251b7c0c51bb2" id="r_a3c76733ae38e4fce619251b7c0c51bb2"><td class="memItemLeft" align="right" valign="top"><a id="a3c76733ae38e4fce619251b7c0c51bb2" name="a3c76733ae38e4fce619251b7c0c51bb2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORA_KD</b>&#160;&#160;&#160;-10.0f</td></tr>
+<tr class="memdesc:a3c76733ae38e4fce619251b7c0c51bb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机A PID-KD值 <br /></td></tr>
+<tr class="separator:a3c76733ae38e4fce619251b7c0c51bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa45193b71b429af2c9d1a0f89a947121" id="r_aa45193b71b429af2c9d1a0f89a947121"><td class="memItemLeft" align="right" valign="top"><a id="aa45193b71b429af2c9d1a0f89a947121" name="aa45193b71b429af2c9d1a0f89a947121"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORB_KP</b>&#160;&#160;&#160;-150.0f</td></tr>
+<tr class="memdesc:aa45193b71b429af2c9d1a0f89a947121"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机B PID-KP值 <br /></td></tr>
+<tr class="separator:aa45193b71b429af2c9d1a0f89a947121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a371ad5ec2b7bd1a5d91d94dcbf432a7e" id="r_a371ad5ec2b7bd1a5d91d94dcbf432a7e"><td class="memItemLeft" align="right" valign="top"><a id="a371ad5ec2b7bd1a5d91d94dcbf432a7e" name="a371ad5ec2b7bd1a5d91d94dcbf432a7e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORB_KI</b>&#160;&#160;&#160;-3.5f</td></tr>
+<tr class="memdesc:a371ad5ec2b7bd1a5d91d94dcbf432a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机B PID-KI值 <br /></td></tr>
+<tr class="separator:a371ad5ec2b7bd1a5d91d94dcbf432a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b413650d1af6dede870eedef122fe9" id="r_a14b413650d1af6dede870eedef122fe9"><td class="memItemLeft" align="right" valign="top"><a id="a14b413650d1af6dede870eedef122fe9" name="a14b413650d1af6dede870eedef122fe9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTORB_KD</b>&#160;&#160;&#160;-10.0f</td></tr>
+<tr class="memdesc:a14b413650d1af6dede870eedef122fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机B PID-KD值 <br /></td></tr>
+<tr class="separator:a14b413650d1af6dede870eedef122fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49e05497cd12a38a0a1a78675025e3c7" id="r_a49e05497cd12a38a0a1a78675025e3c7"><td class="memItemLeft" align="right" valign="top"><a id="a49e05497cd12a38a0a1a78675025e3c7" name="a49e05497cd12a38a0a1a78675025e3c7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_A</b>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a49e05497cd12a38a0a1a78675025e3c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机A <br /></td></tr>
+<tr class="separator:a49e05497cd12a38a0a1a78675025e3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add9a1e9dd6c4b0439da68e819a6a5c39" id="r_add9a1e9dd6c4b0439da68e819a6a5c39"><td class="memItemLeft" align="right" valign="top"><a id="add9a1e9dd6c4b0439da68e819a6a5c39" name="add9a1e9dd6c4b0439da68e819a6a5c39"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_B</b>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:add9a1e9dd6c4b0439da68e819a6a5c39"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机B <br /></td></tr>
+<tr class="separator:add9a1e9dd6c4b0439da68e819a6a5c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa61a6c32d7187d20f8ea4171b8bf8dd7" id="r_aa61a6c32d7187d20f8ea4171b8bf8dd7"><td class="memItemLeft" align="right" valign="top"><a id="aa61a6c32d7187d20f8ea4171b8bf8dd7" name="aa61a6c32d7187d20f8ea4171b8bf8dd7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_STOP</b>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:aa61a6c32d7187d20f8ea4171b8bf8dd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机停止 <br /></td></tr>
+<tr class="separator:aa61a6c32d7187d20f8ea4171b8bf8dd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecfc8cb31c77ff43036a88e475f0198d" id="r_aecfc8cb31c77ff43036a88e475f0198d"><td class="memItemLeft" align="right" valign="top"><a id="aecfc8cb31c77ff43036a88e475f0198d" name="aecfc8cb31c77ff43036a88e475f0198d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_FORWARD</b>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:aecfc8cb31c77ff43036a88e475f0198d"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机正向 <br /></td></tr>
+<tr class="separator:aecfc8cb31c77ff43036a88e475f0198d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae29c16906c059ef2615d54a3ee144763" id="r_ae29c16906c059ef2615d54a3ee144763"><td class="memItemLeft" align="right" valign="top"><a id="ae29c16906c059ef2615d54a3ee144763" name="ae29c16906c059ef2615d54a3ee144763"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_BACKWARD</b>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:ae29c16906c059ef2615d54a3ee144763"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机反向 <br /></td></tr>
+<tr class="separator:ae29c16906c059ef2615d54a3ee144763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0c3fad2e31f95695d8d4e583ecefa44" id="r_ab0c3fad2e31f95695d8d4e583ecefa44"><td class="memItemLeft" align="right" valign="top"><a id="ab0c3fad2e31f95695d8d4e583ecefa44" name="ab0c3fad2e31f95695d8d4e583ecefa44"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_Clockwise</b>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:ab0c3fad2e31f95695d8d4e583ecefa44"><td class="mdescLeft">&#160;</td><td class="mdescRight">顺时针旋转为正向 <br /></td></tr>
+<tr class="separator:ab0c3fad2e31f95695d8d4e583ecefa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa85b3882a6afb20218a23f868a2e8c4" id="r_afa85b3882a6afb20218a23f868a2e8c4"><td class="memItemLeft" align="right" valign="top"><a id="afa85b3882a6afb20218a23f868a2e8c4" name="afa85b3882a6afb20218a23f868a2e8c4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_Anticlockwise</b>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:afa85b3882a6afb20218a23f868a2e8c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆时针旋转为正向 <br /></td></tr>
+<tr class="separator:afa85b3882a6afb20218a23f868a2e8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d8bc405af302505ee65582adf1f1a0" id="r_ae7d8bc405af302505ee65582adf1f1a0"><td class="memItemLeft" align="right" valign="top"><a id="ae7d8bc405af302505ee65582adf1f1a0" name="ae7d8bc405af302505ee65582adf1f1a0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_AUTO</b>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:ae7d8bc405af302505ee65582adf1f1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">自动模式（使用内部PID） <br /></td></tr>
+<tr class="separator:ae7d8bc405af302505ee65582adf1f1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c501aa2919cb147c4d17c11c2f6df39" id="r_a9c501aa2919cb147c4d17c11c2f6df39"><td class="memItemLeft" align="right" valign="top"><a id="a9c501aa2919cb147c4d17c11c2f6df39" name="a9c501aa2919cb147c4d17c11c2f6df39"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_MANUAL</b>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a9c501aa2919cb147c4d17c11c2f6df39"><td class="mdescLeft">&#160;</td><td class="mdescRight">手动模式（使用外部PID） <br /></td></tr>
+<tr class="separator:a9c501aa2919cb147c4d17c11c2f6df39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37cfd6cc849304e24c56938d1a50ba29" id="r_a37cfd6cc849304e24c56938d1a50ba29"><td class="memItemLeft" align="right" valign="top"><a id="a37cfd6cc849304e24c56938d1a50ba29" name="a37cfd6cc849304e24c56938d1a50ba29"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_MAX</b>&#160;&#160;&#160;7000</td></tr>
+<tr class="memdesc:a37cfd6cc849304e24c56938d1a50ba29"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM最大限幅（补偿后） <br /></td></tr>
+<tr class="separator:a37cfd6cc849304e24c56938d1a50ba29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5cdf2a2e6ca7c9ce1ad6693b47e996c" id="r_ad5cdf2a2e6ca7c9ce1ad6693b47e996c"><td class="memItemLeft" align="right" valign="top"><a id="ad5cdf2a2e6ca7c9ce1ad6693b47e996c" name="ad5cdf2a2e6ca7c9ce1ad6693b47e996c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_MIN</b>&#160;&#160;&#160;-7000</td></tr>
+<tr class="memdesc:ad5cdf2a2e6ca7c9ce1ad6693b47e996c"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM最小限幅（补偿后） <br /></td></tr>
+<tr class="separator:ad5cdf2a2e6ca7c9ce1ad6693b47e996c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a328d34ce2d6938adaffccefe1908ca7e" id="r_a328d34ce2d6938adaffccefe1908ca7e"><td class="memItemLeft" align="right" valign="top"><a id="a328d34ce2d6938adaffccefe1908ca7e" name="a328d34ce2d6938adaffccefe1908ca7e"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_Compensate_A</b>&#160;&#160;&#160;000</td></tr>
+<tr class="memdesc:a328d34ce2d6938adaffccefe1908ca7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A通道PWM补偿值 <br /></td></tr>
+<tr class="separator:a328d34ce2d6938adaffccefe1908ca7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a857eca5c7f192dd15f7f78c45f086721" id="r_a857eca5c7f192dd15f7f78c45f086721"><td class="memItemLeft" align="right" valign="top"><a id="a857eca5c7f192dd15f7f78c45f086721" name="a857eca5c7f192dd15f7f78c45f086721"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PWM_Compensate_B</b>&#160;&#160;&#160;000</td></tr>
+<tr class="memdesc:a857eca5c7f192dd15f7f78c45f086721"><td class="mdescLeft">&#160;</td><td class="mdescRight">B通道PWM补偿值 <br /></td></tr>
+<tr class="separator:a857eca5c7f192dd15f7f78c45f086721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6822b955457f3d025b5c5a6314676f5" id="r_af6822b955457f3d025b5c5a6314676f5"><td class="memItemLeft" align="right" valign="top"><a id="af6822b955457f3d025b5c5a6314676f5" name="af6822b955457f3d025b5c5a6314676f5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_TIM_A</b>&#160;&#160;&#160;RCC_APB2Periph_GPIOA</td></tr>
+<tr class="memdesc:af6822b955457f3d025b5c5a6314676f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A通道引脚时钟 <br /></td></tr>
+<tr class="separator:af6822b955457f3d025b5c5a6314676f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b0445d7c2f456c1820f6eecb5598ec7" id="r_a3b0445d7c2f456c1820f6eecb5598ec7"><td class="memItemLeft" align="right" valign="top"><a id="a3b0445d7c2f456c1820f6eecb5598ec7" name="a3b0445d7c2f456c1820f6eecb5598ec7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_Group_A</b>&#160;&#160;&#160;GPIOA</td></tr>
+<tr class="memdesc:a3b0445d7c2f456c1820f6eecb5598ec7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A通道引脚组 <br /></td></tr>
+<tr class="separator:a3b0445d7c2f456c1820f6eecb5598ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa2236648124d8aed616b29237527ef" id="r_aafa2236648124d8aed616b29237527ef"><td class="memItemLeft" align="right" valign="top"><a id="aafa2236648124d8aed616b29237527ef" name="aafa2236648124d8aed616b29237527ef"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_AIN1</b>&#160;&#160;&#160;GPIO_Pin_3</td></tr>
+<tr class="memdesc:aafa2236648124d8aed616b29237527ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">A通道方向引脚1 <br /></td></tr>
+<tr class="separator:aafa2236648124d8aed616b29237527ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa92cdccb4e3364f7ecce7e66c9912712" id="r_aa92cdccb4e3364f7ecce7e66c9912712"><td class="memItemLeft" align="right" valign="top"><a id="aa92cdccb4e3364f7ecce7e66c9912712" name="aa92cdccb4e3364f7ecce7e66c9912712"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_AIN2</b>&#160;&#160;&#160;GPIO_Pin_4</td></tr>
+<tr class="memdesc:aa92cdccb4e3364f7ecce7e66c9912712"><td class="mdescLeft">&#160;</td><td class="mdescRight">A通道方向引脚2 <br /></td></tr>
+<tr class="separator:aa92cdccb4e3364f7ecce7e66c9912712"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88747e31a21716014d01d766e2b55fbb" id="r_a88747e31a21716014d01d766e2b55fbb"><td class="memItemLeft" align="right" valign="top"><a id="a88747e31a21716014d01d766e2b55fbb" name="a88747e31a21716014d01d766e2b55fbb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_TIM_B</b>&#160;&#160;&#160;RCC_APB2Periph_GPIOA</td></tr>
+<tr class="memdesc:a88747e31a21716014d01d766e2b55fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">B通道引脚时钟 <br /></td></tr>
+<tr class="separator:a88747e31a21716014d01d766e2b55fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72f6e6ae15c3121232fa76cee8b2cc5d" id="r_a72f6e6ae15c3121232fa76cee8b2cc5d"><td class="memItemLeft" align="right" valign="top"><a id="a72f6e6ae15c3121232fa76cee8b2cc5d" name="a72f6e6ae15c3121232fa76cee8b2cc5d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_Group_B</b>&#160;&#160;&#160;GPIOA</td></tr>
+<tr class="memdesc:a72f6e6ae15c3121232fa76cee8b2cc5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">B通道引脚组 <br /></td></tr>
+<tr class="separator:a72f6e6ae15c3121232fa76cee8b2cc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6deb06b00049067997c769558abc376" id="r_ad6deb06b00049067997c769558abc376"><td class="memItemLeft" align="right" valign="top"><a id="ad6deb06b00049067997c769558abc376" name="ad6deb06b00049067997c769558abc376"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_BIN1</b>&#160;&#160;&#160;GPIO_Pin_5</td></tr>
+<tr class="memdesc:ad6deb06b00049067997c769558abc376"><td class="mdescLeft">&#160;</td><td class="mdescRight">B通道方向引脚1 <br /></td></tr>
+<tr class="separator:ad6deb06b00049067997c769558abc376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e86e051120cbfb4f9b15046984479df" id="r_a6e86e051120cbfb4f9b15046984479df"><td class="memItemLeft" align="right" valign="top"><a id="a6e86e051120cbfb4f9b15046984479df" name="a6e86e051120cbfb4f9b15046984479df"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>Direction_BIN2</b>&#160;&#160;&#160;GPIO_Pin_6</td></tr>
+<tr class="memdesc:a6e86e051120cbfb4f9b15046984479df"><td class="mdescLeft">&#160;</td><td class="mdescRight">B通道方向引脚2 <br /></td></tr>
+<tr class="separator:a6e86e051120cbfb4f9b15046984479df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a9b3a7f55576e8e8d5747c3ee4c1d960b" id="r_a9b3a7f55576e8e8d5747c3ee4c1d960b"><td class="memItemLeft" align="right" valign="top"><a id="a9b3a7f55576e8e8d5747c3ee4c1d960b" name="a9b3a7f55576e8e8d5747c3ee4c1d960b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_Init</b> (void)</td></tr>
+<tr class="memdesc:a9b3a7f55576e8e8d5747c3ee4c1d960b"><td class="mdescLeft">&#160;</td><td class="mdescRight">总初始化，仅调用一次此函数即可完成全部初始化 <br /></td></tr>
+<tr class="separator:a9b3a7f55576e8e8d5747c3ee4c1d960b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83057e85f9cdec405b9682b4fa33d22e" id="r_a83057e85f9cdec405b9682b4fa33d22e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a83057e85f9cdec405b9682b4fa33d22e">MOTOR_ADC_Init</a> (void)</td></tr>
+<tr class="memdesc:a83057e85f9cdec405b9682b4fa33d22e"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电池电压检测ADC  <br /></td></tr>
+<tr class="separator:a83057e85f9cdec405b9682b4fa33d22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe7bddbacc5b8d177bdb56bd5a611a8f" id="r_abe7bddbacc5b8d177bdb56bd5a611a8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#abe7bddbacc5b8d177bdb56bd5a611a8f">MOTOR_GPIO_Init</a> (void)</td></tr>
+<tr class="memdesc:abe7bddbacc5b8d177bdb56bd5a611a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">电机GPIO初始化  <br /></td></tr>
+<tr class="separator:abe7bddbacc5b8d177bdb56bd5a611a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a631d1b00db96e487c9599e3dc9d21e1a" id="r_a631d1b00db96e487c9599e3dc9d21e1a"><td class="memItemLeft" align="right" valign="top"><a id="a631d1b00db96e487c9599e3dc9d21e1a" name="a631d1b00db96e487c9599e3dc9d21e1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_CountTIM_Init</b> (void)</td></tr>
+<tr class="memdesc:a631d1b00db96e487c9599e3dc9d21e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">转速定时器初始化 <br /></td></tr>
+<tr class="separator:a631d1b00db96e487c9599e3dc9d21e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b272cbb242fcb65c664e15e1185bae" id="r_a12b272cbb242fcb65c664e15e1185bae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a12b272cbb242fcb65c664e15e1185bae">MOTOR_ENCODER_Init</a> (void)</td></tr>
+<tr class="memdesc:a12b272cbb242fcb65c664e15e1185bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机编码器  <br /></td></tr>
+<tr class="separator:a12b272cbb242fcb65c664e15e1185bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814d46535cffab376d59f690eb9c3607" id="r_a814d46535cffab376d59f690eb9c3607"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a814d46535cffab376d59f690eb9c3607">MOTOR_PWM_Init</a> (void)</td></tr>
+<tr class="memdesc:a814d46535cffab376d59f690eb9c3607"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化电机驱动PWM  <br /></td></tr>
+<tr class="separator:a814d46535cffab376d59f690eb9c3607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a037a8c43ac6224905da534c5d7e4aeb4" id="r_a037a8c43ac6224905da534c5d7e4aeb4"><td class="memItemLeft" align="right" valign="top"><a id="a037a8c43ac6224905da534c5d7e4aeb4" name="a037a8c43ac6224905da534c5d7e4aeb4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PID_Init</b> (void)</td></tr>
+<tr class="memdesc:a037a8c43ac6224905da534c5d7e4aeb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化PID参数 <br /></td></tr>
+<tr class="separator:a037a8c43ac6224905da534c5d7e4aeb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a367d84ee0731dbe7931ab8cd024a92b4" id="r_a367d84ee0731dbe7931ab8cd024a92b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a367d84ee0731dbe7931ab8cd024a92b4">MOTOR_Set_State</a> (int Motor_Channel, int Motor_State)</td></tr>
+<tr class="memdesc:a367d84ee0731dbe7931ab8cd024a92b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">选择电机前进方向，一般由内部调用  <br /></td></tr>
+<tr class="separator:a367d84ee0731dbe7931ab8cd024a92b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a1166679af4013a92e900494657835e" id="r_a1a1166679af4013a92e900494657835e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a1a1166679af4013a92e900494657835e">MOTOR_Set_Orientation</a> (uint8_t Orientation)</td></tr>
+<tr class="memdesc:a1a1166679af4013a92e900494657835e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置小车安装方向  <br /></td></tr>
+<tr class="separator:a1a1166679af4013a92e900494657835e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a59e0b7dbafa7b18acae3a18ca020f" id="r_a15a59e0b7dbafa7b18acae3a18ca020f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a15a59e0b7dbafa7b18acae3a18ca020f">MOTOR_Set_OperatingMode</a> (uint8_t Mode)</td></tr>
+<tr class="memdesc:a15a59e0b7dbafa7b18acae3a18ca020f"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置操作模式  <br /></td></tr>
+<tr class="separator:a15a59e0b7dbafa7b18acae3a18ca020f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43cff0fc5b8b17f8f38c9ea441065d0f" id="r_a43cff0fc5b8b17f8f38c9ea441065d0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a43cff0fc5b8b17f8f38c9ea441065d0f">MOTOR_Set_PWM</a> (uint8_t Motor_channel, int PWM)</td></tr>
+<tr class="memdesc:a43cff0fc5b8b17f8f38c9ea441065d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">用来设置电机转动速度，自动设置旋转方向  <br /></td></tr>
+<tr class="separator:a43cff0fc5b8b17f8f38c9ea441065d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57fb0df0ed1175e783d711c63312e8ea" id="r_a57fb0df0ed1175e783d711c63312e8ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a57fb0df0ed1175e783d711c63312e8ea">MOTOR_Set_PIDGoalSpeed</a> (uint8_t Motor_channel, float Goal_Speed)</td></tr>
+<tr class="memdesc:a57fb0df0ed1175e783d711c63312e8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置PID目标速度  <br /></td></tr>
+<tr class="separator:a57fb0df0ed1175e783d711c63312e8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a768a040b8a1197af009508315b120b17" id="r_a768a040b8a1197af009508315b120b17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a768a040b8a1197af009508315b120b17">MOTOR_Get_Speed</a> (int Motor_Channel)</td></tr>
+<tr class="memdesc:a768a040b8a1197af009508315b120b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机转速  <br /></td></tr>
+<tr class="separator:a768a040b8a1197af009508315b120b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abece6aafe009eccfa6aa8da4116fc580" id="r_abece6aafe009eccfa6aa8da4116fc580"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#abece6aafe009eccfa6aa8da4116fc580">MOTOR_Get_PWM</a> (int Motor_Channel)</td></tr>
+<tr class="memdesc:abece6aafe009eccfa6aa8da4116fc580"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机PWM值  <br /></td></tr>
+<tr class="separator:abece6aafe009eccfa6aa8da4116fc580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab09dceceef35523a1f2eb9269617a047" id="r_ab09dceceef35523a1f2eb9269617a047"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#ab09dceceef35523a1f2eb9269617a047">MOTOR_Get_BatteryVoltage</a> (void)</td></tr>
+<tr class="memdesc:ab09dceceef35523a1f2eb9269617a047"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电池电压  <br /></td></tr>
+<tr class="separator:ab09dceceef35523a1f2eb9269617a047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a7677fa901c8471fab0fa33f82cd16a" id="r_a9a7677fa901c8471fab0fa33f82cd16a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a9a7677fa901c8471fab0fa33f82cd16a">MOTOR_Get_GoalSpeed</a> (uint8_t Motor_Channel)</td></tr>
+<tr class="memdesc:a9a7677fa901c8471fab0fa33f82cd16a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取电机目标速度（自动模式下有效）  <br /></td></tr>
+<tr class="separator:a9a7677fa901c8471fab0fa33f82cd16a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ebe2172b9afdf3ee81a634c204f50f" id="r_a65ebe2172b9afdf3ee81a634c204f50f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a65ebe2172b9afdf3ee81a634c204f50f">MOTOR_PWM_Load</a> (uint8_t Motor_Channel, uint16_t PWM)</td></tr>
+<tr class="memdesc:a65ebe2172b9afdf3ee81a634c204f50f"><td class="mdescLeft">&#160;</td><td class="mdescRight">装载电机PWM  <br /></td></tr>
+<tr class="separator:a65ebe2172b9afdf3ee81a634c204f50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a562ded4725036b4a1e9e8b78249be75c" id="r_a562ded4725036b4a1e9e8b78249be75c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a562ded4725036b4a1e9e8b78249be75c">MOTOR_PID_Calculate</a> (<a class="el" href="struct_m_o_t_o_r___type_def.html">MOTOR_TypeDef</a> *MotorStructure)</td></tr>
+<tr class="memdesc:a562ded4725036b4a1e9e8b78249be75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID计算函数  <br /></td></tr>
+<tr class="separator:a562ded4725036b4a1e9e8b78249be75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ac47ed6a01a6bf95ac7670dc2dea9f8" id="r_a4ac47ed6a01a6bf95ac7670dc2dea9f8"><td class="memItemLeft" align="right" valign="top"><a id="a4ac47ed6a01a6bf95ac7670dc2dea9f8" name="a4ac47ed6a01a6bf95ac7670dc2dea9f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_PID_TimLoop</b> (void)</td></tr>
+<tr class="memdesc:a4ac47ed6a01a6bf95ac7670dc2dea9f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID定时器循环 <br /></td></tr>
+<tr class="separator:a4ac47ed6a01a6bf95ac7670dc2dea9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da956b1aa9802bb2eab8f1abf668b87" id="r_a3da956b1aa9802bb2eab8f1abf668b87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a3da956b1aa9802bb2eab8f1abf668b87">Filter_Init</a> (<a class="el" href="struct_fast_response_filter.html">FastResponseFilter</a> *filter, float alpha, float init_value)</td></tr>
+<tr class="memdesc:a3da956b1aa9802bb2eab8f1abf668b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化滤波器(内部调用)  <br /></td></tr>
+<tr class="separator:a3da956b1aa9802bb2eab8f1abf668b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a344389181533718b0965a8df949077e5" id="r_a344389181533718b0965a8df949077e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="motor_8h.html#a344389181533718b0965a8df949077e5">Filter_Process</a> (<a class="el" href="struct_fast_response_filter.html">FastResponseFilter</a> *filter, float raw_value)</td></tr>
+<tr class="memdesc:a344389181533718b0965a8df949077e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">快速响应滤波器处理函数(内部调用)  <br /></td></tr>
+<tr class="separator:a344389181533718b0965a8df949077e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:ae38aa0e17231c915570c88ff6ed52c03" id="r_ae38aa0e17231c915570c88ff6ed52c03"><td class="memItemLeft" align="right" valign="top"><a id="ae38aa0e17231c915570c88ff6ed52c03" name="ae38aa0e17231c915570c88ff6ed52c03"></a>
+static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_Orientation</b> = <a class="el" href="motor_8h.html#afa85b3882a6afb20218a23f868a2e8c4">MOTOR_Anticlockwise</a></td></tr>
+<tr class="memdesc:ae38aa0e17231c915570c88ff6ed52c03"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据小车安装与前进方向进行设置 <br /></td></tr>
+<tr class="separator:ae38aa0e17231c915570c88ff6ed52c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8af17ce114d19cf4616af34313f2c4d" id="r_ae8af17ce114d19cf4616af34313f2c4d"><td class="memItemLeft" align="right" valign="top"><a id="ae8af17ce114d19cf4616af34313f2c4d" name="ae8af17ce114d19cf4616af34313f2c4d"></a>
+static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>MOTOR_OperatingMode</b> = <a class="el" href="motor_8h.html#ae7d8bc405af302505ee65582adf1f1a0">MOTOR_AUTO</a></td></tr>
+<tr class="memdesc:ae8af17ce114d19cf4616af34313f2c4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据实际需求进行设置，默认为自动模式 <br /></td></tr>
+<tr class="separator:ae8af17ce114d19cf4616af34313f2c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>电机控制头文件 </p>
+<dl class="section author"><dt>作者</dt><dd>maker114 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2025-06-16 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>宏定义部分详见README.md </dd></dl>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="a3da956b1aa9802bb2eab8f1abf668b87" name="a3da956b1aa9802bb2eab8f1abf668b87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da956b1aa9802bb2eab8f1abf668b87">&#9670;&#160;</a></span>Filter_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Filter_Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fast_response_filter.html">FastResponseFilter</a> *&#160;</td>
+          <td class="paramname"><em>filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>init_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化滤波器(内部调用) </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filter</td><td>滤波器实例指针 </td></tr>
+    <tr><td class="paramname">alpha</td><td>滤波系数(建议0.3-0.7) </td></tr>
+    <tr><td class="paramname">init_value</td><td>初始值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a344389181533718b0965a8df949077e5" name="a344389181533718b0965a8df949077e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a344389181533718b0965a8df949077e5">&#9670;&#160;</a></span>Filter_Process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Filter_Process </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_fast_response_filter.html">FastResponseFilter</a> *&#160;</td>
+          <td class="paramname"><em>filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>raw_value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>快速响应滤波器处理函数(内部调用) </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filter</td><td>滤波器实例指针 </td></tr>
+    <tr><td class="paramname">raw_value</td><td>原始输入值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>滤波后的值 </dd></dl>
+
+</div>
+</div>
+<a id="a83057e85f9cdec405b9682b4fa33d22e" name="a83057e85f9cdec405b9682b4fa33d22e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83057e85f9cdec405b9682b4fa33d22e">&#9670;&#160;</a></span>MOTOR_ADC_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_ADC_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化电池电压检测ADC </p>
+<dl class="section note"><dt>注解</dt><dd>通道：ADC1-Channel2 </dd>
+<dd>
+引脚：PA2 </dd></dl>
+
+</div>
+</div>
+<a id="a12b272cbb242fcb65c664e15e1185bae" name="a12b272cbb242fcb65c664e15e1185bae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b272cbb242fcb65c664e15e1185bae">&#9670;&#160;</a></span>MOTOR_ENCODER_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_ENCODER_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化电机编码器 </p>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>定时器：TIM2/TIM4</li>
+<li>引脚：PA0/PA1/PB6/PB7</li>
+<li>通道映射：<ul>
+<li>MOTOR_A：TIM2<ul>
+<li>PA0-&gt;EA-A</li>
+<li>PA1-&gt;EA-B</li>
+</ul>
+</li>
+<li>MOTOR_B：TIM4<ul>
+<li>PB6-&gt;EB-A</li>
+<li>PB7-&gt;EB-B </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="ab09dceceef35523a1f2eb9269617a047" name="ab09dceceef35523a1f2eb9269617a047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab09dceceef35523a1f2eb9269617a047">&#9670;&#160;</a></span>MOTOR_Get_BatteryVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MOTOR_Get_BatteryVoltage </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取电池电压 </p>
+<dl class="section return"><dt>返回</dt><dd>float 电池电压返回值 </dd></dl>
+
+</div>
+</div>
+<a id="a9a7677fa901c8471fab0fa33f82cd16a" name="a9a7677fa901c8471fab0fa33f82cd16a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a7677fa901c8471fab0fa33f82cd16a">&#9670;&#160;</a></span>MOTOR_Get_GoalSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float MOTOR_Get_GoalSpeed </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Motor_Channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取电机目标速度（自动模式下有效） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Motor_Channel</td><td>电机通道 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>float PID目标速度 </dd></dl>
+
+</div>
+</div>
+<a id="abece6aafe009eccfa6aa8da4116fc580" name="abece6aafe009eccfa6aa8da4116fc580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abece6aafe009eccfa6aa8da4116fc580">&#9670;&#160;</a></span>MOTOR_Get_PWM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MOTOR_Get_PWM </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Motor_Channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取电机PWM值 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Motor_Channel</td><td>电机通道 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>int 返回电机PWM值<ul>
+<li>自动模式下返回PID结果</li>
+<li>手动模式下返回传入PWM值 </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="a768a040b8a1197af009508315b120b17" name="a768a040b8a1197af009508315b120b17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a768a040b8a1197af009508315b120b17">&#9670;&#160;</a></span>MOTOR_Get_Speed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MOTOR_Get_Speed </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Motor_Channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取电机转速 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Motor_Channel</td><td>电机通道 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>int 返回电机原始转速（正/负） </dd></dl>
+
+</div>
+</div>
+<a id="abe7bddbacc5b8d177bdb56bd5a611a8f" name="abe7bddbacc5b8d177bdb56bd5a611a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe7bddbacc5b8d177bdb56bd5a611a8f">&#9670;&#160;</a></span>MOTOR_GPIO_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_GPIO_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>电机GPIO初始化 </p>
+<dl class="section note"><dt>注解</dt><dd>有关引脚配置修改位于motor.h文件中 </dd></dl>
+
+</div>
+</div>
+<a id="a562ded4725036b4a1e9e8b78249be75c" name="a562ded4725036b4a1e9e8b78249be75c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a562ded4725036b4a1e9e8b78249be75c">&#9670;&#160;</a></span>MOTOR_PID_Calculate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_PID_Calculate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_m_o_t_o_r___type_def.html">MOTOR_TypeDef</a> *&#160;</td>
+          <td class="paramname"><em>MotorStructure</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>PID计算函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">MotorStructure</td><td>电机结构体指针 </td></tr>
+    <tr><td class="paramname">Goal_Speed</td><td>目标速度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a814d46535cffab376d59f690eb9c3607" name="a814d46535cffab376d59f690eb9c3607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a814d46535cffab376d59f690eb9c3607">&#9670;&#160;</a></span>MOTOR_PWM_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_PWM_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化电机驱动PWM </p>
+<dl class="section note"><dt>注解</dt><dd>详细参数<ul>
+<li>频率：10KHz</li>
+<li>最大比较值：7200</li>
+</ul>
+</dd></dl>
+<ul>
+<li>通道：TIM3_CH3和TIM3_CH4<ul>
+<li>引脚：PB0（CH3）和 PB1（CH4）</li>
+</ul>
+</li>
+<li>电机映射： PB0-&gt;MOTOR_A PB1-&gt;MOTOR_B </li>
+</ul>
+
+</div>
+</div>
+<a id="a65ebe2172b9afdf3ee81a634c204f50f" name="a65ebe2172b9afdf3ee81a634c204f50f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65ebe2172b9afdf3ee81a634c204f50f">&#9670;&#160;</a></span>MOTOR_PWM_Load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_PWM_Load </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Motor_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>PWM</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>装载电机PWM </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Motor_Channel</td><td>电机通道（motor_a/motor_b） </td></tr>
+    <tr><td class="paramname">PWM</td><td>PWM值（0~7200） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>仅对对应通道的定时器进行占空比装载，不接受负数，不处理方向</li>
+<li>一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数 </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="a15a59e0b7dbafa7b18acae3a18ca020f" name="a15a59e0b7dbafa7b18acae3a18ca020f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15a59e0b7dbafa7b18acae3a18ca020f">&#9670;&#160;</a></span>MOTOR_Set_OperatingMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_Set_OperatingMode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置操作模式 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Mode</td><td>操作模式<ul>
+<li>#define MOTOR_MANUAL 0 // 手动模式</li>
+<li>#define MOTOR_AUTO 1 // 自动模式 </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1a1166679af4013a92e900494657835e" name="a1a1166679af4013a92e900494657835e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a1166679af4013a92e900494657835e">&#9670;&#160;</a></span>MOTOR_Set_Orientation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_Set_Orientation </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Orientation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置小车安装方向 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Orientation</td><td>旋转方向<ul>
+<li>#define MOTOR_Clockwise 0 // 顺时针旋转为正向</li>
+<li>#define MOTOR_Anticlockwise 1 // 逆时针旋转为正向 </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a57fb0df0ed1175e783d711c63312e8ea" name="a57fb0df0ed1175e783d711c63312e8ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57fb0df0ed1175e783d711c63312e8ea">&#9670;&#160;</a></span>MOTOR_Set_PIDGoalSpeed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_Set_PIDGoalSpeed </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Motor_channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Goal_Speed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置PID目标速度 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Motor_channel</td><td>电机通道 </td></tr>
+    <tr><td class="paramname">Goal_Speed</td><td>目标速度 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a43cff0fc5b8b17f8f38c9ea441065d0f" name="a43cff0fc5b8b17f8f38c9ea441065d0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43cff0fc5b8b17f8f38c9ea441065d0f">&#9670;&#160;</a></span>MOTOR_Set_PWM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_Set_PWM </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>Motor_channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>PWM</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>用来设置电机转动速度，自动设置旋转方向 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Motor_Channel</td><td>电机通道 </td></tr>
+    <tr><td class="paramname">PWM</td><td>对应占空比值（MOTOR_PWM_MIN ~ MOTOR_PWM_MAX） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>设置对应通道的PWM值，根据输入数据的正负与安装方向（MOTOR_Orientation）决定旋转方向</li>
+<li>为避免PWM过零引脚频繁切换，PWM=0时不会执行MOTOR_Set_State(Motor_channel, MOTOR_STOP); </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a id="a367d84ee0731dbe7931ab8cd024a92b4" name="a367d84ee0731dbe7931ab8cd024a92b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a367d84ee0731dbe7931ab8cd024a92b4">&#9670;&#160;</a></span>MOTOR_Set_State()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MOTOR_Set_State </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Motor_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Motor_State</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>选择电机前进方向，一般由内部调用 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Motor_Channel</td><td>电机通道 </td></tr>
+    <tr><td class="paramname">Motor_State</td><td>电机状态<ul>
+<li>MOTOR_STOP停止(刹车)</li>
+<li>MOTOR_FORWARD前进</li>
+<li>MOTOR_BACKWARD后退 </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd><ul>
+<li>运行方向：OTOR_Clockwise顺时针，MOTOR_Anticlockwise逆时针</li>
+<li>轮子旋转方向与PWM值之间的关系由MOTOR_Orientation决定，即由小车安装与前进方向决定</li>
+<li>此函数一般仅内部调用，对电机进行调速需选择MOTOR_Set_PWM函数 </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_06a443c98342f337bff9d9dc419b3392.html">HARDWARE</a></li><li class="navelem"><a class="el" href="motor_8h.html">motor.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+\doxysection{INA226.\+h 文件参考}
+\hypertarget{_i_n_a226_8h}{}\label{_i_n_a226_8h}\index{INA226.h@{INA226.h}}
+{\ttfamily \#include "{}stm32f10x.\+h"{}}\newline
+{\ttfamily \#include "{}delay.\+h"{}}\newline
+{\ttfamily \#include "{}usart.\+h"{}}\newline
+{\ttfamily \#include "{}sys.\+h"{}}\newline
+{\ttfamily \#include "{}board.\+h"{}}\newline
+\doxysubsubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_afc0b378f10595a0cbf38a4da1a2d31a6}{SHUNT\+\_\+\+RESISTOR}}~0.\+010f
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a2989837a37d6d63b59c6dd541b785435}{MAX\+\_\+\+CURRENT}}~10.\+0f
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a1501a35f006a4673b9b835374a0ca354}{INA\+\_\+\+SCL}}~PBout(12)
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a83d781d720cec3bcae08b17f419aa901}{INA\+\_\+\+SDA}}~PBout(13)
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a1194c1ff4b375902f87dbf78084fe433}{INA\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+PORT}}~GPIOB          /\texorpdfstring{$\ast$}{*} GPIO端口 \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_ad203983f2e7a5e6a8fa903b33bd3f773}{INA\+\_\+\+SCL\+\_\+\+RCC}}~RCC\+\_\+\+APB2\+Periph\+\_\+\+GPIOB /\texorpdfstring{$\ast$}{*} GPIO端口时钟 \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a5096be8468fc9731b2441e15c856d6ad}{INA\+\_\+\+SCL\+\_\+\+PIN}}~GPIO\+\_\+\+Pin\+\_\+12          /\texorpdfstring{$\ast$}{*} 连接到\+SCL时钟线的\+GPIO \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a41593207b3df94bf3e11ef8137640e66}{INA\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+PORT}}~GPIOB          /\texorpdfstring{$\ast$}{*} GPIO端口 \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a6646189ca4520cda897ee5829332c13a}{INA\+\_\+\+SDA\+\_\+\+RCC}}~RCC\+\_\+\+APB2\+Periph\+\_\+\+GPIOB /\texorpdfstring{$\ast$}{*} GPIO端口时钟 \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a00408ae8bde84fca8fc1e59fb0a0f0ed}{INA\+\_\+\+SDA\+\_\+\+PIN}}~GPIO\+\_\+\+Pin\+\_\+13          /\texorpdfstring{$\ast$}{*} 连接到\+SDA数据线的\+GPIO \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a1d21ad01bbe6c7fb325e88a6b8283384}{READ\+\_\+\+SDA}}~GPIO\+\_\+\+Read\+Input\+Data\+Bit(\mbox{\hyperlink{_i_n_a226_8h_a41593207b3df94bf3e11ef8137640e66}{INA\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+PORT}}, \mbox{\hyperlink{_i_n_a226_8h_a00408ae8bde84fca8fc1e59fb0a0f0ed}{INA\+\_\+\+SDA\+\_\+\+PIN}})
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_add1ec5ab7223c8a27038380097002268}{READ\+\_\+\+ADDR}}~0x81
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_ab93f4edf02708adbf08d38c581250436}{WRITE\+\_\+\+ADDR}}~0x80
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a2c07c05aacac248944e78129304c01df}{READ\+\_\+\+ADDR1}}~0x8B
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a98409f17c301c9698e6fdc67f6c9dc3d}{WRITE\+\_\+\+ADDR1}}~0x8A
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a085b3879d385bcf4cf3f2411add38f17}{Config\+\_\+\+Reg}}~0x00
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a4fb5e4bf16609bb2cb30d44cbe936204}{Shunt\+\_\+\+V\+\_\+\+Reg}}~0x01
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_abc28c40d3ffa93f2078151a653f36b3c}{Bus\+\_\+\+V\+\_\+\+Reg}}~0x02
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a9fac6cca7c32cfd970fff62c573b94c0}{Power\+\_\+\+Reg}}~0x03
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a6dc8342c955dc94c938dcad297b36df1}{Current\+\_\+\+Reg}}~0x04
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a2b7e963b3742111663155e2e6bd95eac}{Calib\+\_\+\+Reg}}~0x05
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_af925bb747b1f1d56b5e548cc5b4ae9d8}{Mask\+\_\+\+En\+\_\+\+Reg}}~0x06
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a4f9982224e6cc49a906b81197c2c3887}{Alert\+\_\+\+Reg}}~0x07
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_ae1223592a6ce752b9cc678b8d478cee1}{Man\+\_\+\+ID\+\_\+\+Reg}}~0x\+FE
+\item 
+\#define \mbox{\hyperlink{_i_n_a226_8h_a87382872b4eddaa0fdb6e989b5c4f2f4}{ID\+\_\+\+Reg}}~0x\+FF
+\end{DoxyCompactItemize}
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_i_n_a226_8h_a308b08320146563b3d46c318af5046ed}{INA226\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{_i_n_a226_8h_aa47f2249491d046e919e043ec75324c9}{INA226\+\_\+\+Init1}} (void)
+\item 
+void \mbox{\hyperlink{_i_n_a226_8h_a03143bc3f1e879f46206d45ac323530f}{INA226\+\_\+\+Send\+Data}} (uint8\+\_\+t addr, uint8\+\_\+t reg, uint16\+\_\+t data)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_i_n_a226_8h_a29b481f17d5ca3f07ba0b2d0099983ec}{INA226\+\_\+\+Get\+\_\+\+ID}} (uint8\+\_\+t addr)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_i_n_a226_8h_a9436110cde7c5f8ee393dce6dbfa70e9}{INA226\+\_\+\+Get\+Shunt\+Voltage}} (uint8\+\_\+t addr)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_i_n_a226_8h_a5fd16b3306dd9c10a2969e134c81e421}{INA226\+\_\+\+Get\+Shunt\+Current}} (uint8\+\_\+t addr)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_i_n_a226_8h_ada9282c70a85672021fec39d12a3ecf8}{INA226\+\_\+\+Get\+Voltage}} (uint8\+\_\+t addr)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_i_n_a226_8h_a87739741c258d8ba63ce391338fac00e}{INA226\+\_\+\+Get\+\_\+\+Power}} (uint8\+\_\+t addr)
+\item 
+float \mbox{\hyperlink{_i_n_a226_8h_a1e2001d07247dcb7417b2f081eeadf66}{INA226\+\_\+\+Read\+Current\+\_\+A}} (uint8\+\_\+t addr)
+\item 
+float \mbox{\hyperlink{_i_n_a226_8h_a3d6f6f7524a8993e1b502b77c131ae3a}{INA226\+\_\+\+Read\+Current\+\_\+mA}} (uint8\+\_\+t addr)
+\item 
+float \mbox{\hyperlink{_i_n_a226_8h_a5a741652a04677609b084e9eebe1bfac}{INA226\+\_\+\+Read\+Power}} (uint8\+\_\+t addr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{_i_n_a226_8h_a1cc54dc0849fecb3ddba87e8e37b0a7c}{Current\+\_\+\+LSB}}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} 软件参数 \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/ \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{_i_n_a226_8h_a9dfd7593d29229179619c209d032bd02}{Power\+\_\+\+LSB}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{宏定义说明}
+\Hypertarget{_i_n_a226_8h_a4f9982224e6cc49a906b81197c2c3887}\label{_i_n_a226_8h_a4f9982224e6cc49a906b81197c2c3887} 
+\index{INA226.h@{INA226.h}!Alert\_Reg@{Alert\_Reg}}
+\index{Alert\_Reg@{Alert\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Alert\_Reg}{Alert\_Reg}}
+{\footnotesize\ttfamily \#define Alert\+\_\+\+Reg~0x07}
+
+\Hypertarget{_i_n_a226_8h_abc28c40d3ffa93f2078151a653f36b3c}\label{_i_n_a226_8h_abc28c40d3ffa93f2078151a653f36b3c} 
+\index{INA226.h@{INA226.h}!Bus\_V\_Reg@{Bus\_V\_Reg}}
+\index{Bus\_V\_Reg@{Bus\_V\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Bus\_V\_Reg}{Bus\_V\_Reg}}
+{\footnotesize\ttfamily \#define Bus\+\_\+\+V\+\_\+\+Reg~0x02}
+
+\Hypertarget{_i_n_a226_8h_a2b7e963b3742111663155e2e6bd95eac}\label{_i_n_a226_8h_a2b7e963b3742111663155e2e6bd95eac} 
+\index{INA226.h@{INA226.h}!Calib\_Reg@{Calib\_Reg}}
+\index{Calib\_Reg@{Calib\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Calib\_Reg}{Calib\_Reg}}
+{\footnotesize\ttfamily \#define Calib\+\_\+\+Reg~0x05}
+
+\Hypertarget{_i_n_a226_8h_a085b3879d385bcf4cf3f2411add38f17}\label{_i_n_a226_8h_a085b3879d385bcf4cf3f2411add38f17} 
+\index{INA226.h@{INA226.h}!Config\_Reg@{Config\_Reg}}
+\index{Config\_Reg@{Config\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Config\_Reg}{Config\_Reg}}
+{\footnotesize\ttfamily \#define Config\+\_\+\+Reg~0x00}
+
+\Hypertarget{_i_n_a226_8h_a6dc8342c955dc94c938dcad297b36df1}\label{_i_n_a226_8h_a6dc8342c955dc94c938dcad297b36df1} 
+\index{INA226.h@{INA226.h}!Current\_Reg@{Current\_Reg}}
+\index{Current\_Reg@{Current\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Current\_Reg}{Current\_Reg}}
+{\footnotesize\ttfamily \#define Current\+\_\+\+Reg~0x04}
+
+\Hypertarget{_i_n_a226_8h_a87382872b4eddaa0fdb6e989b5c4f2f4}\label{_i_n_a226_8h_a87382872b4eddaa0fdb6e989b5c4f2f4} 
+\index{INA226.h@{INA226.h}!ID\_Reg@{ID\_Reg}}
+\index{ID\_Reg@{ID\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{ID\_Reg}{ID\_Reg}}
+{\footnotesize\ttfamily \#define ID\+\_\+\+Reg~0x\+FF}
+
+\Hypertarget{_i_n_a226_8h_a1501a35f006a4673b9b835374a0ca354}\label{_i_n_a226_8h_a1501a35f006a4673b9b835374a0ca354} 
+\index{INA226.h@{INA226.h}!INA\_SCL@{INA\_SCL}}
+\index{INA\_SCL@{INA\_SCL}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SCL}{INA\_SCL}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SCL~PBout(12)}
+
+\Hypertarget{_i_n_a226_8h_a1194c1ff4b375902f87dbf78084fe433}\label{_i_n_a226_8h_a1194c1ff4b375902f87dbf78084fe433} 
+\index{INA226.h@{INA226.h}!INA\_SCL\_GPIO\_PORT@{INA\_SCL\_GPIO\_PORT}}
+\index{INA\_SCL\_GPIO\_PORT@{INA\_SCL\_GPIO\_PORT}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SCL\_GPIO\_PORT}{INA\_SCL\_GPIO\_PORT}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+PORT~GPIOB          /\texorpdfstring{$\ast$}{*} GPIO端口 \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{_i_n_a226_8h_a5096be8468fc9731b2441e15c856d6ad}\label{_i_n_a226_8h_a5096be8468fc9731b2441e15c856d6ad} 
+\index{INA226.h@{INA226.h}!INA\_SCL\_PIN@{INA\_SCL\_PIN}}
+\index{INA\_SCL\_PIN@{INA\_SCL\_PIN}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SCL\_PIN}{INA\_SCL\_PIN}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SCL\+\_\+\+PIN~GPIO\+\_\+\+Pin\+\_\+12          /\texorpdfstring{$\ast$}{*} 连接到\+SCL时钟线的\+GPIO \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{_i_n_a226_8h_ad203983f2e7a5e6a8fa903b33bd3f773}\label{_i_n_a226_8h_ad203983f2e7a5e6a8fa903b33bd3f773} 
+\index{INA226.h@{INA226.h}!INA\_SCL\_RCC@{INA\_SCL\_RCC}}
+\index{INA\_SCL\_RCC@{INA\_SCL\_RCC}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SCL\_RCC}{INA\_SCL\_RCC}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SCL\+\_\+\+RCC~RCC\+\_\+\+APB2\+Periph\+\_\+\+GPIOB /\texorpdfstring{$\ast$}{*} GPIO端口时钟 \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{_i_n_a226_8h_a83d781d720cec3bcae08b17f419aa901}\label{_i_n_a226_8h_a83d781d720cec3bcae08b17f419aa901} 
+\index{INA226.h@{INA226.h}!INA\_SDA@{INA\_SDA}}
+\index{INA\_SDA@{INA\_SDA}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SDA}{INA\_SDA}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SDA~PBout(13)}
+
+\Hypertarget{_i_n_a226_8h_a41593207b3df94bf3e11ef8137640e66}\label{_i_n_a226_8h_a41593207b3df94bf3e11ef8137640e66} 
+\index{INA226.h@{INA226.h}!INA\_SDA\_GPIO\_PORT@{INA\_SDA\_GPIO\_PORT}}
+\index{INA\_SDA\_GPIO\_PORT@{INA\_SDA\_GPIO\_PORT}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SDA\_GPIO\_PORT}{INA\_SDA\_GPIO\_PORT}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+PORT~GPIOB          /\texorpdfstring{$\ast$}{*} GPIO端口 \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{_i_n_a226_8h_a00408ae8bde84fca8fc1e59fb0a0f0ed}\label{_i_n_a226_8h_a00408ae8bde84fca8fc1e59fb0a0f0ed} 
+\index{INA226.h@{INA226.h}!INA\_SDA\_PIN@{INA\_SDA\_PIN}}
+\index{INA\_SDA\_PIN@{INA\_SDA\_PIN}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SDA\_PIN}{INA\_SDA\_PIN}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SDA\+\_\+\+PIN~GPIO\+\_\+\+Pin\+\_\+13          /\texorpdfstring{$\ast$}{*} 连接到\+SDA数据线的\+GPIO \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{_i_n_a226_8h_a6646189ca4520cda897ee5829332c13a}\label{_i_n_a226_8h_a6646189ca4520cda897ee5829332c13a} 
+\index{INA226.h@{INA226.h}!INA\_SDA\_RCC@{INA\_SDA\_RCC}}
+\index{INA\_SDA\_RCC@{INA\_SDA\_RCC}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA\_SDA\_RCC}{INA\_SDA\_RCC}}
+{\footnotesize\ttfamily \#define INA\+\_\+\+SDA\+\_\+\+RCC~RCC\+\_\+\+APB2\+Periph\+\_\+\+GPIOB /\texorpdfstring{$\ast$}{*} GPIO端口时钟 \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{_i_n_a226_8h_ae1223592a6ce752b9cc678b8d478cee1}\label{_i_n_a226_8h_ae1223592a6ce752b9cc678b8d478cee1} 
+\index{INA226.h@{INA226.h}!Man\_ID\_Reg@{Man\_ID\_Reg}}
+\index{Man\_ID\_Reg@{Man\_ID\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Man\_ID\_Reg}{Man\_ID\_Reg}}
+{\footnotesize\ttfamily \#define Man\+\_\+\+ID\+\_\+\+Reg~0x\+FE}
+
+\Hypertarget{_i_n_a226_8h_af925bb747b1f1d56b5e548cc5b4ae9d8}\label{_i_n_a226_8h_af925bb747b1f1d56b5e548cc5b4ae9d8} 
+\index{INA226.h@{INA226.h}!Mask\_En\_Reg@{Mask\_En\_Reg}}
+\index{Mask\_En\_Reg@{Mask\_En\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Mask\_En\_Reg}{Mask\_En\_Reg}}
+{\footnotesize\ttfamily \#define Mask\+\_\+\+En\+\_\+\+Reg~0x06}
+
+\Hypertarget{_i_n_a226_8h_a2989837a37d6d63b59c6dd541b785435}\label{_i_n_a226_8h_a2989837a37d6d63b59c6dd541b785435} 
+\index{INA226.h@{INA226.h}!MAX\_CURRENT@{MAX\_CURRENT}}
+\index{MAX\_CURRENT@{MAX\_CURRENT}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_CURRENT}{MAX\_CURRENT}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+CURRENT~10.\+0f}
+
+\Hypertarget{_i_n_a226_8h_a9fac6cca7c32cfd970fff62c573b94c0}\label{_i_n_a226_8h_a9fac6cca7c32cfd970fff62c573b94c0} 
+\index{INA226.h@{INA226.h}!Power\_Reg@{Power\_Reg}}
+\index{Power\_Reg@{Power\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Power\_Reg}{Power\_Reg}}
+{\footnotesize\ttfamily \#define Power\+\_\+\+Reg~0x03}
+
+\Hypertarget{_i_n_a226_8h_add1ec5ab7223c8a27038380097002268}\label{_i_n_a226_8h_add1ec5ab7223c8a27038380097002268} 
+\index{INA226.h@{INA226.h}!READ\_ADDR@{READ\_ADDR}}
+\index{READ\_ADDR@{READ\_ADDR}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{READ\_ADDR}{READ\_ADDR}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+ADDR~0x81}
+
+\Hypertarget{_i_n_a226_8h_a2c07c05aacac248944e78129304c01df}\label{_i_n_a226_8h_a2c07c05aacac248944e78129304c01df} 
+\index{INA226.h@{INA226.h}!READ\_ADDR1@{READ\_ADDR1}}
+\index{READ\_ADDR1@{READ\_ADDR1}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{READ\_ADDR1}{READ\_ADDR1}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+ADDR1~0x8B}
+
+\Hypertarget{_i_n_a226_8h_a1d21ad01bbe6c7fb325e88a6b8283384}\label{_i_n_a226_8h_a1d21ad01bbe6c7fb325e88a6b8283384} 
+\index{INA226.h@{INA226.h}!READ\_SDA@{READ\_SDA}}
+\index{READ\_SDA@{READ\_SDA}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{READ\_SDA}{READ\_SDA}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+SDA~GPIO\+\_\+\+Read\+Input\+Data\+Bit(\mbox{\hyperlink{_i_n_a226_8h_a41593207b3df94bf3e11ef8137640e66}{INA\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+PORT}}, \mbox{\hyperlink{_i_n_a226_8h_a00408ae8bde84fca8fc1e59fb0a0f0ed}{INA\+\_\+\+SDA\+\_\+\+PIN}})}
+
+\Hypertarget{_i_n_a226_8h_afc0b378f10595a0cbf38a4da1a2d31a6}\label{_i_n_a226_8h_afc0b378f10595a0cbf38a4da1a2d31a6} 
+\index{INA226.h@{INA226.h}!SHUNT\_RESISTOR@{SHUNT\_RESISTOR}}
+\index{SHUNT\_RESISTOR@{SHUNT\_RESISTOR}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{SHUNT\_RESISTOR}{SHUNT\_RESISTOR}}
+{\footnotesize\ttfamily \#define SHUNT\+\_\+\+RESISTOR~0.\+010f}
+
+\Hypertarget{_i_n_a226_8h_a4fb5e4bf16609bb2cb30d44cbe936204}\label{_i_n_a226_8h_a4fb5e4bf16609bb2cb30d44cbe936204} 
+\index{INA226.h@{INA226.h}!Shunt\_V\_Reg@{Shunt\_V\_Reg}}
+\index{Shunt\_V\_Reg@{Shunt\_V\_Reg}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Shunt\_V\_Reg}{Shunt\_V\_Reg}}
+{\footnotesize\ttfamily \#define Shunt\+\_\+\+V\+\_\+\+Reg~0x01}
+
+\Hypertarget{_i_n_a226_8h_ab93f4edf02708adbf08d38c581250436}\label{_i_n_a226_8h_ab93f4edf02708adbf08d38c581250436} 
+\index{INA226.h@{INA226.h}!WRITE\_ADDR@{WRITE\_ADDR}}
+\index{WRITE\_ADDR@{WRITE\_ADDR}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_ADDR}{WRITE\_ADDR}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+ADDR~0x80}
+
+\Hypertarget{_i_n_a226_8h_a98409f17c301c9698e6fdc67f6c9dc3d}\label{_i_n_a226_8h_a98409f17c301c9698e6fdc67f6c9dc3d} 
+\index{INA226.h@{INA226.h}!WRITE\_ADDR1@{WRITE\_ADDR1}}
+\index{WRITE\_ADDR1@{WRITE\_ADDR1}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_ADDR1}{WRITE\_ADDR1}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+ADDR1~0x8A}
+
+
+
+\doxysubsection{函数说明}
+\Hypertarget{_i_n_a226_8h_a29b481f17d5ca3f07ba0b2d0099983ec}\label{_i_n_a226_8h_a29b481f17d5ca3f07ba0b2d0099983ec} 
+\index{INA226.h@{INA226.h}!INA226\_Get\_ID@{INA226\_Get\_ID}}
+\index{INA226\_Get\_ID@{INA226\_Get\_ID}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_Get\_ID()}{INA226\_Get\_ID()}}
+{\footnotesize\ttfamily uint16\+\_\+t INA226\+\_\+\+Get\+\_\+\+ID (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a87739741c258d8ba63ce391338fac00e}\label{_i_n_a226_8h_a87739741c258d8ba63ce391338fac00e} 
+\index{INA226.h@{INA226.h}!INA226\_Get\_Power@{INA226\_Get\_Power}}
+\index{INA226\_Get\_Power@{INA226\_Get\_Power}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_Get\_Power()}{INA226\_Get\_Power()}}
+{\footnotesize\ttfamily uint16\+\_\+t INA226\+\_\+\+Get\+\_\+\+Power (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a5fd16b3306dd9c10a2969e134c81e421}\label{_i_n_a226_8h_a5fd16b3306dd9c10a2969e134c81e421} 
+\index{INA226.h@{INA226.h}!INA226\_GetShuntCurrent@{INA226\_GetShuntCurrent}}
+\index{INA226\_GetShuntCurrent@{INA226\_GetShuntCurrent}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_GetShuntCurrent()}{INA226\_GetShuntCurrent()}}
+{\footnotesize\ttfamily uint16\+\_\+t INA226\+\_\+\+Get\+Shunt\+Current (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a9436110cde7c5f8ee393dce6dbfa70e9}\label{_i_n_a226_8h_a9436110cde7c5f8ee393dce6dbfa70e9} 
+\index{INA226.h@{INA226.h}!INA226\_GetShuntVoltage@{INA226\_GetShuntVoltage}}
+\index{INA226\_GetShuntVoltage@{INA226\_GetShuntVoltage}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_GetShuntVoltage()}{INA226\_GetShuntVoltage()}}
+{\footnotesize\ttfamily uint16\+\_\+t INA226\+\_\+\+Get\+Shunt\+Voltage (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_ada9282c70a85672021fec39d12a3ecf8}\label{_i_n_a226_8h_ada9282c70a85672021fec39d12a3ecf8} 
+\index{INA226.h@{INA226.h}!INA226\_GetVoltage@{INA226\_GetVoltage}}
+\index{INA226\_GetVoltage@{INA226\_GetVoltage}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_GetVoltage()}{INA226\_GetVoltage()}}
+{\footnotesize\ttfamily uint16\+\_\+t INA226\+\_\+\+Get\+Voltage (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a308b08320146563b3d46c318af5046ed}\label{_i_n_a226_8h_a308b08320146563b3d46c318af5046ed} 
+\index{INA226.h@{INA226.h}!INA226\_Init@{INA226\_Init}}
+\index{INA226\_Init@{INA226\_Init}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_Init()}{INA226\_Init()}}
+{\footnotesize\ttfamily void INA226\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_aa47f2249491d046e919e043ec75324c9}\label{_i_n_a226_8h_aa47f2249491d046e919e043ec75324c9} 
+\index{INA226.h@{INA226.h}!INA226\_Init1@{INA226\_Init1}}
+\index{INA226\_Init1@{INA226\_Init1}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_Init1()}{INA226\_Init1()}}
+{\footnotesize\ttfamily void INA226\+\_\+\+Init1 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a1e2001d07247dcb7417b2f081eeadf66}\label{_i_n_a226_8h_a1e2001d07247dcb7417b2f081eeadf66} 
+\index{INA226.h@{INA226.h}!INA226\_ReadCurrent\_A@{INA226\_ReadCurrent\_A}}
+\index{INA226\_ReadCurrent\_A@{INA226\_ReadCurrent\_A}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_ReadCurrent\_A()}{INA226\_ReadCurrent\_A()}}
+{\footnotesize\ttfamily float INA226\+\_\+\+Read\+Current\+\_\+A (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a3d6f6f7524a8993e1b502b77c131ae3a}\label{_i_n_a226_8h_a3d6f6f7524a8993e1b502b77c131ae3a} 
+\index{INA226.h@{INA226.h}!INA226\_ReadCurrent\_mA@{INA226\_ReadCurrent\_mA}}
+\index{INA226\_ReadCurrent\_mA@{INA226\_ReadCurrent\_mA}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_ReadCurrent\_mA()}{INA226\_ReadCurrent\_mA()}}
+{\footnotesize\ttfamily float INA226\+\_\+\+Read\+Current\+\_\+mA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a5a741652a04677609b084e9eebe1bfac}\label{_i_n_a226_8h_a5a741652a04677609b084e9eebe1bfac} 
+\index{INA226.h@{INA226.h}!INA226\_ReadPower@{INA226\_ReadPower}}
+\index{INA226\_ReadPower@{INA226\_ReadPower}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_ReadPower()}{INA226\_ReadPower()}}
+{\footnotesize\ttfamily float INA226\+\_\+\+Read\+Power (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+\Hypertarget{_i_n_a226_8h_a03143bc3f1e879f46206d45ac323530f}\label{_i_n_a226_8h_a03143bc3f1e879f46206d45ac323530f} 
+\index{INA226.h@{INA226.h}!INA226\_SendData@{INA226\_SendData}}
+\index{INA226\_SendData@{INA226\_SendData}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{INA226\_SendData()}{INA226\_SendData()}}
+{\footnotesize\ttfamily void INA226\+\_\+\+Send\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint16\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{变量说明}
+\Hypertarget{_i_n_a226_8h_a1cc54dc0849fecb3ddba87e8e37b0a7c}\label{_i_n_a226_8h_a1cc54dc0849fecb3ddba87e8e37b0a7c} 
+\index{INA226.h@{INA226.h}!Current\_LSB@{Current\_LSB}}
+\index{Current\_LSB@{Current\_LSB}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Current\_LSB}{Current\_LSB}}
+{\footnotesize\ttfamily float Current\+\_\+\+LSB\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} 软件参数 \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/ 
+
+\Hypertarget{_i_n_a226_8h_a9dfd7593d29229179619c209d032bd02}\label{_i_n_a226_8h_a9dfd7593d29229179619c209d032bd02} 
+\index{INA226.h@{INA226.h}!Power\_LSB@{Power\_LSB}}
+\index{Power\_LSB@{Power\_LSB}!INA226.h@{INA226.h}}
+\doxysubsubsection{\texorpdfstring{Power\_LSB}{Power\_LSB}}
+{\footnotesize\ttfamily float Power\+\_\+\+LSB\hspace{0.3cm}{\ttfamily [static]}}
+

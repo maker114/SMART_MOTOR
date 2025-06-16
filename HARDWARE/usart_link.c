@@ -1,7 +1,7 @@
 /**
  * @file usart_link.c
  * @author maker114
- * @brief 串口连接驱动程序
+ * @brief  串口通信协议程序
  * @version 0.1
  * @date 2025-05-22
  *
@@ -14,6 +14,10 @@
 #include "board.h"
 #include "usart.h"
 
+/**
+ * @brief 初始化串口连接
+ * @note 使用串口三接收
+ */
 void LINK_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -41,22 +45,21 @@ void LINK_Init(void)
     USART_Init(USART3, &USART_InitStructure);
 
     NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3; // ??????????3
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;        // ×???????3
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;           // IRQ?¨??????
-    NVIC_Init(&NVIC_InitStructure);                           // ?ù?????¨????????????VIC?????÷
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
 
-    USART_ITConfig(USART3, USART_IT_RXNE, ENABLE); // ????????
+    USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
     USART_Cmd(USART3, ENABLE);
 }
 
+uint8_t packet[SUM]; // 完整数据包: 帧头(2)+CMD(1)+DATA(2)+校验和(1)
 /**
  * @brief  发送数据包函数
  * @param  CMD: 命令字节
  * @param  DATA: 16位数据
- * @retval None
  */
-uint8_t packet[SUM]; // 完整数据包: 帧头(2)+CMD(1)+DATA(2)+校验和(1)
 void LINK_SendPack(uint8_t CMD, uint16_t DATA)
 {
     uint8_t checksum = 0;
@@ -76,6 +79,10 @@ void LINK_SendPack(uint8_t CMD, uint16_t DATA)
     }
 }
 
+/**
+ * @brief 串口中断处理函数
+ *
+ */
 void USART3_IRQHandler(void)
 {
     if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
@@ -87,6 +94,10 @@ void USART3_IRQHandler(void)
 
 uint8_t GetPack_Buffer[SUM]; // 串口接收缓冲区，接收程序结束后即清零，验证校验和之后存入存储区
 uint8_t GetPack_DATA[SUM];   // 串口接收储存区，接收程序结束后不会销毁，可以随时调用
+/**
+ * @brief 从USART3接收数据包并进行处理。
+ * @note 该函数通过USART3接收一个数据包，包括帧头、命令、数据和高低字节，并进行校验。如果校验成功，则处理数据；否则，丢弃数据包。
+ */
 void LINK_GetPack(void)
 {
     static uint8_t Status_count = 0;
@@ -133,7 +144,7 @@ void LINK_GetPack(void)
                 GetPack_DATA[i] = GetPack_Buffer[i]; // 保存数据
             }
             int16_t DATA = (GetPack_DATA[LINK_DATA_H] << 8) | GetPack_DATA[LINK_DATA_L]; // 还原数据
-            //printf("CMD: %x, DATA: %x \n", GetPack_DATA[LINK_CMD], DATA);
+            // printf("CMD: %x, DATA: %x \n", GetPack_DATA[LINK_CMD], DATA);
             LINK_HandleData(GetPack_DATA[LINK_CMD], DATA); // 处理数据
         }
         Status_count = 0; // 清空计数器
@@ -148,6 +159,12 @@ void LINK_GetPack(void)
     }
 }
 
+/**
+ * @brief 处理接收到的数据命令。
+ * @note 根据接收到的命令字节（CMD）和数据（DATA），执行相应的操作。
+ * @param CMD 命令字节，指定要执行的操作。
+ * @param DATA 数据，与命令相关联的具体数据。
+ */
 void LINK_HandleData(uint8_t CMD, int16_t DATA)
 {
     uint8_t LED_ID = 0;

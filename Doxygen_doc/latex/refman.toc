@@ -1,0 +1,104 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {section}{\numberline {1}README}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}定时器配置}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}WS2812 颜色映射}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}电机宏定义部分}{1}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}总连接表}{2}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}串口数据包格式}{3}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}数据包格式：}{3}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}发送命令：}{3}{subsubsection.1.5.2}%
+\contentsline {section}{\numberline {2}结构体索引}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}结构体}{3}{subsection.2.1}%
+\contentsline {section}{\numberline {3}文件索引}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}文件列表}{4}{subsection.3.1}%
+\contentsline {section}{\numberline {4}结构体说明}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Fast\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Response\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Filter结构体 参考}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}MOTOR\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Def结构体 参考}{5}{subsection.4.2}%
+\contentsline {section}{\numberline {5}文件说明}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/board.c 文件参考}{5}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}详细描述}{6}{subsubsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.2}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/board.h 文件参考}{6}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}详细描述}{7}{subsubsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.3}board.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{7}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/motor.c 文件参考}{7}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}详细描述}{9}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}函数说明}{9}{subsubsection.5.4.2}%
+\contentsline {paragraph}{Filter\_Init()}{9}{section*.8}%
+\contentsline {paragraph}{Filter\_Process()}{10}{section*.9}%
+\contentsline {paragraph}{MOTOR\_ADC\_Init()}{10}{section*.10}%
+\contentsline {paragraph}{MOTOR\_ENCODER\_Init()}{10}{section*.11}%
+\contentsline {paragraph}{MOTOR\_Get\_BatteryVoltage()}{11}{section*.12}%
+\contentsline {paragraph}{MOTOR\_Get\_GoalSpeed()}{11}{section*.13}%
+\contentsline {paragraph}{MOTOR\_Get\_PWM()}{11}{section*.14}%
+\contentsline {paragraph}{MOTOR\_Get\_Speed()}{11}{section*.15}%
+\contentsline {paragraph}{MOTOR\_GPIO\_Init()}{12}{section*.16}%
+\contentsline {paragraph}{MOTOR\_PID\_Calculate()}{12}{section*.17}%
+\contentsline {paragraph}{MOTOR\_PWM\_Init()}{12}{section*.18}%
+\contentsline {paragraph}{MOTOR\_PWM\_Load()}{13}{section*.19}%
+\contentsline {paragraph}{MOTOR\_Set\_OperatingMode()}{13}{section*.20}%
+\contentsline {paragraph}{MOTOR\_Set\_Orientation()}{13}{section*.21}%
+\contentsline {paragraph}{MOTOR\_Set\_PIDGoalSpeed()}{14}{section*.22}%
+\contentsline {paragraph}{MOTOR\_Set\_PWM()}{14}{section*.23}%
+\contentsline {paragraph}{MOTOR\_Set\_State()}{14}{section*.24}%
+\contentsline {subsection}{\numberline {5.5}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/motor.h 文件参考}{15}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}详细描述}{18}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}函数说明}{18}{subsubsection.5.5.2}%
+\contentsline {paragraph}{Filter\_Init()}{18}{section*.29}%
+\contentsline {paragraph}{Filter\_Process()}{18}{section*.30}%
+\contentsline {paragraph}{MOTOR\_ADC\_Init()}{19}{section*.31}%
+\contentsline {paragraph}{MOTOR\_ENCODER\_Init()}{19}{section*.32}%
+\contentsline {paragraph}{MOTOR\_Get\_BatteryVoltage()}{19}{section*.33}%
+\contentsline {paragraph}{MOTOR\_Get\_GoalSpeed()}{19}{section*.34}%
+\contentsline {paragraph}{MOTOR\_Get\_PWM()}{20}{section*.35}%
+\contentsline {paragraph}{MOTOR\_Get\_Speed()}{20}{section*.36}%
+\contentsline {paragraph}{MOTOR\_GPIO\_Init()}{20}{section*.37}%
+\contentsline {paragraph}{MOTOR\_PID\_Calculate()}{21}{section*.38}%
+\contentsline {paragraph}{MOTOR\_PWM\_Init()}{21}{section*.39}%
+\contentsline {paragraph}{MOTOR\_PWM\_Load()}{21}{section*.40}%
+\contentsline {paragraph}{MOTOR\_Set\_OperatingMode()}{22}{section*.41}%
+\contentsline {paragraph}{MOTOR\_Set\_Orientation()}{22}{section*.42}%
+\contentsline {paragraph}{MOTOR\_Set\_PIDGoalSpeed()}{22}{section*.43}%
+\contentsline {paragraph}{MOTOR\_Set\_PWM()}{23}{section*.44}%
+\contentsline {paragraph}{MOTOR\_Set\_State()}{23}{section*.45}%
+\contentsline {subsection}{\numberline {5.6}motor.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{23}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/usart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}link.c 文件参考}{25}{subsection.5.7}%
+\contentsline {subsubsection}{\numberline {5.7.1}详细描述}{26}{subsubsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.2}函数说明}{26}{subsubsection.5.7.2}%
+\contentsline {paragraph}{LINK\_GetPack()}{26}{section*.48}%
+\contentsline {paragraph}{LINK\_HandleData()}{26}{section*.49}%
+\contentsline {paragraph}{LINK\_Init()}{27}{section*.50}%
+\contentsline {paragraph}{LINK\_SendPack()}{27}{section*.51}%
+\contentsline {subsection}{\numberline {5.8}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/usart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}link.h 文件参考}{27}{subsection.5.8}%
+\contentsline {subsubsection}{\numberline {5.8.1}详细描述}{28}{subsubsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.2}枚举类型说明}{28}{subsubsection.5.8.2}%
+\contentsline {paragraph}{linkcmd\_in}{28}{section*.55}%
+\contentsline {paragraph}{linkcmd\_out}{29}{section*.56}%
+\contentsline {paragraph}{linkpackenum}{29}{section*.57}%
+\contentsline {subsubsection}{\numberline {5.8.3}函数说明}{29}{subsubsection.5.8.3}%
+\contentsline {paragraph}{LINK\_GetPack()}{29}{section*.58}%
+\contentsline {paragraph}{LINK\_HandleData()}{30}{section*.59}%
+\contentsline {paragraph}{LINK\_Init()}{30}{section*.60}%
+\contentsline {paragraph}{LINK\_SendPack()}{30}{section*.61}%
+\contentsline {subsection}{\numberline {5.9}usart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}link.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{31}{subsection.5.9}%
+\contentsline {subsection}{\numberline {5.10}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WS2812.c 文件参考}{31}{subsection.5.10}%
+\contentsline {subsubsection}{\numberline {5.10.1}详细描述}{32}{subsubsection.5.10.1}%
+\contentsline {subsubsection}{\numberline {5.10.2}函数说明}{32}{subsubsection.5.10.2}%
+\contentsline {paragraph}{WS2812\_init()}{32}{section*.64}%
+\contentsline {paragraph}{WS2812\_SendColor()}{33}{section*.65}%
+\contentsline {paragraph}{WS2812\_SendColor\_u32()}{33}{section*.66}%
+\contentsline {paragraph}{WS2812\_StreamColor()}{33}{section*.67}%
+\contentsline {paragraph}{WS2812\_Wheel()}{34}{section*.68}%
+\contentsline {paragraph}{ws281x\_delay()}{34}{section*.69}%
+\contentsline {paragraph}{ws281x\_sendOne()}{34}{section*.70}%
+\contentsline {subsection}{\numberline {5.11}D\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}:/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32 Project/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}STM32\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}F103/smart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}motor/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}USER/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}HARDWARE/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}WS2812.h 文件参考}{34}{subsection.5.11}%
+\contentsline {subsubsection}{\numberline {5.11.1}详细描述}{36}{subsubsection.5.11.1}%
+\contentsline {subsubsection}{\numberline {5.11.2}函数说明}{36}{subsubsection.5.11.2}%
+\contentsline {paragraph}{WS2812\_init()}{36}{section*.73}%
+\contentsline {paragraph}{WS2812\_SendColor()}{36}{section*.74}%
+\contentsline {paragraph}{WS2812\_SendColor\_u32()}{37}{section*.75}%
+\contentsline {paragraph}{WS2812\_StreamColor()}{37}{section*.76}%
+\contentsline {paragraph}{WS2812\_Wheel()}{37}{section*.77}%
+\contentsline {paragraph}{ws281x\_delay()}{37}{section*.78}%
+\contentsline {paragraph}{ws281x\_sendOne()}{38}{section*.79}%
+\contentsline {subsection}{\numberline {5.12}WS2812.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{38}{subsection.5.12}%
+\contentsline {section}{Index}{39}{section*.80}%

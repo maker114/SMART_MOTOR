@@ -1,0 +1,268 @@
+\begin{theindex}
+
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/board.c}, 
+		\hyperpage{5}
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/board.h}, 
+		\hyperpage{6, 7}
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/motor.c}, 
+		\hyperpage{7}
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/motor.h}, 
+		\hyperpage{15}, \hyperpage{23}
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.c}, 
+		\hyperpage{25}
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.h}, 
+		\hyperpage{27}, \hyperpage{31}
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/WS2812.c}, 
+		\hyperpage{31}
+  \item {D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/WS2812.h}, 
+		\hyperpage{34}, \hyperpage{38}
+
+  \indexspace
+
+  \item {FastResponseFilter}, \hyperpage{4}
+  \item {Filter\_Init}
+    \subitem {motor.c}, \hyperpage{9}
+    \subitem {motor.h}, \hyperpage{18}
+  \item {Filter\_Process}
+    \subitem {motor.c}, \hyperpage{10}
+    \subitem {motor.h}, \hyperpage{18}
+
+  \indexspace
+
+  \item {LINK\_CheckSum}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_ASK\_ADC}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_ASK\_MotorASpeed}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_ASK\_MotorBSpeed}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_SET\_LED}
+    \subitem {usart\_link.h}, \hyperpage{28}
+  \item {LINK\_CMD\_IN\_SET\_MotorAGoalSpeed}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_SET\_MotorAPWM}
+    \subitem {usart\_link.h}, \hyperpage{28}
+  \item {LINK\_CMD\_IN\_SET\_MotorBGoalSpeed}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_SET\_MotorBPWM}
+    \subitem {usart\_link.h}, \hyperpage{28}
+  \item {LINK\_CMD\_IN\_SET\_MotorMode}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_SET\_MotorStatue}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_SET\_Orientation}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_IN\_SET\_SwitchOLED}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_OUT\_NULL}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_OUT\_RE\_ADC}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_OUT\_RE\_MotorASpeed}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_CMD\_OUT\_RE\_MotorBSpeed}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_DATA\_H}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_DATA\_L}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_FrameHeader1}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_FrameHeader2}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_GetPack}
+    \subitem {usart\_link.c}, \hyperpage{26}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {LINK\_HandleData}
+    \subitem {usart\_link.c}, \hyperpage{26}
+    \subitem {usart\_link.h}, \hyperpage{30}
+  \item {LINK\_Init}
+    \subitem {usart\_link.c}, \hyperpage{26}
+    \subitem {usart\_link.h}, \hyperpage{30}
+  \item {LINK\_SendPack}
+    \subitem {usart\_link.c}, \hyperpage{27}
+    \subitem {usart\_link.h}, \hyperpage{30}
+  \item {linkcmd\_in}
+    \subitem {usart\_link.h}, \hyperpage{28}
+  \item {linkcmd\_out}
+    \subitem {usart\_link.h}, \hyperpage{29}
+  \item {linkpackenum}
+    \subitem {usart\_link.h}, \hyperpage{29}
+
+  \indexspace
+
+  \item {motor.c}
+    \subitem {Filter\_Init}, \hyperpage{9}
+    \subitem {Filter\_Process}, \hyperpage{10}
+    \subitem {MOTOR\_ADC\_Init}, \hyperpage{10}
+    \subitem {MOTOR\_ENCODER\_Init}, \hyperpage{10}
+    \subitem {MOTOR\_Get\_BatteryVoltage}, \hyperpage{10}
+    \subitem {MOTOR\_Get\_GoalSpeed}, \hyperpage{11}
+    \subitem {MOTOR\_Get\_PWM}, \hyperpage{11}
+    \subitem {MOTOR\_Get\_Speed}, \hyperpage{11}
+    \subitem {MOTOR\_GPIO\_Init}, \hyperpage{12}
+    \subitem {MOTOR\_PID\_Calculate}, \hyperpage{12}
+    \subitem {MOTOR\_PWM\_Init}, \hyperpage{12}
+    \subitem {MOTOR\_PWM\_Load}, \hyperpage{13}
+    \subitem {MOTOR\_Set\_OperatingMode}, \hyperpage{13}
+    \subitem {MOTOR\_Set\_Orientation}, \hyperpage{13}
+    \subitem {MOTOR\_Set\_PIDGoalSpeed}, \hyperpage{14}
+    \subitem {MOTOR\_Set\_PWM}, \hyperpage{14}
+    \subitem {MOTOR\_Set\_State}, \hyperpage{14}
+  \item {motor.h}
+    \subitem {Filter\_Init}, \hyperpage{18}
+    \subitem {Filter\_Process}, \hyperpage{18}
+    \subitem {MOTOR\_ADC\_Init}, \hyperpage{19}
+    \subitem {MOTOR\_ENCODER\_Init}, \hyperpage{19}
+    \subitem {MOTOR\_Get\_BatteryVoltage}, \hyperpage{19}
+    \subitem {MOTOR\_Get\_GoalSpeed}, \hyperpage{19}
+    \subitem {MOTOR\_Get\_PWM}, \hyperpage{20}
+    \subitem {MOTOR\_Get\_Speed}, \hyperpage{20}
+    \subitem {MOTOR\_GPIO\_Init}, \hyperpage{20}
+    \subitem {MOTOR\_PID\_Calculate}, \hyperpage{21}
+    \subitem {MOTOR\_PWM\_Init}, \hyperpage{21}
+    \subitem {MOTOR\_PWM\_Load}, \hyperpage{21}
+    \subitem {MOTOR\_Set\_OperatingMode}, \hyperpage{22}
+    \subitem {MOTOR\_Set\_Orientation}, \hyperpage{22}
+    \subitem {MOTOR\_Set\_PIDGoalSpeed}, \hyperpage{22}
+    \subitem {MOTOR\_Set\_PWM}, \hyperpage{22}
+    \subitem {MOTOR\_Set\_State}, \hyperpage{23}
+  \item {MOTOR\_ADC\_Init}
+    \subitem {motor.c}, \hyperpage{10}
+    \subitem {motor.h}, \hyperpage{19}
+  \item {MOTOR\_ENCODER\_Init}
+    \subitem {motor.c}, \hyperpage{10}
+    \subitem {motor.h}, \hyperpage{19}
+  \item {MOTOR\_Get\_BatteryVoltage}
+    \subitem {motor.c}, \hyperpage{10}
+    \subitem {motor.h}, \hyperpage{19}
+  \item {MOTOR\_Get\_GoalSpeed}
+    \subitem {motor.c}, \hyperpage{11}
+    \subitem {motor.h}, \hyperpage{19}
+  \item {MOTOR\_Get\_PWM}
+    \subitem {motor.c}, \hyperpage{11}
+    \subitem {motor.h}, \hyperpage{20}
+  \item {MOTOR\_Get\_Speed}
+    \subitem {motor.c}, \hyperpage{11}
+    \subitem {motor.h}, \hyperpage{20}
+  \item {MOTOR\_GPIO\_Init}
+    \subitem {motor.c}, \hyperpage{12}
+    \subitem {motor.h}, \hyperpage{20}
+  \item {MOTOR\_PID\_Calculate}
+    \subitem {motor.c}, \hyperpage{12}
+    \subitem {motor.h}, \hyperpage{21}
+  \item {MOTOR\_PWM\_Init}
+    \subitem {motor.c}, \hyperpage{12}
+    \subitem {motor.h}, \hyperpage{21}
+  \item {MOTOR\_PWM\_Load}
+    \subitem {motor.c}, \hyperpage{13}
+    \subitem {motor.h}, \hyperpage{21}
+  \item {MOTOR\_Set\_OperatingMode}
+    \subitem {motor.c}, \hyperpage{13}
+    \subitem {motor.h}, \hyperpage{22}
+  \item {MOTOR\_Set\_Orientation}
+    \subitem {motor.c}, \hyperpage{13}
+    \subitem {motor.h}, \hyperpage{22}
+  \item {MOTOR\_Set\_PIDGoalSpeed}
+    \subitem {motor.c}, \hyperpage{14}
+    \subitem {motor.h}, \hyperpage{22}
+  \item {MOTOR\_Set\_PWM}
+    \subitem {motor.c}, \hyperpage{14}
+    \subitem {motor.h}, \hyperpage{22}
+  \item {MOTOR\_Set\_State}
+    \subitem {motor.c}, \hyperpage{14}
+    \subitem {motor.h}, \hyperpage{23}
+  \item {MOTOR\_TypeDef}, \hyperpage{5}
+
+  \indexspace
+
+  \item {README}, \hyperpage{1}
+
+  \indexspace
+
+  \item {SUM}
+    \subitem {usart\_link.h}, \hyperpage{29}
+
+  \indexspace
+
+  \item {usart\_link.c}
+    \subitem {LINK\_GetPack}, \hyperpage{26}
+    \subitem {LINK\_HandleData}, \hyperpage{26}
+    \subitem {LINK\_Init}, \hyperpage{26}
+    \subitem {LINK\_SendPack}, \hyperpage{27}
+  \item {usart\_link.h}
+    \subitem {LINK\_CheckSum}, \hyperpage{29}
+    \subitem {LINK\_CMD}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_ASK\_ADC}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_ASK\_MotorASpeed}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_ASK\_MotorBSpeed}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_SET\_LED}, \hyperpage{28}
+    \subitem {LINK\_CMD\_IN\_SET\_MotorAGoalSpeed}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_SET\_MotorAPWM}, \hyperpage{28}
+    \subitem {LINK\_CMD\_IN\_SET\_MotorBGoalSpeed}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_SET\_MotorBPWM}, \hyperpage{28}
+    \subitem {LINK\_CMD\_IN\_SET\_MotorMode}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_SET\_MotorStatue}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_SET\_Orientation}, \hyperpage{29}
+    \subitem {LINK\_CMD\_IN\_SET\_SwitchOLED}, \hyperpage{29}
+    \subitem {LINK\_CMD\_OUT\_NULL}, \hyperpage{29}
+    \subitem {LINK\_CMD\_OUT\_RE\_ADC}, \hyperpage{29}
+    \subitem {LINK\_CMD\_OUT\_RE\_MotorASpeed}, \hyperpage{29}
+    \subitem {LINK\_CMD\_OUT\_RE\_MotorBSpeed}, \hyperpage{29}
+    \subitem {LINK\_DATA\_H}, \hyperpage{29}
+    \subitem {LINK\_DATA\_L}, \hyperpage{29}
+    \subitem {LINK\_FrameHeader1}, \hyperpage{29}
+    \subitem {LINK\_FrameHeader2}, \hyperpage{29}
+    \subitem {LINK\_GetPack}, \hyperpage{29}
+    \subitem {LINK\_HandleData}, \hyperpage{30}
+    \subitem {LINK\_Init}, \hyperpage{30}
+    \subitem {LINK\_SendPack}, \hyperpage{30}
+    \subitem {linkcmd\_in}, \hyperpage{28}
+    \subitem {linkcmd\_out}, \hyperpage{29}
+    \subitem {linkpackenum}, \hyperpage{29}
+    \subitem {SUM}, \hyperpage{29}
+
+  \indexspace
+
+  \item {WS2812.c}
+    \subitem {WS2812\_init}, \hyperpage{32}
+    \subitem {WS2812\_SendColor}, \hyperpage{33}
+    \subitem {WS2812\_SendColor\_u32}, \hyperpage{33}
+    \subitem {WS2812\_StreamColor}, \hyperpage{33}
+    \subitem {WS2812\_Wheel}, \hyperpage{33}
+    \subitem {ws281x\_delay}, \hyperpage{34}
+    \subitem {ws281x\_sendOne}, \hyperpage{34}
+  \item {WS2812.h}
+    \subitem {WS2812\_init}, \hyperpage{36}
+    \subitem {WS2812\_SendColor}, \hyperpage{36}
+    \subitem {WS2812\_SendColor\_u32}, \hyperpage{36}
+    \subitem {WS2812\_StreamColor}, \hyperpage{37}
+    \subitem {WS2812\_Wheel}, \hyperpage{37}
+    \subitem {ws281x\_delay}, \hyperpage{37}
+    \subitem {ws281x\_sendOne}, \hyperpage{38}
+  \item {WS2812\_init}
+    \subitem {WS2812.c}, \hyperpage{32}
+    \subitem {WS2812.h}, \hyperpage{36}
+  \item {WS2812\_SendColor}
+    \subitem {WS2812.c}, \hyperpage{33}
+    \subitem {WS2812.h}, \hyperpage{36}
+  \item {WS2812\_SendColor\_u32}
+    \subitem {WS2812.c}, \hyperpage{33}
+    \subitem {WS2812.h}, \hyperpage{36}
+  \item {WS2812\_StreamColor}
+    \subitem {WS2812.c}, \hyperpage{33}
+    \subitem {WS2812.h}, \hyperpage{37}
+  \item {WS2812\_Wheel}
+    \subitem {WS2812.c}, \hyperpage{33}
+    \subitem {WS2812.h}, \hyperpage{37}
+  \item {ws281x\_delay}
+    \subitem {WS2812.c}, \hyperpage{34}
+    \subitem {WS2812.h}, \hyperpage{37}
+  \item {ws281x\_sendOne}
+    \subitem {WS2812.c}, \hyperpage{34}
+    \subitem {WS2812.h}, \hyperpage{38}
+
+\end{theindex}

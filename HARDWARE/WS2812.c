@@ -1,24 +1,30 @@
+/**
+ * @file WS2812.c
+ * @author maker114
+ * @brief WS2812Çı¶¯³ÌĞò
+ * @version 0.1
+ * @date 2025-06-16
+ */
 #include "WS2812.h"
 
-// å®šä¹‰éƒ¨åˆ†
-int LED_NUM = 0;                // LEDç¯æ•°é‡
-uint32_t LED_BUFFER[100] = {0}; // LEDç¼“å†²åŒº,æ‰€å­˜å‚¨çš„æ•°æ®ä¸º24ä½çš„RGBæ•°æ®
+// ¶¨Òå²¿·Ö
+int LED_NUM = 0;                // LEDµÆÊıÁ¿
+uint32_t LED_BUFFER[100] = {0}; // LED»º³åÇø,Ëù´æ´¢µÄÊı¾İÎª24Î»µÄRGBÊı¾İ
 
 /**
- * @brief åˆå§‹åŒ–WS2812å¼•è„šå¹¶å®šä¹‰ç¯çš„æ•°é‡
- *
- * @param NUM LEDç¯æ•°é‡
+ * @brief ³õÊ¼»¯WS2812Òı½Å²¢¶¨ÒåµÆµÄÊıÁ¿
+ * @param NUM LEDµÆÊıÁ¿
  */
 void WS2812_init(uint8_t NUM)
 {
   GPIO_InitTypeDef GPIO_InitStructure;
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); // ä½¿èƒ½PAç«¯å£æ—¶é’Ÿ
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;             // WS2811-->PA.0 ç«¯å£é…ç½®
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;      // æ¨æŒ½è¾“å‡º
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;     // IOå£é€Ÿåº¦ä¸º50MHz
-  GPIO_Init(GPIOA, &GPIO_InitStructure);                // æ ¹æ®è®¾å®šå‚æ•°åˆå§‹åŒ–GPIOA.0
-  GPIO_ResetBits(GPIOA, GPIO_Pin_8);                    // PA.0 è¾“å‡ºä½ç”µå¹³
-  LED_NUM = NUM;                                        // åˆå§‹åŒ–LEDæ•°é‡
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); // Ê¹ÄÜPA¶Ë¿ÚÊ±ÖÓ
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;             // WS2811-->PA.0 ¶Ë¿ÚÅäÖÃ
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;      // ÍÆÍìÊä³ö
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;     // IO¿ÚËÙ¶ÈÎª50MHz
+  GPIO_Init(GPIOA, &GPIO_InitStructure);                // ¸ù¾İÉè¶¨²ÎÊı³õÊ¼»¯GPIOA.0
+  GPIO_ResetBits(GPIOA, GPIO_Pin_8);                    // PA.0 Êä³öµÍµçÆ½
+  LED_NUM = NUM;                                        // ³õÊ¼»¯LEDÊıÁ¿
   WS2812_SendColor(0, 0x00, 0x00, 0x00);
   WS2812_SendColor(1, 0x00, 0x00, 0x00);
   WS2812_SendColor(2, 0x00, 0x00, 0x00);
@@ -26,9 +32,8 @@ void WS2812_init(uint8_t NUM)
 }
 
 /**
- * @brief  ws281xæ¨¡å—ç”¨åˆ°çš„å»¶æ—¶å‡½æ•°
- * @param  delay_num :å»¶æ—¶æ•° ï¼ˆç¤ºæ³¢å™¨æµ‹é‡å»¶æ—¶æ—¶é—´ = delay_num * 440ns ï¼‰
- * @retval None
+ * @brief  ws281xÄ£¿éÓÃµ½µÄÑÓÊ±º¯Êı
+ * @param  delay_num :ÑÓÊ±Êı £¨Ê¾²¨Æ÷²âÁ¿ÑÓÊ±Ê±¼ä = delay_num * 440ns £©
  */
 void ws281x_delay(unsigned int delay_num)
 {
@@ -37,19 +42,21 @@ void ws281x_delay(unsigned int delay_num)
 }
 
 /**
- * @brief  æ ¹æ®WS281xèŠ¯ç‰‡æ—¶åºå›¾ç¼–å†™çš„å‘é€0ç ï¼Œ1ç ä¸RESETç çš„å‡½æ•°
- * @param
- * @retval None
+ * @brief  ¸ù¾İWS281xĞ¾Æ¬Ê±ĞòÍ¼±àĞ´µÄ·¢ËÍ0Âë£¬1ÂëÓëRESETÂëµÄº¯Êı
  */
-void ws281x_sendLow(void) // å‘é€0ç 
+void ws281x_sendLow(void) // ·¢ËÍ0Âë
 {
   PAout(8) = 1;
-  ws281x_delay(1); // ç¤ºæ³¢å™¨æµ‹è¯•çº¦ä¸º440ns
+  ws281x_delay(1); // Ê¾²¨Æ÷²âÊÔÔ¼Îª440ns
   PAout(8) = 0;
   ws281x_delay(2);
 }
 
-void ws281x_sendHigh(void) // å‘é€1ç 
+/**
+ * @brief ·¢ËÍ1Âë
+ *
+ */
+void ws281x_sendHigh(void) // ·¢ËÍ1Âë
 {
   PAout(8) = 1;
   ws281x_delay(2);
@@ -57,7 +64,11 @@ void ws281x_sendHigh(void) // å‘é€1ç 
   ws281x_delay(1);
 }
 
-void ws2811_Reset(void) // å‘é€RESETç 
+/**
+ * @brief ·¢ËÍRESETÂë
+ *
+ */
+void ws2811_Reset(void) // ·¢ËÍRESETÂë
 {
   PAout(8) = 0;
   delay_us(60);
@@ -66,10 +77,9 @@ void ws2811_Reset(void) // å‘é€RESETç 
 }
 
 /**
- * @brief  å‘é€ç‚¹äº®ä¸€ä¸ªç¯çš„æ•°æ®ï¼ˆå³24bitï¼‰
- * @param  datï¼šé¢œè‰²çš„24ä½ç¼–ç 
- * @retval None
- * @note ä¸åŒ…å«å¸§é—´å»¶æ—¶
+ * @brief  ·¢ËÍµãÁÁÒ»¸öµÆµÄÊı¾İ£¨¼´24bit£©
+ * @param  dat£ºÑÕÉ«µÄ24Î»±àÂë
+ * @note ²»°üº¬Ö¡¼äÑÓÊ±
  */
 void ws281x_sendOne(uint32_t dat)
 {
@@ -77,7 +87,7 @@ void ws281x_sendOne(uint32_t dat)
   unsigned char byte;
   for (i = 23; (i < 24) & (i >= 0); i--)
   {
-    byte = ((dat >> i) & 0x01); // ä½æ“ä½œï¼Œè¯»å–datæ•°æ®çš„ç¬¬iä½
+    byte = ((dat >> i) & 0x01); // Î»²Ù×÷£¬¶ÁÈ¡datÊı¾İµÄµÚiÎ»
     if (byte == 1)
     {
       ws281x_sendHigh();
@@ -90,43 +100,43 @@ void ws281x_sendOne(uint32_t dat)
 }
 
 /**
- * @brief ä»¥RGBçš„å½¢å¼å‘é€é¢œè‰²
+ * @brief ÒÔRGBµÄĞÎÊ½·¢ËÍÑÕÉ«
  *
- * @param NUM å¯¹åº”ç¯ç çš„ç¼–å·ï¼Œä»0å¼€å§‹
- * @param R Ré€šé“é¢œè‰²å€¼
- * @param G Gé€šé“é¢œè‰²å€¼
- * @param B Bé€šé“é¢œè‰²å€¼
+ * @param NUM ¶ÔÓ¦µÆÖéµÄ±àºÅ£¬´Ó0¿ªÊ¼
+ * @param R RÍ¨µÀÑÕÉ«Öµ
+ * @param G GÍ¨µÀÑÕÉ«Öµ
+ * @param B BÍ¨µÀÑÕÉ«Öµ
  */
 void WS2812_SendColor(uint8_t NUM, uint8_t R, uint8_t G, uint8_t B)
 {
-  // ç´¢å¼•é™å¹…
+  // Ë÷ÒıÏŞ·ù
   NUM = (NUM >= LED_NUM) ? LED_NUM - 1 : NUM;
-  // é¢œè‰²è½¬æ¢(å°†è¾“å…¥çš„RGBé¢œè‰²è½¬æ¢ä¸º24ä½GRBç¼–ç )
+  // ÑÕÉ«×ª»»(½«ÊäÈëµÄRGBÑÕÉ«×ª»»Îª24Î»GRB±àÂë)
   LED_BUFFER[NUM] = ((uint32_t)G << 16) | ((uint32_t)R << 8) | (uint32_t)B;
-  // å‘é€å¸§é—´å»¶æ—¶ï¼ˆ60usï¼‰
+  // ·¢ËÍÖ¡¼äÑÓÊ±£¨60us£©
   delay_us(60);
-  // å‘é€å…¨ä½“æ•°ç»„w
+  // ·¢ËÍÈ«ÌåÊı×éw
   for (int i = 0; i < LED_NUM; i++)
   {
     ws281x_sendOne(LED_BUFFER[i]);
   }
 }
 /**
- * @brief ä»¥24ä½GRBçš„å½¢å¼å‘é€é¢œè‰²
+ * @brief ÒÔ24Î»GRBµÄĞÎÊ½·¢ËÍÑÕÉ«
  *
- * @param NUM å¯¹åº”ç¯ç çš„ç¼–å·ï¼Œä»0å¼€å§‹
- * @param Color é¢œè‰²çš„GRBç¼–ç ï¼ˆ24ä½ï¼‰
- * @note å¸¸å¸¸æ­é…WS2812_Wheelå‡½æ•°ä½¿ç”¨
+ * @param NUM ¶ÔÓ¦µÆÖéµÄ±àºÅ£¬´Ó0¿ªÊ¼
+ * @param Color ÑÕÉ«µÄGRB±àÂë£¨24Î»£©
+ * @note ³£³£´îÅäWS2812_Wheelº¯ÊıÊ¹ÓÃ
  */
 void WS2812_SendColor_u32(uint8_t NUM, uint32_t Color)
 {
-  // ç´¢å¼•é™å¹…
+  // Ë÷ÒıÏŞ·ù
   NUM = (NUM >= LED_NUM) ? LED_NUM - 1 : NUM;
-  // å­˜å…¥æ•°ç»„
+  // ´æÈëÊı×é
   LED_BUFFER[NUM] = Color;
-  // å‘é€å¸§é—´å»¶æ—¶ï¼ˆ60usï¼‰
+  // ·¢ËÍÖ¡¼äÑÓÊ±£¨60us£©
   delay_us(60);
-  // å‘é€å…¨ä½“æ•°ç»„w
+  // ·¢ËÍÈ«ÌåÊı×éw
   for (int i = 0; i < LED_NUM; i++)
   {
     ws281x_sendOne(LED_BUFFER[i]);
@@ -134,10 +144,10 @@ void WS2812_SendColor_u32(uint8_t NUM, uint32_t Color)
 }
 
 /**
- * @brief è‰²å½©è½®ç›˜ï¼ˆ256è‰²ï¼‰
+ * @brief É«²ÊÂÖÅÌ£¨256É«£©
  *
- * @param pos é¢œè‰²å€¼
- * @return uint32_t è¾“å‡ºçš„GRBç¼–ç ï¼Œæ­é…WS2812_SendColor_u32å‡½æ•°ä½¿ç”¨
+ * @param pos ÑÕÉ«Öµ
+ * @return uint32_t Êä³öµÄGRB±àÂë£¬´îÅäWS2812_SendColor_u32º¯ÊıÊ¹ÓÃ
  */
 uint32_t WS2812_Wheel(uint32_t pos)
 {
@@ -156,9 +166,9 @@ uint32_t WS2812_Wheel(uint32_t pos)
 }
 
 /**
- * @brief è®©æ‰€æœ‰ç¯ç æ˜¾ç¤ºä»¥posä¸ºèµ·å§‹çš„é¢œè‰²æµï¼Œåœ¨è‰²è½®ä¸Šä»¥æ­¥é•¿stepé€’å¢
+ * @brief ÈÃËùÓĞµÆÖéÏÔÊ¾ÒÔposÎªÆğÊ¼µÄÑÕÉ«Á÷£¬ÔÚÉ«ÂÖÉÏÒÔ²½³¤stepµİÔö
  *
- * @param pos èµ·å§‹é¢œè‰²
+ * @param pos ÆğÊ¼ÑÕÉ«
  */
 void WS2812_StreamColor(u8 pos)
 {

@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SMART MOTOR: D:/STM32 Project/STM32F103/smart_motor/USER/HARDWARE/motor.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="邻二溴苯(doxygen).png"/></td>
+  <td id="projectalign">
+   <div id="projectname">SMART MOTOR
+   </div>
+   <div id="projectbrief">Design by maker114</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('motor_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">motor.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="motor_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef __MOTOR_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define __MOTOR_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;stm32f10x_tim.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;stm32f10x_rcc.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;stm32f10x_adc.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">/********************配置部分**********************/</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// 电机积分限幅</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="motor_8h.html#a1120e6b1ba7ef7a10adee32fc050c331">   17</a></span><span class="preprocessor">#define MOTORA_I_MAX 4000 </span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="motor_8h.html#ae1b4b393c480b5845e00fdaddce2d9d7">   18</a></span><span class="preprocessor">#define MOTORB_I_MAX 4000 </span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// 电机PID</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="motor_8h.html#ad8be5710878c79ff92c63ec275818b5d">   20</a></span><span class="preprocessor">#define MOTORA_KP -150.0f </span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="motor_8h.html#a7a1276f5cd4b81e38241be0ca1f04d0e">   21</a></span><span class="preprocessor">#define MOTORA_KI -3.5f   </span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="motor_8h.html#a3c76733ae38e4fce619251b7c0c51bb2">   22</a></span><span class="preprocessor">#define MOTORA_KD -10.0f  </span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="motor_8h.html#aa45193b71b429af2c9d1a0f89a947121">   24</a></span><span class="preprocessor">#define MOTORB_KP -150.0f </span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="motor_8h.html#a371ad5ec2b7bd1a5d91d94dcbf432a7e">   25</a></span><span class="preprocessor">#define MOTORB_KI -3.5f   </span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="motor_8h.html#a14b413650d1af6dede870eedef122fe9">   26</a></span><span class="preprocessor">#define MOTORB_KD -10.0f  </span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// 电机编号</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="motor_8h.html#a49e05497cd12a38a0a1a78675025e3c7">   28</a></span><span class="preprocessor">#define MOTOR_A 0 </span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="motor_8h.html#add9a1e9dd6c4b0439da68e819a6a5c39">   29</a></span><span class="preprocessor">#define MOTOR_B 1 </span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// 运行状态编号</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="motor_8h.html#aa61a6c32d7187d20f8ea4171b8bf8dd7">   31</a></span><span class="preprocessor">#define MOTOR_STOP 0     </span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="motor_8h.html#aecfc8cb31c77ff43036a88e475f0198d">   32</a></span><span class="preprocessor">#define MOTOR_FORWARD 1  </span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="motor_8h.html#ae29c16906c059ef2615d54a3ee144763">   33</a></span><span class="preprocessor">#define MOTOR_BACKWARD 2 </span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">//  安装方向</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="motor_8h.html#ab0c3fad2e31f95695d8d4e583ecefa44">   35</a></span><span class="preprocessor">#define MOTOR_Clockwise 0     </span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="motor_8h.html#afa85b3882a6afb20218a23f868a2e8c4">   36</a></span><span class="preprocessor">#define MOTOR_Anticlockwise 1 </span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// 操作模式</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="motor_8h.html#ae7d8bc405af302505ee65582adf1f1a0">   38</a></span><span class="preprocessor">#define MOTOR_AUTO 0   </span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="motor_8h.html#a9c501aa2919cb147c4d17c11c2f6df39">   39</a></span><span class="preprocessor">#define MOTOR_MANUAL 1 </span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// PWM限幅（可调范围-7199~+7199）</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="motor_8h.html#a37cfd6cc849304e24c56938d1a50ba29">   41</a></span><span class="preprocessor">#define MOTOR_PWM_MAX 7000         </span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="motor_8h.html#ad5cdf2a2e6ca7c9ce1ad6693b47e996c">   42</a></span><span class="preprocessor">#define MOTOR_PWM_MIN -7000        </span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="motor_8h.html#a328d34ce2d6938adaffccefe1908ca7e">   43</a></span><span class="preprocessor">#define MOTOR_PWM_Compensate_A 000 </span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="motor_8h.html#a857eca5c7f192dd15f7f78c45f086721">   44</a></span><span class="preprocessor">#define MOTOR_PWM_Compensate_B 000 </span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">//  通道A引脚</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="motor_8h.html#af6822b955457f3d025b5c5a6314676f5">   46</a></span><span class="preprocessor">#define Direction_TIM_A RCC_APB2Periph_GPIOA </span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="motor_8h.html#a3b0445d7c2f456c1820f6eecb5598ec7">   47</a></span><span class="preprocessor">#define Direction_Group_A GPIOA              </span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="motor_8h.html#aafa2236648124d8aed616b29237527ef">   48</a></span><span class="preprocessor">#define Direction_AIN1 GPIO_Pin_3            </span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="motor_8h.html#aa92cdccb4e3364f7ecce7e66c9912712">   49</a></span><span class="preprocessor">#define Direction_AIN2 GPIO_Pin_4            </span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// 通道B引脚</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="motor_8h.html#a88747e31a21716014d01d766e2b55fbb">   51</a></span><span class="preprocessor">#define Direction_TIM_B RCC_APB2Periph_GPIOA </span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="motor_8h.html#a72f6e6ae15c3121232fa76cee8b2cc5d">   52</a></span><span class="preprocessor">#define Direction_Group_B GPIOA              </span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="motor_8h.html#ad6deb06b00049067997c769558abc376">   53</a></span><span class="preprocessor">#define Direction_BIN1 GPIO_Pin_5            </span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="motor_8h.html#a6e86e051120cbfb4f9b15046984479df">   54</a></span><span class="preprocessor">#define Direction_BIN2 GPIO_Pin_6            </span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/********************可变设置部分**********************/</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// 安装方向</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="motor_8h.html#ae38aa0e17231c915570c88ff6ed52c03">   58</a></span><span class="keyword">static</span> uint8_t <a class="code hl_variable" href="motor_8h.html#ae38aa0e17231c915570c88ff6ed52c03">MOTOR_Orientation</a> = <a class="code hl_define" href="motor_8h.html#afa85b3882a6afb20218a23f868a2e8c4">MOTOR_Anticlockwise</a>; </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">// 操作模式</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="motor_8h.html#ae8af17ce114d19cf4616af34313f2c4d">   60</a></span><span class="keyword">static</span> uint8_t <a class="code hl_variable" href="motor_8h.html#ae8af17ce114d19cf4616af34313f2c4d">MOTOR_OperatingMode</a> = <a class="code hl_define" href="motor_8h.html#ae7d8bc405af302505ee65582adf1f1a0">MOTOR_AUTO</a>; </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/********************结构体部分**********************/</span></div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="};">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html">   62</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#af6af3155e4eb01becc53d5ecf84518b1">   64</a></span>    int16_t <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#af6af3155e4eb01becc53d5ecf84518b1">PWMvalue</a>;    </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#aaf30cde4fff92dd5364976dd0bfd7298">   65</a></span>    int16_t <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#aaf30cde4fff92dd5364976dd0bfd7298">Speed</a>;       </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#ae92508792bc1fd2e0b41f8e44884be27">   66</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#ae92508792bc1fd2e0b41f8e44884be27">PID_GoalSpeed</a>; </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#a9d2d2539809b42de760a2359fcf688a8">   67</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#a9d2d2539809b42de760a2359fcf688a8">PID_KP</a>;        </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#a08359f725445fb251a981993bf69c6eb">   68</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#a08359f725445fb251a981993bf69c6eb">PID_KI</a>;        </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#abb3952aa7d2656ed304d569f86b92178">   69</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#abb3952aa7d2656ed304d569f86b92178">PID_KD</a>;        </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#afd34c7d8fbe486aa79fba8c80c303af0">   70</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#afd34c7d8fbe486aa79fba8c80c303af0">PID_LastError</a>; </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#ad3055460ab3f465e12ec6ec203ceea85">   71</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#ad3055460ab3f465e12ec6ec203ceea85">PID_Integral</a>;  </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="struct_m_o_t_o_r___type_def.html#ad522bf1ad47d7b8689bf50f8e0d7507a">   72</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_m_o_t_o_r___type_def.html#ad522bf1ad47d7b8689bf50f8e0d7507a">PID_I_MAX</a>;     </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>} <a class="code hl_struct" href="struct_m_o_t_o_r___type_def.html">MOTOR_TypeDef</a>;         </div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="};">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="struct_fast_response_filter.html">   75</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="struct_fast_response_filter.html#ad6cfe8c02f6c3b69fd09c651fcc7ee94">   77</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_fast_response_filter.html#ad6cfe8c02f6c3b69fd09c651fcc7ee94">alpha</a>;      </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="struct_fast_response_filter.html#aa18f5dadb74e2d295d39aa06a55e47a9">   78</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_fast_response_filter.html#aa18f5dadb74e2d295d39aa06a55e47a9">prev_value</a>; </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="struct_fast_response_filter.html#a33756aff30bf4fe8ff229b755767161f">   79</a></span>    <span class="keywordtype">float</span> buffer[3];  </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="struct_fast_response_filter.html#af31b218cbd6e2e9666d1c5d9f462d640">   80</a></span>    uint8_t <a class="code hl_variable" href="struct_fast_response_filter.html#af31b218cbd6e2e9666d1c5d9f462d640">index</a>;    </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>} <a class="code hl_struct" href="struct_fast_response_filter.html">FastResponseFilter</a>; </div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">/********************函数部分**********************/</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">// 初始化函数</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a9b3a7f55576e8e8d5747c3ee4c1d960b">MOTOR_Init</a>(<span class="keywordtype">void</span>);          <span class="comment">// 电机模块全局初始化</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a83057e85f9cdec405b9682b4fa33d22e">MOTOR_ADC_Init</a>(<span class="keywordtype">void</span>);      <span class="comment">// 电机相关ADC初始化</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#abe7bddbacc5b8d177bdb56bd5a611a8f">MOTOR_GPIO_Init</a>(<span class="keywordtype">void</span>);     <span class="comment">// 电机控制GPIO引脚初始化</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a631d1b00db96e487c9599e3dc9d21e1a">MOTOR_CountTIM_Init</a>(<span class="keywordtype">void</span>); <span class="comment">// 电机编码器计数定时器初始化</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a12b272cbb242fcb65c664e15e1185bae">MOTOR_ENCODER_Init</a>(<span class="keywordtype">void</span>);  <span class="comment">// 电机编码器接口初始化</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a814d46535cffab376d59f690eb9c3607">MOTOR_PWM_Init</a>(<span class="keywordtype">void</span>);      <span class="comment">// 电机PWM输出定时器初始化</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a037a8c43ac6224905da534c5d7e4aeb4">MOTOR_PID_Init</a>(<span class="keywordtype">void</span>);      <span class="comment">// 电机PID控制器参数初始化</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">// 电机控制设置函数</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a367d84ee0731dbe7931ab8cd024a92b4">MOTOR_Set_State</a>(<span class="keywordtype">int</span> Motor_Channel, <span class="keywordtype">int</span> Motor_State);             <span class="comment">// 设置电机状态</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a1a1166679af4013a92e900494657835e">MOTOR_Set_Orientation</a>(uint8_t Orientation);                      <span class="comment">// 设置电机旋转方向</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a15a59e0b7dbafa7b18acae3a18ca020f">MOTOR_Set_OperatingMode</a>(uint8_t Mode);                           <span class="comment">// 设置电机工作模式</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a43cff0fc5b8b17f8f38c9ea441065d0f">MOTOR_Set_PWM</a>(uint8_t Motor_channel, <span class="keywordtype">int</span> PWM);                   <span class="comment">// 直接设置电机PWM占空比</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a57fb0df0ed1175e783d711c63312e8ea">MOTOR_Set_PIDGoalSpeed</a>(uint8_t Motor_channel, <span class="keywordtype">float</span> Goal_Speed); <span class="comment">// 设置PID目标转速</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">// 状态获取函数</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">int</span> <a class="code hl_function" href="motor_8h.html#a768a040b8a1197af009508315b120b17">MOTOR_Get_Speed</a>(<span class="keywordtype">int</span> Motor_Channel);           <span class="comment">// 获取电机当前实际转速</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">int</span> <a class="code hl_function" href="motor_8h.html#abece6aafe009eccfa6aa8da4116fc580">MOTOR_Get_PWM</a>(<span class="keywordtype">int</span> Motor_Channel);             <span class="comment">// 获取电机当前PWM占空比值</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keywordtype">float</span> <a class="code hl_function" href="motor_8h.html#ab09dceceef35523a1f2eb9269617a047">MOTOR_Get_BatteryVoltage</a>(<span class="keywordtype">void</span>);             <span class="comment">// 获取电机供电电池电压</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">float</span> <a class="code hl_function" href="motor_8h.html#a9a7677fa901c8471fab0fa33f82cd16a">MOTOR_Get_GoalSpeed</a>(uint8_t Motor_Channel); <span class="comment">// 获取电机PID目标转速设定值</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">// PWM驱动函数</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a65ebe2172b9afdf3ee81a634c204f50f">MOTOR_PWM_Load</a>(uint8_t Motor_Channel, uint16_t PWM); <span class="comment">// 写入PWM值到硬件寄存器（底层驱动）</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">// PID控制函数</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a562ded4725036b4a1e9e8b78249be75c">MOTOR_PID_Calculate</a>(<a class="code hl_struct" href="struct_m_o_t_o_r___type_def.html">MOTOR_TypeDef</a> *MotorStructure); <span class="comment">// 执行PID计算并更新控制量</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a4ac47ed6a01a6bf95ac7670dc2dea9f8">MOTOR_PID_TimLoop</a>(<span class="keywordtype">void</span>);                            <span class="comment">// PID定时控制循环（周期调用）</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">// 滤波函数</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">void</span> <a class="code hl_function" href="motor_8h.html#a3da956b1aa9802bb2eab8f1abf668b87">Filter_Init</a>(<a class="code hl_struct" href="struct_fast_response_filter.html">FastResponseFilter</a> *filter, <span class="keywordtype">float</span> alpha, <span class="keywordtype">float</span> init_value); <span class="comment">// 初始化快速响应滤波器</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">int</span> <a class="code hl_function" href="motor_8h.html#a344389181533718b0965a8df949077e5">Filter_Process</a>(<a class="code hl_struct" href="struct_fast_response_filter.html">FastResponseFilter</a> *filter, <span class="keywordtype">float</span> raw_value);             <span class="comment">// 滤波处理输入数据</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amotor_8h_html_a037a8c43ac6224905da534c5d7e4aeb4"><div class="ttname"><a href="motor_8h.html#a037a8c43ac6224905da534c5d7e4aeb4">MOTOR_PID_Init</a></div><div class="ttdeci">void MOTOR_PID_Init(void)</div><div class="ttdoc">初始化PID参数</div><div class="ttdef"><b>Definition</b> motor.c:569</div></div>
+<div class="ttc" id="amotor_8h_html_a12b272cbb242fcb65c664e15e1185bae"><div class="ttname"><a href="motor_8h.html#a12b272cbb242fcb65c664e15e1185bae">MOTOR_ENCODER_Init</a></div><div class="ttdeci">void MOTOR_ENCODER_Init(void)</div><div class="ttdoc">初始化电机编码器</div><div class="ttdef"><b>Definition</b> motor.c:419</div></div>
+<div class="ttc" id="amotor_8h_html_a15a59e0b7dbafa7b18acae3a18ca020f"><div class="ttname"><a href="motor_8h.html#a15a59e0b7dbafa7b18acae3a18ca020f">MOTOR_Set_OperatingMode</a></div><div class="ttdeci">void MOTOR_Set_OperatingMode(uint8_t Mode)</div><div class="ttdoc">设置操作模式</div><div class="ttdef"><b>Definition</b> motor.c:278</div></div>
+<div class="ttc" id="amotor_8h_html_a1a1166679af4013a92e900494657835e"><div class="ttname"><a href="motor_8h.html#a1a1166679af4013a92e900494657835e">MOTOR_Set_Orientation</a></div><div class="ttdeci">void MOTOR_Set_Orientation(uint8_t Orientation)</div><div class="ttdoc">设置小车安装方向</div><div class="ttdef"><b>Definition</b> motor.c:266</div></div>
+<div class="ttc" id="amotor_8h_html_a344389181533718b0965a8df949077e5"><div class="ttname"><a href="motor_8h.html#a344389181533718b0965a8df949077e5">Filter_Process</a></div><div class="ttdeci">int Filter_Process(FastResponseFilter *filter, float raw_value)</div><div class="ttdoc">快速响应滤波器处理函数(内部调用)</div><div class="ttdef"><b>Definition</b> motor.c:643</div></div>
+<div class="ttc" id="amotor_8h_html_a367d84ee0731dbe7931ab8cd024a92b4"><div class="ttname"><a href="motor_8h.html#a367d84ee0731dbe7931ab8cd024a92b4">MOTOR_Set_State</a></div><div class="ttdeci">void MOTOR_Set_State(int Motor_Channel, int Motor_State)</div><div class="ttdoc">选择电机前进方向，一般由内部调用</div><div class="ttdef"><b>Definition</b> motor.c:183</div></div>
+<div class="ttc" id="amotor_8h_html_a3da956b1aa9802bb2eab8f1abf668b87"><div class="ttname"><a href="motor_8h.html#a3da956b1aa9802bb2eab8f1abf668b87">Filter_Init</a></div><div class="ttdeci">void Filter_Init(FastResponseFilter *filter, float alpha, float init_value)</div><div class="ttdoc">初始化滤波器(内部调用)</div><div class="ttdef"><b>Definition</b> motor.c:625</div></div>
+<div class="ttc" id="amotor_8h_html_a43cff0fc5b8b17f8f38c9ea441065d0f"><div class="ttname"><a href="motor_8h.html#a43cff0fc5b8b17f8f38c9ea441065d0f">MOTOR_Set_PWM</a></div><div class="ttdeci">void MOTOR_Set_PWM(uint8_t Motor_channel, int PWM)</div><div class="ttdoc">用来设置电机转动速度，自动设置旋转方向</div><div class="ttdef"><b>Definition</b> motor.c:292</div></div>
+<div class="ttc" id="amotor_8h_html_a4ac47ed6a01a6bf95ac7670dc2dea9f8"><div class="ttname"><a href="motor_8h.html#a4ac47ed6a01a6bf95ac7670dc2dea9f8">MOTOR_PID_TimLoop</a></div><div class="ttdeci">void MOTOR_PID_TimLoop(void)</div><div class="ttdoc">PID定时器循环</div><div class="ttdef"><b>Definition</b> motor.c:609</div></div>
+<div class="ttc" id="amotor_8h_html_a562ded4725036b4a1e9e8b78249be75c"><div class="ttname"><a href="motor_8h.html#a562ded4725036b4a1e9e8b78249be75c">MOTOR_PID_Calculate</a></div><div class="ttdeci">void MOTOR_PID_Calculate(MOTOR_TypeDef *MotorStructure)</div><div class="ttdoc">PID计算函数</div><div class="ttdef"><b>Definition</b> motor.c:587</div></div>
+<div class="ttc" id="amotor_8h_html_a57fb0df0ed1175e783d711c63312e8ea"><div class="ttname"><a href="motor_8h.html#a57fb0df0ed1175e783d711c63312e8ea">MOTOR_Set_PIDGoalSpeed</a></div><div class="ttdeci">void MOTOR_Set_PIDGoalSpeed(uint8_t Motor_channel, float Goal_Speed)</div><div class="ttdoc">设置PID目标速度</div><div class="ttdef"><b>Definition</b> motor.c:316</div></div>
+<div class="ttc" id="amotor_8h_html_a631d1b00db96e487c9599e3dc9d21e1a"><div class="ttname"><a href="motor_8h.html#a631d1b00db96e487c9599e3dc9d21e1a">MOTOR_CountTIM_Init</a></div><div class="ttdeci">void MOTOR_CountTIM_Init(void)</div><div class="ttdoc">转速定时器初始化</div><div class="ttdef"><b>Definition</b> motor.c:144</div></div>
+<div class="ttc" id="amotor_8h_html_a65ebe2172b9afdf3ee81a634c204f50f"><div class="ttname"><a href="motor_8h.html#a65ebe2172b9afdf3ee81a634c204f50f">MOTOR_PWM_Load</a></div><div class="ttdeci">void MOTOR_PWM_Load(uint8_t Motor_Channel, uint16_t PWM)</div><div class="ttdoc">装载电机PWM</div><div class="ttdef"><b>Definition</b> motor.c:543</div></div>
+<div class="ttc" id="amotor_8h_html_a768a040b8a1197af009508315b120b17"><div class="ttname"><a href="motor_8h.html#a768a040b8a1197af009508315b120b17">MOTOR_Get_Speed</a></div><div class="ttdeci">int MOTOR_Get_Speed(int Motor_Channel)</div><div class="ttdoc">获取电机转速</div><div class="ttdef"><b>Definition</b> motor.c:334</div></div>
+<div class="ttc" id="amotor_8h_html_a814d46535cffab376d59f690eb9c3607"><div class="ttname"><a href="motor_8h.html#a814d46535cffab376d59f690eb9c3607">MOTOR_PWM_Init</a></div><div class="ttdeci">void MOTOR_PWM_Init(void)</div><div class="ttdoc">初始化电机驱动PWM</div><div class="ttdef"><b>Definition</b> motor.c:490</div></div>
+<div class="ttc" id="amotor_8h_html_a83057e85f9cdec405b9682b4fa33d22e"><div class="ttname"><a href="motor_8h.html#a83057e85f9cdec405b9682b4fa33d22e">MOTOR_ADC_Init</a></div><div class="ttdeci">void MOTOR_ADC_Init(void)</div><div class="ttdoc">初始化电池电压检测ADC</div><div class="ttdef"><b>Definition</b> motor.c:84</div></div>
+<div class="ttc" id="amotor_8h_html_a9a7677fa901c8471fab0fa33f82cd16a"><div class="ttname"><a href="motor_8h.html#a9a7677fa901c8471fab0fa33f82cd16a">MOTOR_Get_GoalSpeed</a></div><div class="ttdeci">float MOTOR_Get_GoalSpeed(uint8_t Motor_Channel)</div><div class="ttdoc">获取电机目标速度（自动模式下有效）</div><div class="ttdef"><b>Definition</b> motor.c:392</div></div>
+<div class="ttc" id="amotor_8h_html_a9b3a7f55576e8e8d5747c3ee4c1d960b"><div class="ttname"><a href="motor_8h.html#a9b3a7f55576e8e8d5747c3ee4c1d960b">MOTOR_Init</a></div><div class="ttdeci">void MOTOR_Init(void)</div><div class="ttdoc">总初始化，仅调用一次此函数即可完成全部初始化</div><div class="ttdef"><b>Definition</b> motor.c:65</div></div>
+<div class="ttc" id="amotor_8h_html_ab09dceceef35523a1f2eb9269617a047"><div class="ttname"><a href="motor_8h.html#ab09dceceef35523a1f2eb9269617a047">MOTOR_Get_BatteryVoltage</a></div><div class="ttdeci">float MOTOR_Get_BatteryVoltage(void)</div><div class="ttdoc">获取电池电压</div><div class="ttdef"><b>Definition</b> motor.c:376</div></div>
+<div class="ttc" id="amotor_8h_html_abe7bddbacc5b8d177bdb56bd5a611a8f"><div class="ttname"><a href="motor_8h.html#abe7bddbacc5b8d177bdb56bd5a611a8f">MOTOR_GPIO_Init</a></div><div class="ttdeci">void MOTOR_GPIO_Init(void)</div><div class="ttdoc">电机GPIO初始化</div><div class="ttdef"><b>Definition</b> motor.c:123</div></div>
+<div class="ttc" id="amotor_8h_html_abece6aafe009eccfa6aa8da4116fc580"><div class="ttname"><a href="motor_8h.html#abece6aafe009eccfa6aa8da4116fc580">MOTOR_Get_PWM</a></div><div class="ttdeci">int MOTOR_Get_PWM(int Motor_Channel)</div><div class="ttdoc">获取电机PWM值</div><div class="ttdef"><b>Definition</b> motor.c:356</div></div>
+<div class="ttc" id="amotor_8h_html_ae38aa0e17231c915570c88ff6ed52c03"><div class="ttname"><a href="motor_8h.html#ae38aa0e17231c915570c88ff6ed52c03">MOTOR_Orientation</a></div><div class="ttdeci">static uint8_t MOTOR_Orientation</div><div class="ttdoc">根据小车安装与前进方向进行设置</div><div class="ttdef"><b>Definition</b> motor.h:58</div></div>
+<div class="ttc" id="amotor_8h_html_ae7d8bc405af302505ee65582adf1f1a0"><div class="ttname"><a href="motor_8h.html#ae7d8bc405af302505ee65582adf1f1a0">MOTOR_AUTO</a></div><div class="ttdeci">#define MOTOR_AUTO</div><div class="ttdoc">自动模式（使用内部PID）</div><div class="ttdef"><b>Definition</b> motor.h:38</div></div>
+<div class="ttc" id="amotor_8h_html_ae8af17ce114d19cf4616af34313f2c4d"><div class="ttname"><a href="motor_8h.html#ae8af17ce114d19cf4616af34313f2c4d">MOTOR_OperatingMode</a></div><div class="ttdeci">static uint8_t MOTOR_OperatingMode</div><div class="ttdoc">根据实际需求进行设置，默认为自动模式</div><div class="ttdef"><b>Definition</b> motor.h:60</div></div>
+<div class="ttc" id="amotor_8h_html_afa85b3882a6afb20218a23f868a2e8c4"><div class="ttname"><a href="motor_8h.html#afa85b3882a6afb20218a23f868a2e8c4">MOTOR_Anticlockwise</a></div><div class="ttdeci">#define MOTOR_Anticlockwise</div><div class="ttdoc">逆时针旋转为正向</div><div class="ttdef"><b>Definition</b> motor.h:36</div></div>
+<div class="ttc" id="astruct_fast_response_filter_html"><div class="ttname"><a href="struct_fast_response_filter.html">FastResponseFilter</a></div><div class="ttdef"><b>Definition</b> motor.h:76</div></div>
+<div class="ttc" id="astruct_fast_response_filter_html_aa18f5dadb74e2d295d39aa06a55e47a9"><div class="ttname"><a href="struct_fast_response_filter.html#aa18f5dadb74e2d295d39aa06a55e47a9">FastResponseFilter::prev_value</a></div><div class="ttdeci">float prev_value</div><div class="ttdoc">前一次滤波值</div><div class="ttdef"><b>Definition</b> motor.h:78</div></div>
+<div class="ttc" id="astruct_fast_response_filter_html_ad6cfe8c02f6c3b69fd09c651fcc7ee94"><div class="ttname"><a href="struct_fast_response_filter.html#ad6cfe8c02f6c3b69fd09c651fcc7ee94">FastResponseFilter::alpha</a></div><div class="ttdeci">float alpha</div><div class="ttdoc">滤波系数 (0 &lt; alpha &lt; 1)</div><div class="ttdef"><b>Definition</b> motor.h:77</div></div>
+<div class="ttc" id="astruct_fast_response_filter_html_af31b218cbd6e2e9666d1c5d9f462d640"><div class="ttname"><a href="struct_fast_response_filter.html#af31b218cbd6e2e9666d1c5d9f462d640">FastResponseFilter::index</a></div><div class="ttdeci">uint8_t index</div><div class="ttdoc">当前缓冲区索引</div><div class="ttdef"><b>Definition</b> motor.h:80</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html">MOTOR_TypeDef</a></div><div class="ttdef"><b>Definition</b> motor.h:63</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_a08359f725445fb251a981993bf69c6eb"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#a08359f725445fb251a981993bf69c6eb">MOTOR_TypeDef::PID_KI</a></div><div class="ttdeci">float PID_KI</div><div class="ttdoc">电机PID-KI值</div><div class="ttdef"><b>Definition</b> motor.h:68</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_a9d2d2539809b42de760a2359fcf688a8"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#a9d2d2539809b42de760a2359fcf688a8">MOTOR_TypeDef::PID_KP</a></div><div class="ttdeci">float PID_KP</div><div class="ttdoc">电机PID-KP值</div><div class="ttdef"><b>Definition</b> motor.h:67</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_aaf30cde4fff92dd5364976dd0bfd7298"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#aaf30cde4fff92dd5364976dd0bfd7298">MOTOR_TypeDef::Speed</a></div><div class="ttdeci">int16_t Speed</div><div class="ttdoc">电机转速（编码KPKP</div><div class="ttdef"><b>Definition</b> motor.h:65</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_abb3952aa7d2656ed304d569f86b92178"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#abb3952aa7d2656ed304d569f86b92178">MOTOR_TypeDef::PID_KD</a></div><div class="ttdeci">float PID_KD</div><div class="ttdoc">电机PID-KD值</div><div class="ttdef"><b>Definition</b> motor.h:69</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_ad3055460ab3f465e12ec6ec203ceea85"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#ad3055460ab3f465e12ec6ec203ceea85">MOTOR_TypeDef::PID_Integral</a></div><div class="ttdeci">float PID_Integral</div><div class="ttdoc">当前ERROR</div><div class="ttdef"><b>Definition</b> motor.h:71</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_ad522bf1ad47d7b8689bf50f8e0d7507a"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#ad522bf1ad47d7b8689bf50f8e0d7507a">MOTOR_TypeDef::PID_I_MAX</a></div><div class="ttdeci">float PID_I_MAX</div><div class="ttdoc">PID积分限幅</div><div class="ttdef"><b>Definition</b> motor.h:72</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_ae92508792bc1fd2e0b41f8e44884be27"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#ae92508792bc1fd2e0b41f8e44884be27">MOTOR_TypeDef::PID_GoalSpeed</a></div><div class="ttdeci">float PID_GoalSpeed</div><div class="ttdoc">目标转速</div><div class="ttdef"><b>Definition</b> motor.h:66</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_af6af3155e4eb01becc53d5ecf84518b1"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#af6af3155e4eb01becc53d5ecf84518b1">MOTOR_TypeDef::PWMvalue</a></div><div class="ttdeci">int16_t PWMvalue</div><div class="ttdoc">PWM装载值</div><div class="ttdef"><b>Definition</b> motor.h:64</div></div>
+<div class="ttc" id="astruct_m_o_t_o_r___type_def_html_afd34c7d8fbe486aa79fba8c80c303af0"><div class="ttname"><a href="struct_m_o_t_o_r___type_def.html#afd34c7d8fbe486aa79fba8c80c303af0">MOTOR_TypeDef::PID_LastError</a></div><div class="ttdeci">float PID_LastError</div><div class="ttdoc">上一次ERROR</div><div class="ttdef"><b>Definition</b> motor.h:70</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_06a443c98342f337bff9d9dc419b3392.html">HARDWARE</a></li><li class="navelem"><a class="el" href="motor_8h.html">motor.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

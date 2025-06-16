@@ -1,0 +1,110 @@
+\doxysubsection{motor.\+h}
+\hypertarget{motor_8h_source}{}\label{motor_8h_source}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/motor.h@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/motor.h}}
+\mbox{\hyperlink{motor_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_MOTOR\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_MOTOR\_H}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}stm32f10x\_tim.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}stm32f10x\_rcc.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}stm32f10x\_adc.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{comment}{/********************配置部分**********************/}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ 电机积分限幅}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ MOTORA\_I\_MAX\ 4000\ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ MOTORB\_I\_MAX\ 4000\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ 电机PID}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ MOTORA\_KP\ -\/150.0f\ }}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ MOTORA\_KI\ -\/3.5f\ \ \ }}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ MOTORA\_KD\ -\/10.0f\ \ }}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ MOTORB\_KP\ -\/150.0f\ }}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ MOTORB\_KI\ -\/3.5f\ \ \ }}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ MOTORB\_KD\ -\/10.0f\ \ }}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ 电机编号}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ MOTOR\_A\ 0\ }}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ MOTOR\_B\ 1\ }}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ 运行状态编号}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ MOTOR\_STOP\ 0\ \ \ \ \ }}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ MOTOR\_FORWARD\ 1\ \ }}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ MOTOR\_BACKWARD\ 2\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ \ 安装方向}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ MOTOR\_Clockwise\ 0\ \ \ \ \ }}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ MOTOR\_Anticlockwise\ 1\ }}
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ 操作模式}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ MOTOR\_AUTO\ 0\ \ \ }}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ MOTOR\_MANUAL\ 1\ }}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ PWM限幅（可调范围-\/7199\string~+7199）}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ MOTOR\_PWM\_MAX\ 7000\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ MOTOR\_PWM\_MIN\ -\/7000\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ MOTOR\_PWM\_Compensate\_A\ 000\ }}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ MOTOR\_PWM\_Compensate\_B\ 000\ }}
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ \ 通道A引脚}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ Direction\_TIM\_A\ RCC\_APB2Periph\_GPIOA\ }}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ Direction\_Group\_A\ GPIOA\ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ Direction\_AIN1\ GPIO\_Pin\_3\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ Direction\_AIN2\ GPIO\_Pin\_4\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ 通道B引脚}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ Direction\_TIM\_B\ RCC\_APB2Periph\_GPIOA\ }}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ Direction\_Group\_B\ GPIOA\ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ Direction\_BIN1\ GPIO\_Pin\_5\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ Direction\_BIN2\ GPIO\_Pin\_6\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{comment}{/********************可变设置部分**********************/}}
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ 安装方向}}
+\DoxyCodeLine{00058\ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{motor_8h_ae38aa0e17231c915570c88ff6ed52c03}{MOTOR\_Orientation}}\ =\ \mbox{\hyperlink{motor_8h_afa85b3882a6afb20218a23f868a2e8c4}{MOTOR\_Anticlockwise}};\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ 操作模式}}
+\DoxyCodeLine{00060\ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{motor_8h_ae8af17ce114d19cf4616af34313f2c4d}{MOTOR\_OperatingMode}}\ =\ \mbox{\hyperlink{motor_8h_ae7d8bc405af302505ee65582adf1f1a0}{MOTOR\_AUTO}};\ }
+\DoxyCodeLine{00061\ \textcolor{comment}{/********************结构体部分**********************/}}
+\DoxyCodeLine{00062\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_af6af3155e4eb01becc53d5ecf84518b1}{PWMvalue}};\ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ int16\_t\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_aaf30cde4fff92dd5364976dd0bfd7298}{Speed}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_ae92508792bc1fd2e0b41f8e44884be27}{PID\_GoalSpeed}};\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_a9d2d2539809b42de760a2359fcf688a8}{PID\_KP}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_a08359f725445fb251a981993bf69c6eb}{PID\_KI}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_abb3952aa7d2656ed304d569f86b92178}{PID\_KD}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_afd34c7d8fbe486aa79fba8c80c303af0}{PID\_LastError}};\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_ad3055460ab3f465e12ec6ec203ceea85}{PID\_Integral}};\ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def_ad522bf1ad47d7b8689bf50f8e0d7507a}{PID\_I\_MAX}};\ \ \ \ \ }
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{struct_m_o_t_o_r___type_def}{MOTOR\_TypeDef}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_fast_response_filter_ad6cfe8c02f6c3b69fd09c651fcc7ee94}{alpha}};\ \ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_fast_response_filter_aa18f5dadb74e2d295d39aa06a55e47a9}{prev\_value}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ buffer[3];\ \ }
+\DoxyCodeLine{00080\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{struct_fast_response_filter_af31b218cbd6e2e9666d1c5d9f462d640}{index}};\ \ \ \ }
+\DoxyCodeLine{00081\ \}\ \mbox{\hyperlink{struct_fast_response_filter}{FastResponseFilter}};\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{comment}{/********************函数部分**********************/}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ 初始化函数}}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a9b3a7f55576e8e8d5747c3ee4c1d960b}{MOTOR\_Init}}(\textcolor{keywordtype}{void});\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 电机模块全局初始化}}
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a83057e85f9cdec405b9682b4fa33d22e}{MOTOR\_ADC\_Init}}(\textcolor{keywordtype}{void});\ \ \ \ \ \ \textcolor{comment}{//\ 电机相关ADC初始化}}
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_abe7bddbacc5b8d177bdb56bd5a611a8f}{MOTOR\_GPIO\_Init}}(\textcolor{keywordtype}{void});\ \ \ \ \ \textcolor{comment}{//\ 电机控制GPIO引脚初始化}}
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a631d1b00db96e487c9599e3dc9d21e1a}{MOTOR\_CountTIM\_Init}}(\textcolor{keywordtype}{void});\ \textcolor{comment}{//\ 电机编码器计数定时器初始化}}
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a12b272cbb242fcb65c664e15e1185bae}{MOTOR\_ENCODER\_Init}}(\textcolor{keywordtype}{void});\ \ \textcolor{comment}{//\ 电机编码器接口初始化}}
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a814d46535cffab376d59f690eb9c3607}{MOTOR\_PWM\_Init}}(\textcolor{keywordtype}{void});\ \ \ \ \ \ \textcolor{comment}{//\ 电机PWM输出定时器初始化}}
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a037a8c43ac6224905da534c5d7e4aeb4}{MOTOR\_PID\_Init}}(\textcolor{keywordtype}{void});\ \ \ \ \ \ \textcolor{comment}{//\ 电机PID控制器参数初始化}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ 电机控制设置函数}}
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a367d84ee0731dbe7931ab8cd024a92b4}{MOTOR\_Set\_State}}(\textcolor{keywordtype}{int}\ Motor\_Channel,\ \textcolor{keywordtype}{int}\ Motor\_State);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 设置电机状态}}
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a1a1166679af4013a92e900494657835e}{MOTOR\_Set\_Orientation}}(uint8\_t\ Orientation);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 设置电机旋转方向}}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a15a59e0b7dbafa7b18acae3a18ca020f}{MOTOR\_Set\_OperatingMode}}(uint8\_t\ Mode);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 设置电机工作模式}}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a43cff0fc5b8b17f8f38c9ea441065d0f}{MOTOR\_Set\_PWM}}(uint8\_t\ Motor\_channel,\ \textcolor{keywordtype}{int}\ PWM);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 直接设置电机PWM占空比}}
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a57fb0df0ed1175e783d711c63312e8ea}{MOTOR\_Set\_PIDGoalSpeed}}(uint8\_t\ Motor\_channel,\ \textcolor{keywordtype}{float}\ Goal\_Speed);\ \textcolor{comment}{//\ 设置PID目标转速}}
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ 状态获取函数}}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{motor_8h_a768a040b8a1197af009508315b120b17}{MOTOR\_Get\_Speed}}(\textcolor{keywordtype}{int}\ Motor\_Channel);\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 获取电机当前实际转速}}
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{motor_8h_abece6aafe009eccfa6aa8da4116fc580}{MOTOR\_Get\_PWM}}(\textcolor{keywordtype}{int}\ Motor\_Channel);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 获取电机当前PWM占空比值}}
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{motor_8h_ab09dceceef35523a1f2eb9269617a047}{MOTOR\_Get\_BatteryVoltage}}(\textcolor{keywordtype}{void});\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 获取电机供电电池电压}}
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{motor_8h_a9a7677fa901c8471fab0fa33f82cd16a}{MOTOR\_Get\_GoalSpeed}}(uint8\_t\ Motor\_Channel);\ \textcolor{comment}{//\ 获取电机PID目标转速设定值}}
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ PWM驱动函数}}
+\DoxyCodeLine{00104\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a65ebe2172b9afdf3ee81a634c204f50f}{MOTOR\_PWM\_Load}}(uint8\_t\ Motor\_Channel,\ uint16\_t\ PWM);\ \textcolor{comment}{//\ 写入PWM值到硬件寄存器（底层驱动）}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ PID控制函数}}
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a562ded4725036b4a1e9e8b78249be75c}{MOTOR\_PID\_Calculate}}(\mbox{\hyperlink{struct_m_o_t_o_r___type_def}{MOTOR\_TypeDef}}\ *MotorStructure);\ \textcolor{comment}{//\ 执行PID计算并更新控制量}}
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a4ac47ed6a01a6bf95ac7670dc2dea9f8}{MOTOR\_PID\_TimLoop}}(\textcolor{keywordtype}{void});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PID定时控制循环（周期调用）}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ 滤波函数}}
+\DoxyCodeLine{00109\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{motor_8h_a3da956b1aa9802bb2eab8f1abf668b87}{Filter\_Init}}(\mbox{\hyperlink{struct_fast_response_filter}{FastResponseFilter}}\ *filter,\ \textcolor{keywordtype}{float}\ alpha,\ \textcolor{keywordtype}{float}\ init\_value);\ \textcolor{comment}{//\ 初始化快速响应滤波器}}
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{motor_8h_a344389181533718b0965a8df949077e5}{Filter\_Process}}(\mbox{\hyperlink{struct_fast_response_filter}{FastResponseFilter}}\ *filter,\ \textcolor{keywordtype}{float}\ raw\_value);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 滤波处理输入数据}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

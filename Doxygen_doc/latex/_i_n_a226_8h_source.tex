@@ -1,0 +1,65 @@
+\doxysection{INA226.\+h}
+\hypertarget{_i_n_a226_8h_source}{}\label{_i_n_a226_8h_source}\mbox{\hyperlink{_i_n_a226_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_INA226\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_INA226\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}stm32f10x.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}delay.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}usart.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}sys.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{board_8h}{board.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{/**********\ 硬件参数配置\ **********/}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ SHUNT\_RESISTOR\ 0.010f\ }\textcolor{comment}{//\ 分流电阻10毫欧}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ MAX\_CURRENT\ 10.0f\ \ \ \ \ }\textcolor{comment}{//\ 最大电流}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_i_n_a226_8h_a1cc54dc0849fecb3ddba87e8e37b0a7c}{Current\_LSB}};\ \textcolor{comment}{//\ 电流分辨率}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_i_n_a226_8h_a9dfd7593d29229179619c209d032bd02}{Power\_LSB}};\ \ \ \textcolor{comment}{//\ 功率校准值}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ INA\_SCL\ PBout(12)\ }\textcolor{comment}{//\ SCL引脚}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ INA\_SDA\ PBout(13)\ }\textcolor{comment}{//\ SDA引脚}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ INA\_SCL\_GPIO\_PORT\ GPIOB\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ GPIO端口\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ INA\_SCL\_RCC\ RCC\_APB2Periph\_GPIOB\ }\textcolor{comment}{/*\ GPIO端口时钟\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ INA\_SCL\_PIN\ GPIO\_Pin\_12\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ 连接到SCL时钟线的GPIO\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ INA\_SDA\_GPIO\_PORT\ GPIOB\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ GPIO端口\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ INA\_SDA\_RCC\ RCC\_APB2Periph\_GPIOB\ }\textcolor{comment}{/*\ GPIO端口时钟\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ INA\_SDA\_PIN\ GPIO\_Pin\_13\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ 连接到SDA数据线的GPIO\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ READ\_SDA\ GPIO\_ReadInputDataBit(INA\_SDA\_GPIO\_PORT,\ INA\_SDA\_PIN)}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ READ\_ADDR\ 0x81\ \ }\textcolor{comment}{//\ A0=GND，A1=GND\ //\ R=1,\ W=0}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ WRITE\_ADDR\ 0x80\ }\textcolor{comment}{//\ 芯片IIC地址}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ READ\_ADDR1\ 0x8B\ \ }\textcolor{comment}{//\ A0=VCC，A1=VCC\ //\ R=1,\ W=0}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ WRITE\_ADDR1\ 0x8A\ }\textcolor{comment}{//\ 芯片IIC地址}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ Config\_Reg\ 0x00\ \ }\textcolor{comment}{//\ 模式配置寄存器}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ Shunt\_V\_Reg\ 0x01\ }\textcolor{comment}{//\ 采样电阻压差；取值：2.5uV\string~81.92mV(0\string~7FFF)(10mΩ采样电阻下最大电流8A)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ Bus\_V\_Reg\ 0x02\ \ \ }\textcolor{comment}{//\ BUS总线电压：1.25mV\string~40.96V(0\string~7FFF)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ Power\_Reg\ 0x03\ \ \ }\textcolor{comment}{//\ 功率；Current\_LSB\ *\ 25，FSR\ =\ 0xFFFF}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ Current\_Reg\ 0x04\ }\textcolor{comment}{//\ 电流；LSB\ =\ 0.02mA，FSR\ =\ 0x7FFF}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ Calib\_Reg\ 0x05\ \ \ }\textcolor{comment}{//\ （当单位为mA时：采样电阻0.002R=0xA00;0.01R=0x200）；写入Calibration\ Register的数据需要根据实际电路中的采样电阻阻值以及电流分辨率来设置}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ Mask\_En\_Reg\ 0x06\ }\textcolor{comment}{//}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ Alert\_Reg\ 0x07\ \ \ }\textcolor{comment}{//}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ Man\_ID\_Reg\ 0xFE\ \ }\textcolor{comment}{//\ 0x5449}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ ID\_Reg\ 0xFF\ \ \ \ \ \ }\textcolor{comment}{//\ 0x2260}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_n_a226_8h_a308b08320146563b3d46c318af5046ed}{INA226\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_n_a226_8h_aa47f2249491d046e919e043ec75324c9}{INA226\_Init1}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_n_a226_8h_a03143bc3f1e879f46206d45ac323530f}{INA226\_SendData}}(uint8\_t\ addr,\ uint8\_t\ reg,\ uint16\_t\ data);}
+\DoxyCodeLine{00051\ uint16\_t\ \mbox{\hyperlink{_i_n_a226_8h_a29b481f17d5ca3f07ba0b2d0099983ec}{INA226\_Get\_ID}}(uint8\_t\ addr);}
+\DoxyCodeLine{00052\ uint16\_t\ \mbox{\hyperlink{_i_n_a226_8h_a9436110cde7c5f8ee393dce6dbfa70e9}{INA226\_GetShuntVoltage}}(uint8\_t\ addr);}
+\DoxyCodeLine{00053\ uint16\_t\ \mbox{\hyperlink{_i_n_a226_8h_a5fd16b3306dd9c10a2969e134c81e421}{INA226\_GetShuntCurrent}}(uint8\_t\ addr);}
+\DoxyCodeLine{00054\ uint16\_t\ \mbox{\hyperlink{_i_n_a226_8h_ada9282c70a85672021fec39d12a3ecf8}{INA226\_GetVoltage}}(uint8\_t\ addr);}
+\DoxyCodeLine{00055\ uint16\_t\ \mbox{\hyperlink{_i_n_a226_8h_a87739741c258d8ba63ce391338fac00e}{INA226\_Get\_Power}}(uint8\_t\ addr);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_i_n_a226_8h_a1e2001d07247dcb7417b2f081eeadf66}{INA226\_ReadCurrent\_A}}(uint8\_t\ addr);}
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_i_n_a226_8h_a3d6f6f7524a8993e1b502b77c131ae3a}{INA226\_ReadCurrent\_mA}}(uint8\_t\ addr);}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_i_n_a226_8h_a5a741652a04677609b084e9eebe1bfac}{INA226\_ReadPower}}(uint8\_t\ addr);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
